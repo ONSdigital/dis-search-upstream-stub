@@ -1,0 +1,15 @@
+---
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: 1.23.2-bullseye
+
+inputs:
+  - name: dis-search-upstream-stub
+
+run:
+  path: dis-search-upstream-stub/ci/scripts/component.sh
