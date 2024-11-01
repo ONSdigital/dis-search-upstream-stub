@@ -19,5 +19,6 @@ func Setup(ctx context.Context, r *mux.Router) *API {
 
 	// TODO: remove hello world example handler route
 	r.HandleFunc("/hello", HelloHandler(ctx)).Methods("GET")
+	r.HandleFunc("/resource", GetResources(ctx)).Methods("GET")
 	return api
 }
