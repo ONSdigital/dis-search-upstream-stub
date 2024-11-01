@@ -1,0 +1,54 @@
+{
+  "count": 0,
+  "items": [
+    {
+      "uri": "string",
+      "uri_old": "string",
+      "content_type": "api_dataset_landing_page",
+      "cdid": "string",
+      "dataset_id": "string",
+      "edition": "string",
+      "meta_description": "string",
+      "release_date": "2026-02-12T07:00:00.000Z",
+      "summary": "string",
+      "title": "string",
+      "topics": [
+        "string"
+      ],
+      "language": "string",
+      "survey": "string",
+      "canonical_topic": "string"
+    },
+    {
+      "uri": "string",
+      "uri_old": "string",
+      "content_type": "api_dataset_landing_page",
+      "cdid": "string",
+      "dataset_id": "string",
+      "edition": "string",
+      "meta_description": "string",
+      "release_date": "2026-02-12T07:00:00.000Z",
+      "summary": "string",
+      "title": "string",
+      "topics": [
+        "string"
+      ],
+      "language": "string",
+      "survey": "string",
+      "canonical_topic": "string",
+      "cancelled": true,
+      "finalised": true,
+      "published": true,
+      "date_changes": [
+        {
+          "change_notice": "string",
+          "previous_date": "string"
+        }
+      ],
+      "provisional_date": "October-November 2024"
+    }
+  ],
+  "limit": 0,
+  "offset": 0,
+  "total_count": 0
+}
