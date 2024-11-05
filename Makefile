@@ -57,6 +57,10 @@ test: ## Runs unit tests including checks for race conditions and returns covera
 test-component: ## Runs component test suite
 	go test -cover -coverpkg=github.com/ONSdigital/dis-search-upstream-stub/... -component
 
+.PHONY: validate-specification
+validate-specification: ## Validates specification
+	redocly lint specification.yml
+
 .PHONY: help
 help: ## Show help page for list of make targets
 	@echo ''
