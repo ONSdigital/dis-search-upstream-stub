@@ -9,6 +9,9 @@ import (
 // Config represents service configuration for dis-search-upstream-stub
 type Config struct {
 	BindAddr                   string        `envconfig:"BIND_ADDR"`
+	DefaultLimit               int           `envconfig:"DEFAULT_LIMIT"`
+	DefaultMaxLimit            int           `envconfig:"DEFAULT_MAXIMUM_LIMIT"`
+	DefaultOffset              int           `envconfig:"DEFAULT_OFFSET"`
 	GracefulShutdownTimeout    time.Duration `envconfig:"GRACEFUL_SHUTDOWN_TIMEOUT"`
 	HealthCheckInterval        time.Duration `envconfig:"HEALTHCHECK_INTERVAL"`
 	HealthCheckCriticalTimeout time.Duration `envconfig:"HEALTHCHECK_CRITICAL_TIMEOUT"`
@@ -29,6 +32,9 @@ func Get() (*Config, error) {
 
 	cfg = &Config{
 		BindAddr:                   "localhost:29600",
+		DefaultLimit:               20,
+		DefaultMaxLimit:            1000,
+		DefaultOffset:              0,
 		GracefulShutdownTimeout:    5 * time.Second,
 		HealthCheckInterval:        30 * time.Second,
 		HealthCheckCriticalTimeout: 90 * time.Second,

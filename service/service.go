@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"github.com/ONSdigital/dis-search-upstream-stub/data"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
@@ -42,7 +43,7 @@ func Run(ctx context.Context, cfg *config.Config, serviceList *ExternalServiceLi
 	// TODO: Add other(s) to serviceList here
 
 	// Setup the API
-	a := api.Setup(ctx, r)
+	a := api.Setup(ctx, r, cfg, &data.ResourceStore{})
 
 	hc, err := serviceList.GetHealthCheck(cfg, buildTime, gitCommit, version)
 
