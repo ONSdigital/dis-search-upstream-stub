@@ -7,40 +7,21 @@ import (
 	"time"
 )
 
-//// GetJob retrieves the details of a particular job, from the collection, specified by its id
-//func (m *ResourceStore) GetResource(ctx context.Context, id string) (*models.Job, error) {
-//	logData := log.Data{"id": id}
-//
-//	log.Info(ctx, "getting job by ID", logData)
-//
-//	job, err := m.findJob(ctx, id)
-//	if err != nil {
-//		if errors.Is(err, mongodriver.ErrNoDocumentFound) {
-//			log.Error(ctx, "job not found in mongo", err, logData)
-//			return nil, ErrJobNotFound
-//		}
-//		log.Error(ctx, "failed to find job in mongo", err, logData)
-//		return nil, err
-//	}
-//
-//	return job, nil
-//}
-
 // GetResources retrieves all the resources from the collection
 func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*models.Resources, error) {
 	logData := log.Data{"option": option}
 	log.Info(ctx, "getting list of resources", logData)
 
 	// get resources count
-	numJobs, err := r.getResourcesCount(ctx)
+	numResources, err := r.getResourcesCount(ctx)
 	if err != nil {
 		log.Error(ctx, "failed to get resources count", err, logData)
 		return nil, err
 	}
 
 	// create and populate resourcesList
-	resourceList := make([]models.Resource, numJobs)
-	_, err = r.populateResourcesList(ctx)
+	resourceList := make([]models.Resource, numResources)
+	resourceList, err = r.populateResourceList(ctx, resourceList)
 	if err != nil {
 		log.Error(ctx, "failed to populate resources list", err, logData)
 		return nil, err
@@ -51,7 +32,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 		ResourceList: resourceList,
 		Limit:        option.Limit,
 		Offset:       option.Offset,
-		TotalCount:   numJobs,
+		TotalCount:   numResources,
 	}
 
 	return resources, nil
@@ -62,12 +43,11 @@ func (r *ResourceStore) getResourcesCount(ctx context.Context) (int, error) {
 	return 2, nil
 }
 
-func (r *ResourceStore) populateResourcesList(ctx context.Context) ([]models.Resource, error) {
-	resourcesList := make([]models.Resource, 2)
+func (r *ResourceStore) populateResourceList(ctx context.Context, resourceList []models.Resource) ([]models.Resource, error) {
 
 	topics1 := []string{"a", "b", "c", "d"}
 	topics2 := []string{"a", "b", "e", "f"}
-	date_changes := []string{"a change_notice", "a previous_date"}
+	dateChanges := []string{"a change_notice", "a previous_date"}
 	tempResource1 := models.Resource{
 		Uri:             "/a/temp/uri",
 		UriOld:          "/an/old/uri",
@@ -86,11 +66,11 @@ func (r *ResourceStore) populateResourcesList(ctx context.Context) ([]models.Res
 		Cancelled:       true,
 		Finalised:       true,
 		Published:       true,
-		DateChanges:     date_changes,
+		DateChanges:     dateChanges,
 		ProvisionalDate: "October-November 2024",
 	}
 
-	resourcesList = append(resourcesList, tempResource1)
+	resourceList[0] = tempResource1
 
 	tempResource2 := models.Resource{
 		Uri:             "/another/temp/uri",
@@ -110,11 +90,11 @@ func (r *ResourceStore) populateResourcesList(ctx context.Context) ([]models.Res
 		Cancelled:       true,
 		Finalised:       true,
 		Published:       true,
-		DateChanges:     date_changes,
+		DateChanges:     dateChanges,
 		ProvisionalDate: "October-November 2024",
 	}
 
-	resourcesList = append(resourcesList, tempResource2)
+	resourceList[1] = tempResource2
 
-	return resourcesList, nil
+	return resourceList, nil
 }
