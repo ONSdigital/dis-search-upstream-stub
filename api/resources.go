@@ -5,12 +5,10 @@ import (
 	"github.com/ONSdigital/dis-search-upstream-stub/apierrors"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/pagination"
+	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
 	"github.com/ONSdigital/log.go/v2/log"
 	"net/http"
 )
-
-//go:embed example_resource.json
-var jsonResponse []byte
 
 var (
 	serverErrorMessage = apierrors.ErrInternalServer.Error()
@@ -54,11 +52,11 @@ func GetResources(api *API) http.HandlerFunc {
 		logData["resources_offset"] = resources.Offset
 		logData["resources_total_count"] = resources.TotalCount
 
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		_, err = w.Write(jsonResponse)
+		// write response
+		err = dpresponse.WriteJSON(w, resources, http.StatusOK)
 		if err != nil {
-			log.Error(ctx, "writing response failed", err)
-			http.Error(w, "Failed to write http response", http.StatusInternalServerError)
+			log.Error(ctx, "failed to write response", err, logData)
+			http.Error(w, serverErrorMessage, http.StatusInternalServerError)
 			return
 		}
 	}
