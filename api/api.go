@@ -14,11 +14,11 @@ type API struct {
 }
 
 // Setup function sets up the api and returns an api
-func Setup(r *mux.Router, cfg *config.Config, datastorer DataStorer) *API {
+func Setup(r *mux.Router, cfg *config.Config, dataStorer DataStorer) *API {
 	api := &API{
 		Router:    r,
 		Cfg:       cfg,
-		DataStore: datastorer,
+		DataStore: dataStorer,
 	}
 
 	r.HandleFunc("/resource", GetResources(api)).Methods("GET")
