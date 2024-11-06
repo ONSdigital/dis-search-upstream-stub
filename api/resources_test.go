@@ -97,7 +97,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 	}
 
 	Convey("Given a list of resources exists in the Data Store", t, func() {
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all resources", func() {
 			req := httptest.NewRequest("GET", "http://localhost:29600/resource", nil)
@@ -177,7 +177,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 			},
 		}
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, customValidPaginationDataStore)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, customValidPaginationDataStore)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d&limit=%d", validOffset, validLimit), nil)
@@ -237,7 +237,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 			},
 		}
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, greaterOffsetDataStore)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, greaterOffsetDataStore)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d", greaterOffset), nil)
@@ -282,7 +282,7 @@ func TestGetResourcesHandlerWithEmptyResourceStoreSuccess(t *testing.T) {
 			},
 		}
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all the resources that exist in the resources collection", func() {
 			req := httptest.NewRequest("GET", "http://localhost:29600/resource", nil)
@@ -328,7 +328,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 	Convey("Given offset is not numeric", t, func() {
 		nonNumericOffset := "stringOffset"
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%s", nonNumericOffset), nil)
@@ -351,7 +351,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 	Convey("Given offset is negative", t, func() {
 		negativeOffset := -3
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d", negativeOffset), nil)
@@ -370,7 +370,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 	Convey("Given limit is not numeric", t, func() {
 		nonNumericLimit := "stringLimit"
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?limit=%s", nonNumericLimit), nil)
@@ -389,7 +389,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 	Convey("Given limit is negative", t, func() {
 		negativeLimit := -1
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=0&limit=%d", negativeLimit), nil)
@@ -419,7 +419,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 			},
 		}
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, greaterLimitDataStore)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, greaterLimitDataStore)
 
 		Convey("When a request is made to get a list of resources", func() {
 			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?limit=%d", greaterLimit), nil)
@@ -442,7 +442,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 			},
 		}
 
-		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
+		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all the resources that exist in the resources collection", func() {
 			req := httptest.NewRequest("GET", "http://localhost:29600/resource", nil)

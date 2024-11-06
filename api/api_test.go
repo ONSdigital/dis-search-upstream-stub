@@ -1,7 +1,6 @@
 package api
 
 import (
-	"context"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"net/http"
@@ -15,10 +14,9 @@ import (
 func TestSetup(t *testing.T) {
 	Convey("Given an API instance", t, func() {
 		r := mux.NewRouter()
-		ctx := context.Background()
 		cfg, err := config.Get()
 		So(err, ShouldBeNil)
-		api := Setup(ctx, r, cfg, &data.ResourceStore{})
+		api := Setup(r, cfg, &data.ResourceStore{})
 
 		Convey("When created the following routes should have been added", func() {
 			So(hasRoute(api.Router, "/resource", "GET"), ShouldBeTrue)
