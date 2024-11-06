@@ -22,8 +22,6 @@ func Setup(ctx context.Context, r *mux.Router, cfg *config.Config, datastorer Da
 		DataStore: datastorer,
 	}
 
-	// TODO: remove hello world example handler route
-	r.HandleFunc("/hello", HelloHandler(ctx)).Methods("GET")
 	r.HandleFunc("/resource", GetResources(api)).Methods("GET")
 	return api
 }
