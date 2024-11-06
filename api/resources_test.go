@@ -1,59 +1,33 @@
 package api_test
 
 import (
-	//"bytes"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
-	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
-	"strings"
-
-	//"fmt"
+	"github.com/ONSdigital/dis-search-upstream-stub/api"
+	apiMock "github.com/ONSdigital/dis-search-upstream-stub/api/mock"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
+	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
+	"github.com/gorilla/mux"
+	. "github.com/smartystreets/goconvey/convey"
 	"io"
 	"net/http"
 	"net/http/httptest"
-	//"strings"
+	"strings"
 	"testing"
 	"time"
-
-	"github.com/ONSdigital/dis-search-upstream-stub/api"
-	apiMock "github.com/ONSdigital/dis-search-upstream-stub/api/mock"
-	//"github.com/ONSdigital/dp-api-clients-go/v2/headers"
-	//dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
-	//dpHTTP "github.com/ONSdigital/dp-net/v2/http"
-	//dprequest "github.com/ONSdigital/dp-net/v2/request"
-	//"github.com/ONSdigital/dp-search-reindex-api/apierrors"
-	//"github.com/ONSdigital/dp-search-reindex-api/mongo"
-	"github.com/gorilla/mux"
-	. "github.com/smartystreets/goconvey/convey"
-	//"go.mongodb.org/mongo-driver/bson"
 )
 
 // Constants for testing
 const (
-	//	eTagValidResourceID1    = `"dcb67563ce9964e281fd3c4b6b448551638531bc"`
-	//	validResourceID1        = "UUID1"
-	//	validResourceID2        = "UUID2"
-	//	validResourceID3        = "UUID3"
-	//	notFoundResourceID      = "UUID4"
-	//	unLockableResourceID    = "UUID5"
-	expectedServerErrorMsg = "internal server error"
-	//	validCount              = "3"
-	//	countNotANumber         = "notANumber"
-	//	countNegativeInt        = "-3"
+	expectedServerErrorMsg  = "internal server error"
 	expectedOffsetErrorMsg  = "invalid offset query parameter"
 	expectedLimitErrorMsg   = "invalid limit query parameter"
 	expectedLimitOverMaxMsg = "limit query parameter is larger than the maximum allowed"
 )
-
-//var (
-//	zeroTime      = time.Time{}.UTC()
-//	errUnexpected = errors.New("an unexpected error occurred")
-//)
 
 // expectedResource returns a Resource that can be used to define and test expected values within it
 func expectedResource(uri string) models.Resource {
