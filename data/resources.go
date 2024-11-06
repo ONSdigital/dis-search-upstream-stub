@@ -13,7 +13,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	log.Info(ctx, "getting list of resources", logData)
 
 	// get resources count
-	numResources, err := r.getResourcesCount(ctx)
+	numResources, err := r.getResourcesCount()
 	if err != nil {
 		log.Error(ctx, "failed to get resources count", err, logData)
 		return nil, err
@@ -21,7 +21,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 
 	// create and populate resourcesList
 	resourceList := make([]models.Resource, numResources)
-	resourceList, err = r.populateResourceList(ctx, resourceList)
+	resourceList, err = r.populateResourceList(resourceList)
 	if err != nil {
 		log.Error(ctx, "failed to populate resources list", err, logData)
 		return nil, err
@@ -39,11 +39,11 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 }
 
 // getResourcesCount returns the total number of jobs stored in the jobs collection in mongo
-func (r *ResourceStore) getResourcesCount(ctx context.Context) (int, error) {
+func (r *ResourceStore) getResourcesCount() (int, error) {
 	return 2, nil
 }
 
-func (r *ResourceStore) populateResourceList(ctx context.Context, resourceList []models.Resource) ([]models.Resource, error) {
+func (r *ResourceStore) populateResourceList(resourceList []models.Resource) ([]models.Resource, error) {
 
 	topics1 := []string{"a", "b", "c", "d"}
 	topics2 := []string{"a", "b", "e", "f"}
