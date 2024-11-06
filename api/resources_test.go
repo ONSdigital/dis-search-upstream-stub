@@ -248,50 +248,45 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 			})
 		})
 	})
-	//
-	//	Convey("Given offset is greater than total number of resources in the Data Store", t, func() {
-	//		greaterOffset := 10
-	//
-	//		greaterOffsetDataStore := &apiMock.DataStorerMock{
-	//			GetResourcesFunc: func(ctx context.Context, options mongo.Options) (*models.Resources, error) {
-	//				resources := expectedResources(ctx, t, cfg, false, cfg.DefaultLimit, greaterOffset, false)
-	//				return &resources, nil
-	//			},
-	//		}
-	//
-	//		httpClient := dpHTTP.NewClient()
-	//		apiInstance := api.Setup(mux.NewRouter(), greaterOffsetDataStore, &apiMock.AuthHandlerMock{}, taskNames, cfg, httpClient, &apiMock.IndexerMock{}, &apiMock.ReindexRequestedProducerMock{})
-	//
-	//		Convey("When a request is made to get a list of resources", func() {
-	//			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:25700/search-reindex-resources?offset=%d", greaterOffset), nil)
-	//			resp := httptest.NewRecorder()
-	//
-	//			apiInstance.Router.ServeHTTP(resp, req)
-	//
-	//			Convey("Then a list of resources is returned with status code 200", func() {
-	//				So(resp.Code, ShouldEqual, http.StatusOK)
-	//
-	//				payload, err := io.ReadAll(resp.Body)
-	//				if err != nil {
-	//					t.Errorf("failed to read payload with io.ReadAll, error: %v", err)
-	//				}
-	//
-	//				resourcesReturned := models.Resources{}
-	//				err = json.Unmarshal(payload, &resourcesReturned)
-	//				So(err, ShouldBeNil)
-	//
-	//				Convey("And the returned list should be empty", func() {
-	//					returnedResourceList := resourcesReturned.ResourceList
-	//					So(returnedResourceList, ShouldHaveLength, 0)
-	//
-	//					Convey("And the etag of the response resources resource should be returned via the ETag header", func() {
-	//						So(resp.Header().Get(dpresponse.ETagHeader), ShouldNotBeEmpty)
-	//					})
-	//				})
-	//			})
-	//		})
-	//	})
-	//}
+
+	Convey("Given offset is greater than total number of resources in the Data Store", t, func() {
+		greaterOffset := 10
+
+		greaterOffsetDataStore := &apiMock.DataStorerMock{
+			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+				resources := expectedResources(cfg.DefaultLimit, greaterOffset)
+				return &resources, nil
+			},
+		}
+
+		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, greaterOffsetDataStore)
+
+		Convey("When a request is made to get a list of resources", func() {
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d", greaterOffset), nil)
+			resp := httptest.NewRecorder()
+
+			apiInstance.Router.ServeHTTP(resp, req)
+
+			Convey("Then a list of resources is returned with status code 200", func() {
+				So(resp.Code, ShouldEqual, http.StatusOK)
+
+				payload, err := io.ReadAll(resp.Body)
+				if err != nil {
+					t.Errorf("failed to read payload with io.ReadAll, error: %v", err)
+				}
+
+				resourcesReturned := models.Resources{}
+				err = json.Unmarshal(payload, &resourcesReturned)
+				So(err, ShouldBeNil)
+
+				Convey("And the returned list should be empty", func() {
+					returnedResourceList := resourcesReturned.ResourceList
+					So(returnedResourceList, ShouldHaveLength, 0)
+				})
+			})
+		})
+	})
+
 	//
 	//func TestGetResourcesHandlerWithEmptyResourceStoreSuccess(t *testing.T) {
 	//	t.Parallel()
