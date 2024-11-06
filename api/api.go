@@ -1,7 +1,6 @@
 package api
 
 import (
-	"context"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 
 	"github.com/gorilla/mux"
@@ -15,7 +14,7 @@ type API struct {
 }
 
 // Setup function sets up the api and returns an api
-func Setup(ctx context.Context, r *mux.Router, cfg *config.Config, datastorer DataStorer) *API {
+func Setup(r *mux.Router, cfg *config.Config, datastorer DataStorer) *API {
 	api := &API{
 		Router:    r,
 		Cfg:       cfg,
