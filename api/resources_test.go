@@ -4,6 +4,7 @@ import (
 	//"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	//"fmt"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
@@ -118,7 +119,6 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 	}
 
 	Convey("Given a list of resources exists in the Data Store", t, func() {
-		//httpClient := dpHTTP.NewClient()
 		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all resources", func() {
@@ -188,63 +188,66 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 		})
 	})
 
-	//	Convey("Given valid pagination parameters", t, func() {
-	//		validOffset := 1
-	//		validLimit := 20
-	//
-	//		customValidPaginationDataStore := &apiMock.DataStorerMock{
-	//			GetResourcesFunc: func(ctx context.Context, options mongo.Options) (*models.Resources, error) {
-	//				resources := expectedResources(ctx, t, cfg, false, validLimit, validOffset, false)
-	//				return &resources, nil
-	//			},
-	//		}
-	//
-	//		httpClient := dpHTTP.NewClient()
-	//		apiInstance := api.Setup(mux.NewRouter(), customValidPaginationDataStore, &apiMock.AuthHandlerMock{}, taskNames, cfg, httpClient, &apiMock.IndexerMock{}, &apiMock.ReindexRequestedProducerMock{})
-	//
-	//		Convey("When a request is made to get a list of resources", func() {
-	//			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:25700/search-reindex-resources?offset=%d&limit=%d", validOffset, validLimit), nil)
-	//			resp := httptest.NewRecorder()
-	//
-	//			apiInstance.Router.ServeHTTP(resp, req)
-	//
-	//			Convey("Then a list of resources is returned with status code 200", func() {
-	//				So(resp.Code, ShouldEqual, http.StatusOK)
-	//
-	//				payload, err := io.ReadAll(resp.Body)
-	//				if err != nil {
-	//					t.Errorf("failed to read payload with io.ReadAll, error: %v", err)
-	//				}
-	//
-	//				resourcesReturned := models.Resources{}
-	//				err = json.Unmarshal(payload, &resourcesReturned)
-	//				So(err, ShouldBeNil)
-	//
-	//				expectedResource := expectedResource(context.Background(), t, cfg, true, validResourceID2, "", 0, false)
-	//
-	//				Convey("And the returned list should contain the expected resource", func() {
-	//					returnedResourceList := resourcesReturned.ResourceList
-	//					So(returnedResourceList, ShouldHaveLength, 1)
-	//					returnedResource := returnedResourceList[0]
-	//					So(returnedResource.ETag, ShouldBeEmpty)
-	//					So(returnedResource.ID, ShouldEqual, expectedResource.ID)
-	//					So(returnedResource.Links, ShouldResemble, expectedResource.Links)
-	//					So(returnedResource.NumberOfTasks, ShouldEqual, expectedResource.NumberOfTasks)
-	//					So(returnedResource.ReindexCompleted, ShouldEqual, expectedResource.ReindexCompleted)
-	//					So(returnedResource.ReindexFailed, ShouldEqual, expectedResource.ReindexFailed)
-	//					So(returnedResource.ReindexStarted, ShouldEqual, expectedResource.ReindexStarted)
-	//					So(returnedResource.SearchIndexName, ShouldEqual, expectedResource.SearchIndexName)
-	//					So(returnedResource.State, ShouldEqual, expectedResource.State)
-	//					So(returnedResource.TotalSearchDocuments, ShouldEqual, expectedResource.TotalSearchDocuments)
-	//					So(returnedResource.TotalInsertedSearchDocuments, ShouldEqual, expectedResource.TotalInsertedSearchDocuments)
-	//
-	//					Convey("And the etag of the response resources resource should be returned via the ETag header", func() {
-	//						So(resp.Header().Get(dpresponse.ETagHeader), ShouldNotBeEmpty)
-	//					})
-	//				})
-	//			})
-	//		})
-	//	})
+	Convey("Given valid pagination parameters", t, func() {
+		validOffset := 1
+		validLimit := 20
+
+		customValidPaginationDataStore := &apiMock.DataStorerMock{
+			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+				resources := expectedResources(validLimit, validOffset)
+				return &resources, nil
+			},
+		}
+
+		apiInstance := api.Setup(context.Background(), mux.NewRouter(), cfg, customValidPaginationDataStore)
+
+		Convey("When a request is made to get a list of resources", func() {
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d&limit=%d", validOffset, validLimit), nil)
+			resp := httptest.NewRecorder()
+
+			apiInstance.Router.ServeHTTP(resp, req)
+
+			Convey("Then a list of resources is returned with status code 200", func() {
+				So(resp.Code, ShouldEqual, http.StatusOK)
+
+				payload, err := io.ReadAll(resp.Body)
+				if err != nil {
+					t.Errorf("failed to read payload with io.ReadAll, error: %v", err)
+				}
+
+				resourcesReturned := models.Resources{}
+				err = json.Unmarshal(payload, &resourcesReturned)
+				So(err, ShouldBeNil)
+
+				expectedResource := expectedResource("/another/uri")
+
+				Convey("And the returned list should contain the expected resource", func() {
+					returnedResourceList := resourcesReturned.ResourceList
+					So(returnedResourceList, ShouldHaveLength, 1)
+					returnedResource := returnedResourceList[0]
+					So(returnedResource.Uri, ShouldEqual, expectedResource.Uri)
+					So(returnedResource.UriOld, ShouldEqual, expectedResource.UriOld)
+					So(returnedResource.ContentType, ShouldEqual, expectedResource.ContentType)
+					So(returnedResource.CDID, ShouldEqual, expectedResource.CDID)
+					So(returnedResource.DatasetID, ShouldEqual, expectedResource.DatasetID)
+					So(returnedResource.Edition, ShouldEqual, expectedResource.Edition)
+					So(returnedResource.MetaDescription, ShouldEqual, expectedResource.MetaDescription)
+					So(returnedResource.ReleaseDate, ShouldEqual, expectedResource.ReleaseDate)
+					So(returnedResource.Summary, ShouldEqual, expectedResource.Summary)
+					So(returnedResource.Title, ShouldEqual, expectedResource.Title)
+					So(returnedResource.Topics, ShouldEqual, expectedResource.Topics)
+					So(returnedResource.Language, ShouldEqual, expectedResource.Language)
+					So(returnedResource.Survey, ShouldEqual, expectedResource.Survey)
+					So(returnedResource.CanonicalTopic, ShouldEqual, expectedResource.CanonicalTopic)
+					So(returnedResource.Cancelled, ShouldEqual, expectedResource.Cancelled)
+					So(returnedResource.Finalised, ShouldEqual, expectedResource.Finalised)
+					So(returnedResource.Published, ShouldEqual, expectedResource.Published)
+					So(returnedResource.DateChanges, ShouldEqual, expectedResource.DateChanges)
+					So(returnedResource.ProvisionalDate, ShouldEqual, expectedResource.ProvisionalDate)
+				})
+			})
+		})
+	})
 	//
 	//	Convey("Given offset is greater than total number of resources in the Data Store", t, func() {
 	//		greaterOffset := 10
