@@ -36,8 +36,8 @@ func expectedResource(uri string) models.Resource {
 	topics := []string{"a", "b", "c", "d"}
 	dateChanges := []string{"a change_notice", "a previous_date"}
 	resource := models.Resource{
-		Uri:             uri,
-		UriOld:          "/an/old/uri",
+		URI:             uri,
+		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
 		CDID:            "ASELECTIONOFNUMBERSANDLETTERS123",
 		DatasetID:       "ASELECTIONOFNUMBERSANDLETTERS456",
@@ -125,8 +125,8 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					returnedResourceList := resourcesReturned.ResourceList
 					So(returnedResourceList, ShouldHaveLength, 2)
 					returnedResource1 := returnedResourceList[0]
-					So(returnedResource1.Uri, ShouldEqual, expectedResource1.Uri)
-					So(returnedResource1.UriOld, ShouldEqual, expectedResource1.UriOld)
+					So(returnedResource1.URI, ShouldEqual, expectedResource1.URI)
+					So(returnedResource1.URIOld, ShouldEqual, expectedResource1.URIOld)
 					So(returnedResource1.ContentType, ShouldEqual, expectedResource1.ContentType)
 					So(returnedResource1.CDID, ShouldEqual, expectedResource1.CDID)
 					So(returnedResource1.DatasetID, ShouldEqual, expectedResource1.DatasetID)
@@ -145,7 +145,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource1.DateChanges, ShouldEqual, expectedResource1.DateChanges)
 					So(returnedResource1.ProvisionalDate, ShouldEqual, expectedResource1.ProvisionalDate)
 					returnedResource2 := returnedResourceList[1]
-					So(returnedResource2.UriOld, ShouldEqual, expectedResource2.UriOld)
+					So(returnedResource2.URIOld, ShouldEqual, expectedResource2.URIOld)
 					So(returnedResource2.ContentType, ShouldEqual, expectedResource2.ContentType)
 					So(returnedResource2.CDID, ShouldEqual, expectedResource2.CDID)
 					So(returnedResource2.DatasetID, ShouldEqual, expectedResource2.DatasetID)
@@ -205,8 +205,8 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					returnedResourceList := resourcesReturned.ResourceList
 					So(returnedResourceList, ShouldHaveLength, 1)
 					returnedResource := returnedResourceList[0]
-					So(returnedResource.Uri, ShouldEqual, expectedResource.Uri)
-					So(returnedResource.UriOld, ShouldEqual, expectedResource.UriOld)
+					So(returnedResource.URI, ShouldEqual, expectedResource.URI)
+					So(returnedResource.URIOld, ShouldEqual, expectedResource.URIOld)
 					So(returnedResource.ContentType, ShouldEqual, expectedResource.ContentType)
 					So(returnedResource.CDID, ShouldEqual, expectedResource.CDID)
 					So(returnedResource.DatasetID, ShouldEqual, expectedResource.DatasetID)

@@ -1,7 +1,6 @@
 package api
 
 import (
-	_ "embed"
 	"net/http"
 
 	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"

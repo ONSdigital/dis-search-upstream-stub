@@ -6,8 +6,8 @@ import (
 
 // Resource represents a resource metadata model and json representation for API
 type Resource struct {
-	Uri             string    `json:"uri"`
-	UriOld          string    `json:"uri_old"`
+	URI             string    `json:"uri"`
+	URIOld          string    `json:"uri_old"`
 	ContentType     string    `json:"content_type"`
 	CDID            string    `json:"cdid"`
 	DatasetID       string    `json:"dataset_id"`
