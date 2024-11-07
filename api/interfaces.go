@@ -9,7 +9,7 @@ import (
 
 //go:generate moq -out ./mock/data_storer.go -pkg mock . DataStorer
 
-// DataStorer is an interface for a type that can store and retrieve jobs
+// DataStorer is an interface for a type that can store and retrieve resources
 type DataStorer interface {
 	GetResources(ctx context.Context, options data.Options) (resource *models.Resources, err error)
 }

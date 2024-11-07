@@ -40,7 +40,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	return resources, nil
 }
 
-// getResourcesCount returns the total number of jobs stored in the jobs collection in mongo
+// getResourcesCount returns the total number of resources stored
 func (r *ResourceStore) getResourcesCount() (int, error) {
 	return 2, nil
 }

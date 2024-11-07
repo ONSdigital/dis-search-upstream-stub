@@ -17,7 +17,7 @@ const (
 )
 
 func TestValidateParametersReturnsErrorWhenOffsetIsNegative(t *testing.T) {
-	Convey("Given a minus offset value and a JobStore containing 20 jobs", t, func() {
+	Convey("Given a minus offset value and a ResourceStore containing 20 resources", t, func() {
 		offset := "-1"
 		limit := ""
 		Convey("When ValidatePaginationValues is called", func() {
@@ -33,7 +33,7 @@ func TestValidateParametersReturnsErrorWhenOffsetIsNegative(t *testing.T) {
 }
 
 func TestValidateParametersReturnsErrorWhenLimitIsNegative(t *testing.T) {
-	Convey("Given a minus limit value and a JobStore containing 20 jobs", t, func() {
+	Convey("Given a minus limit value and a ResourceStore containing 20 resources", t, func() {
 		offset := ""
 		limit := "-1"
 
