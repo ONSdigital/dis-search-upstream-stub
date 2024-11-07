@@ -46,13 +46,12 @@ func (r *ResourceStore) getResourcesCount() (int, error) {
 }
 
 func (r *ResourceStore) populateResourceList(resourceList []models.Resource) ([]models.Resource, error) {
-
 	topics1 := []string{"a", "b", "c", "d"}
 	topics2 := []string{"a", "b", "e", "f"}
 	dateChanges := []string{"a change_notice", "a previous_date"}
 	tempResource1 := models.Resource{
-		Uri:             "/a/temp/uri",
-		UriOld:          "/an/old/uri",
+		URI:             "/a/temp/uri",
+		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
 		CDID:            "ASELECTIONOFNUMBERSANDLETTERS123",
 		DatasetID:       "ASELECTIONOFNUMBERSANDLETTERS456",
@@ -75,8 +74,8 @@ func (r *ResourceStore) populateResourceList(resourceList []models.Resource) ([]
 	resourceList[0] = tempResource1
 
 	tempResource2 := models.Resource{
-		Uri:             "/another/temp/uri",
-		UriOld:          "/another/old/uri",
+		URI:             "/another/temp/uri",
+		URIOld:          "/another/old/uri",
 		ContentType:     "api_dataset_landing_page",
 		CDID:            "ASELECTIONOFNUMBERSANDLETTERS789",
 		DatasetID:       "ASELECTIONOFNUMBERSANDLETTERS101112",
