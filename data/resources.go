@@ -2,9 +2,11 @@ package data
 
 import (
 	"context"
-	"github.com/ONSdigital/dis-search-upstream-stub/models"
-	"github.com/ONSdigital/log.go/v2/log"
 	"time"
+
+	"github.com/ONSdigital/log.go/v2/log"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/models"
 )
 
 // GetResources retrieves all the resources from the collection

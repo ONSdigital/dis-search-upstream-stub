@@ -4,8 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dp-healthcheck/healthcheck"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
 )
 
 //go:generate moq -out mock/initialiser.go -pkg mock . Initialiser

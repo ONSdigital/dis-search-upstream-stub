@@ -5,10 +5,11 @@ package mock
 
 import (
 	"context"
+	"sync"
+
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
-	"sync"
 )
 
 // Ensure, that DataStorerMock does implement api.DataStorer.

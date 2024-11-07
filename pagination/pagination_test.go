@@ -1,10 +1,12 @@
 package pagination_test
 
 import (
+	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+
 	"github.com/ONSdigital/dis-search-upstream-stub/apierrors"
 	"github.com/ONSdigital/dis-search-upstream-stub/pagination"
-	. "github.com/smartystreets/goconvey/convey"
-	"testing"
 )
 
 // Constants for testing

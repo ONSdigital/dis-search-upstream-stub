@@ -5,20 +5,22 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/ONSdigital/dis-search-upstream-stub/api"
-	apiMock "github.com/ONSdigital/dis-search-upstream-stub/api/mock"
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"github.com/ONSdigital/dis-search-upstream-stub/data"
-	"github.com/ONSdigital/dis-search-upstream-stub/models"
-	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
-	"github.com/gorilla/mux"
-	. "github.com/smartystreets/goconvey/convey"
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 	"time"
+
+	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
+	"github.com/gorilla/mux"
+	. "github.com/smartystreets/goconvey/convey"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/api"
+	apiMock "github.com/ONSdigital/dis-search-upstream-stub/api/mock"
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/data"
+	"github.com/ONSdigital/dis-search-upstream-stub/models"
 )
 
 // Constants for testing

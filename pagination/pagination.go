@@ -1,9 +1,10 @@
 package pagination
 
 import (
+	"strconv"
+
 	"github.com/ONSdigital/dis-search-upstream-stub/apierrors"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"strconv"
 )
 
 // Paginator is a type to hold pagination related defaults, and provides helper functions using the defaults if needed

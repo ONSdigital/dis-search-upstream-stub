@@ -4,10 +4,11 @@
 package mock
 
 import (
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"github.com/ONSdigital/dis-search-upstream-stub/service"
 	"net/http"
 	"sync"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/service"
 )
 
 // Ensure, that InitialiserMock does implement service.Initialiser.

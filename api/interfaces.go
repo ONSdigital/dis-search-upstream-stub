@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
 )

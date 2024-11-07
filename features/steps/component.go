@@ -74,12 +74,13 @@ func (c *Component) InitialiseService() (http.Handler, error) {
 	return c.HTTPServer.Handler, nil
 }
 
-func (c *Component) DoGetHealthcheckOk(_ *config.Config, buildTime, gitCommit, version string) (service.HealthChecker, error) {
-	return &mock.HealthCheckerMock{
-		AddCheckFunc: func(_ string, _ healthcheck.Checker) error { return nil },
-		StartFunc:    func(_ context.Context) {},
-		StopFunc:     func() {},
-	}, nil
+func (c *Component) DoGetHealthcheckOk(cfg *config.Config, buildTime, gitCommit, version string) (service.HealthChecker, error) {
+	versionInfo, err := healthcheck.NewVersionInfo(buildTime, gitCommit, version)
+	if err != nil {
+		return nil, err
+	}
+	hc := healthcheck.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
+	return &hc, nil
 }
 
 func (c *Component) DoGetHTTPServer(bindAddr string, router http.Handler) service.HTTPServer {
