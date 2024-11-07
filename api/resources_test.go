@@ -102,7 +102,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all resources", func() {
-			req := httptest.NewRequest("GET", "http://localhost:29600/resource", http.NoBody)
+			req := httptest.NewRequest("GET", "http://localhost:29600/resources", http.NoBody)
 			resp := httptest.NewRecorder()
 			apiInstance.Router.ServeHTTP(resp, req)
 
@@ -182,7 +182,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, customValidPaginationDataStore)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d&limit=%d", validOffset, validLimit), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?offset=%d&limit=%d", validOffset, validLimit), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -242,7 +242,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, greaterOffsetDataStore)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d", greaterOffset), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?offset=%d", greaterOffset), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -287,7 +287,7 @@ func TestGetResourcesHandlerWithEmptyResourceStoreSuccess(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all the resources that exist in the resources collection", func() {
-			req := httptest.NewRequest("GET", "http://localhost:29600/resource", http.NoBody)
+			req := httptest.NewRequest("GET", "http://localhost:29600/resources", http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -333,7 +333,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%s", nonNumericOffset), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?offset=%s", nonNumericOffset), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -356,7 +356,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=%d", negativeOffset), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?offset=%d", negativeOffset), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -375,7 +375,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?limit=%s", nonNumericLimit), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?limit=%s", nonNumericLimit), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -394,7 +394,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?offset=0&limit=%d", negativeLimit), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?offset=0&limit=%d", negativeLimit), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -424,7 +424,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, greaterLimitDataStore)
 
 		Convey("When a request is made to get a list of resources", func() {
-			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resource?limit=%d", greaterLimit), http.NoBody)
+			req := httptest.NewRequest("GET", fmt.Sprintf("http://localhost:29600/resources?limit=%d", greaterLimit), http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
@@ -447,7 +447,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		apiInstance := api.Setup(mux.NewRouter(), cfg, dataStorerMock)
 
 		Convey("When a request is made to get a list of all the resources that exist in the resources collection", func() {
-			req := httptest.NewRequest("GET", "http://localhost:29600/resource", http.NoBody)
+			req := httptest.NewRequest("GET", "http://localhost:29600/resources", http.NoBody)
 			resp := httptest.NewRecorder()
 
 			apiInstance.Router.ServeHTTP(resp, req)
