@@ -2,12 +2,14 @@ package api
 
 import (
 	_ "embed"
+	"net/http"
+
+	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
+	"github.com/ONSdigital/log.go/v2/log"
+
 	"github.com/ONSdigital/dis-search-upstream-stub/apierrors"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/pagination"
-	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
-	"github.com/ONSdigital/log.go/v2/log"
-	"net/http"
 )
 
 var (

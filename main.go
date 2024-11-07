@@ -7,10 +7,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"github.com/ONSdigital/dis-search-upstream-stub/service"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/pkg/errors"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/service"
 
 	dpotelgo "github.com/ONSdigital/dp-otel-go"
 )

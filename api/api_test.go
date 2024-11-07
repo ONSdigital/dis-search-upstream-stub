@@ -1,11 +1,12 @@
 package api
 
 import (
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/data"
 
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"

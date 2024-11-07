@@ -2,14 +2,16 @@ package service
 
 import (
 	"context"
+
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 
-	"github.com/ONSdigital/dis-search-upstream-stub/api"
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/api"
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	// "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
