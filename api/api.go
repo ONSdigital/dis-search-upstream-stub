@@ -21,6 +21,6 @@ func Setup(r *mux.Router, cfg *config.Config, dataStorer DataStorer) *API {
 		DataStore: dataStorer,
 	}
 
-	r.HandleFunc("/resource", GetResources(api)).Methods("GET")
+	r.HandleFunc("/resources", GetResources(api)).Methods("GET")
 	return api
 }

@@ -20,7 +20,7 @@ func TestSetup(t *testing.T) {
 		api := Setup(r, cfg, &data.ResourceStore{})
 
 		Convey("When created the following routes should have been added", func() {
-			So(hasRoute(api.Router, "/resource", "GET"), ShouldBeTrue)
+			So(hasRoute(api.Router, "/resources", "GET"), ShouldBeTrue)
 		})
 	})
 }
