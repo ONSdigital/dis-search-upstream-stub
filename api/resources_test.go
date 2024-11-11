@@ -102,12 +102,12 @@ func expectedResources(limit, offset int) models.Resources {
 
 	if (offset == 0) && (limit > 1) {
 		resources.Count = 2
-		resources.ResourceList = []interface{}{firstResource, secondResource}
+		resources.Items = []interface{}{firstResource, secondResource}
 	}
 
 	if (offset == 1) && (limit > 0) {
 		resources.Count = 1
-		resources.ResourceList = []interface{}{secondResource}
+		resources.Items = []interface{}{secondResource}
 	}
 
 	return resources
@@ -152,7 +152,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				expectedResource2 := expectedReleaseResource("/another/uri")
 
 				Convey("And the returned list should contain expected resources", func() {
-					returnedResourceList := resourcesReturned.ResourceList
+					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 2)
 					returnedResource1 := returnedResourceList[0].(map[string]interface{})
 					So(returnedResource1["URI"], ShouldEqual, expectedResource1["URI"])
@@ -227,7 +227,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				expectedResource := expectedReleaseResource("/another/uri")
 
 				Convey("And the returned list should contain the expected resource", func() {
-					returnedResourceList := resourcesReturned.ResourceList
+					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 1)
 					returnedResource := returnedResourceList[0].(map[string]interface{})
 					So(returnedResource["URI"], ShouldEqual, expectedResource["URI"])
@@ -285,7 +285,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				So(err, ShouldBeNil)
 
 				Convey("And the returned list should be empty", func() {
-					returnedResourceList := resourcesReturned.ResourceList
+					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 0)
 				})
 			})
@@ -330,7 +330,7 @@ func TestGetResourcesHandlerWithEmptyResourceStoreSuccess(t *testing.T) {
 				So(err, ShouldBeNil)
 
 				Convey("And the returned resources list should be empty", func() {
-					So(resourcesReturned.ResourceList, ShouldHaveLength, 0)
+					So(resourcesReturned.Items, ShouldHaveLength, 0)
 				})
 			})
 		})

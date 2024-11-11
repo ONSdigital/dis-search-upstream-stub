@@ -30,11 +30,11 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	}
 
 	resources := &models.Resources{
-		Count:        len(resourceList),
-		ResourceList: resourceList,
-		Limit:        option.Limit,
-		Offset:       option.Offset,
-		TotalCount:   numResources,
+		Count:      len(resourceList),
+		Items:      resourceList,
+		Limit:      option.Limit,
+		Offset:     option.Offset,
+		TotalCount: numResources,
 	}
 
 	return resources, nil
