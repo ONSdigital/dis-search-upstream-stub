@@ -28,9 +28,8 @@ convey: ## Runs unit test suite and outputs results on http://127.0.0.1:8080/
 	goconvey ./...
 
 .PHONY: debug
-debug: ## Used to run code locally in debug mode
-	go build -tags 'debug' $(LDFLAGS) -o $(BINPATH)/dis-search-upstream-stub
-	HUMAN_LOG=1 DEBUG=1 $(BINPATH)/dis-search-upstream-stub
+debug: ## Used to run code locally
+	HUMAN_LOG=1 go run $(LDFLAGS) -race main.go
 
 .PHONY: delimiter-%
 delimiter-%:
@@ -46,7 +45,6 @@ lint: ## Used in ci to run linters against Go code
 
 .PHONY: lint-local
 lint-local: ## Use locally to run linters against Go code
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0
 	golangci-lint run ./...
 
 .PHONY: test
