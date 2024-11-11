@@ -9,7 +9,15 @@ Fake upstream search stub to mimic upstream services using a generic search cont
 
 ### Dependencies
 
+* golang 1.23.x
 * No further dependencies other than those defined in `go.mod`
+
+To run `make validate-specification` you require Node v20.x and to install @redocly/cli:
+
+```sh
+   npm install -g @redocly/cli
+```
+
 
 ### Configuration
 
