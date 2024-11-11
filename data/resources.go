@@ -22,7 +22,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	}
 
 	// create and populate resourcesList
-	resourceList := make([]models.Resource, numResources)
+	resourceList := make([]interface{}, numResources)
 	resourceList, err = r.populateResourceList(resourceList)
 	if err != nil {
 		log.Error(ctx, "failed to populate resources list", err, logData)
@@ -45,11 +45,11 @@ func (r *ResourceStore) getResourcesCount() (int, error) {
 	return 2, nil
 }
 
-func (r *ResourceStore) populateResourceList(resourceList []models.Resource) ([]models.Resource, error) {
+func (r *ResourceStore) populateResourceList(resourceList []interface{}) ([]interface{}, error) {
 	topics1 := []string{"a", "b", "c", "d"}
 	topics2 := []string{"a", "b", "e", "f"}
 	dateChanges := []string{"a change_notice", "a previous_date"}
-	tempResource1 := models.Resource{
+	tempResource1 := models.Standard{
 		URI:             "/a/temp/uri",
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
@@ -64,11 +64,6 @@ func (r *ResourceStore) populateResourceList(resourceList []models.Resource) ([]
 		Language:        "string",
 		Survey:          "string",
 		CanonicalTopic:  "string",
-		Cancelled:       true,
-		Finalised:       true,
-		Published:       true,
-		DateChanges:     dateChanges,
-		ProvisionalDate: "October-November 2024",
 	}
 
 	resourceList[0] = tempResource1

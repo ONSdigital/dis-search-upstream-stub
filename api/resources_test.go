@@ -21,6 +21,7 @@ import (
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
+	"github.com/fatih/structs"
 )
 
 // Constants for testing
@@ -31,11 +32,9 @@ const (
 	expectedLimitOverMaxMsg = "limit query parameter is larger than the maximum allowed"
 )
 
-// expectedResource returns a Resource that can be used to define and test expected values within it
-func expectedResource(uri string) models.Resource {
-	topics := []string{"a", "b", "c", "d"}
-	dateChanges := []string{"a change_notice", "a previous_date"}
-	resource := models.Resource{
+// expectedStandardResource returns a release resource that can be used to define and test expected values within it
+func expectedStandardResource(uri string) map[string]interface{} {
+	standardResource := models.Standard{
 		URI:             uri,
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
@@ -43,21 +42,52 @@ func expectedResource(uri string) models.Resource {
 		DatasetID:       "ASELECTIONOFNUMBERSANDLETTERS456",
 		Edition:         "an edition",
 		MetaDescription: "a description",
-		ReleaseDate:     time.Time{}.UTC(),
 		Summary:         "a summary",
 		Title:           "a title",
-		Topics:          topics,
+		Language:        "string",
+		Survey:          "string",
+		CanonicalTopic:  "string",
+	}
+
+	expectedResource := structs.Map(standardResource)
+	releaseDate := time.Time{}.UTC().String()
+	expectedResource["ReleaseDate"] = releaseDate
+	topics := []any{"a", "b", "c", "d"}
+	expectedResource["Topics"] = topics
+
+	return expectedResource
+}
+
+// expectedReleaseResource returns a release resource that can be used to define and test expected values within it
+func expectedReleaseResource(uri string) map[string]interface{} {
+	releaseResource := models.Resource{
+		URI:             uri,
+		URIOld:          "/an/old/uri",
+		ContentType:     "api_dataset_landing_page",
+		CDID:            "ASELECTIONOFNUMBERSANDLETTERS123",
+		DatasetID:       "ASELECTIONOFNUMBERSANDLETTERS456",
+		Edition:         "an edition",
+		MetaDescription: "a description",
+		Summary:         "a summary",
+		Title:           "a title",
 		Language:        "string",
 		Survey:          "string",
 		CanonicalTopic:  "string",
 		Cancelled:       true,
 		Finalised:       true,
 		Published:       true,
-		DateChanges:     dateChanges,
 		ProvisionalDate: "October-November 2024",
 	}
 
-	return resource
+	expectedResource := structs.Map(releaseResource)
+	releaseDate := time.Time{}.UTC().String()
+	expectedResource["ReleaseDate"] = releaseDate
+	topics := []any{"a", "b", "c", "d"}
+	expectedResource["Topics"] = topics
+	dateChanges := []any{"a change_notice", "a previous_date"}
+	expectedResource["DateChanges"] = dateChanges
+
+	return expectedResource
 }
 
 func expectedResources(limit, offset int) models.Resources {
@@ -67,17 +97,17 @@ func expectedResources(limit, offset int) models.Resources {
 		TotalCount: 2,
 	}
 
-	firstResource := expectedResource("/a/uri")
-	secondResource := expectedResource("/another/uri")
+	firstResource := expectedStandardResource("/a/uri")
+	secondResource := expectedReleaseResource("/another/uri")
 
 	if (offset == 0) && (limit > 1) {
 		resources.Count = 2
-		resources.ResourceList = []models.Resource{firstResource, secondResource}
+		resources.ResourceList = []interface{}{firstResource, secondResource}
 	}
 
 	if (offset == 1) && (limit > 0) {
 		resources.Count = 1
-		resources.ResourceList = []models.Resource{secondResource}
+		resources.ResourceList = []interface{}{secondResource}
 	}
 
 	return resources
@@ -118,51 +148,46 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				err = json.Unmarshal(payload, &resourcesReturned)
 				So(err, ShouldBeNil)
 
-				expectedResource1 := expectedResource("/a/uri")
-				expectedResource2 := expectedResource("/another/uri")
+				expectedResource1 := expectedStandardResource("/a/uri")
+				expectedResource2 := expectedReleaseResource("/another/uri")
 
 				Convey("And the returned list should contain expected resources", func() {
 					returnedResourceList := resourcesReturned.ResourceList
 					So(returnedResourceList, ShouldHaveLength, 2)
-					returnedResource1 := returnedResourceList[0]
-					So(returnedResource1.URI, ShouldEqual, expectedResource1.URI)
-					So(returnedResource1.URIOld, ShouldEqual, expectedResource1.URIOld)
-					So(returnedResource1.ContentType, ShouldEqual, expectedResource1.ContentType)
-					So(returnedResource1.CDID, ShouldEqual, expectedResource1.CDID)
-					So(returnedResource1.DatasetID, ShouldEqual, expectedResource1.DatasetID)
-					So(returnedResource1.Edition, ShouldEqual, expectedResource1.Edition)
-					So(returnedResource1.MetaDescription, ShouldEqual, expectedResource1.MetaDescription)
-					So(returnedResource1.ReleaseDate, ShouldEqual, expectedResource1.ReleaseDate)
-					So(returnedResource1.Summary, ShouldEqual, expectedResource1.Summary)
-					So(returnedResource1.Title, ShouldEqual, expectedResource1.Title)
-					So(returnedResource1.Topics, ShouldEqual, expectedResource1.Topics)
-					So(returnedResource1.Language, ShouldEqual, expectedResource1.Language)
-					So(returnedResource1.Survey, ShouldEqual, expectedResource1.Survey)
-					So(returnedResource1.CanonicalTopic, ShouldEqual, expectedResource1.CanonicalTopic)
-					So(returnedResource1.Cancelled, ShouldEqual, expectedResource1.Cancelled)
-					So(returnedResource1.Finalised, ShouldEqual, expectedResource1.Finalised)
-					So(returnedResource1.Published, ShouldEqual, expectedResource1.Published)
-					So(returnedResource1.DateChanges, ShouldEqual, expectedResource1.DateChanges)
-					So(returnedResource1.ProvisionalDate, ShouldEqual, expectedResource1.ProvisionalDate)
-					returnedResource2 := returnedResourceList[1]
-					So(returnedResource2.URIOld, ShouldEqual, expectedResource2.URIOld)
-					So(returnedResource2.ContentType, ShouldEqual, expectedResource2.ContentType)
-					So(returnedResource2.CDID, ShouldEqual, expectedResource2.CDID)
-					So(returnedResource2.DatasetID, ShouldEqual, expectedResource2.DatasetID)
-					So(returnedResource2.Edition, ShouldEqual, expectedResource2.Edition)
-					So(returnedResource2.MetaDescription, ShouldEqual, expectedResource2.MetaDescription)
-					So(returnedResource2.ReleaseDate, ShouldEqual, expectedResource2.ReleaseDate)
-					So(returnedResource2.Summary, ShouldEqual, expectedResource2.Summary)
-					So(returnedResource2.Title, ShouldEqual, expectedResource2.Title)
-					So(returnedResource2.Topics, ShouldEqual, expectedResource2.Topics)
-					So(returnedResource2.Language, ShouldEqual, expectedResource2.Language)
-					So(returnedResource2.Survey, ShouldEqual, expectedResource2.Survey)
-					So(returnedResource2.CanonicalTopic, ShouldEqual, expectedResource2.CanonicalTopic)
-					So(returnedResource2.Cancelled, ShouldEqual, expectedResource2.Cancelled)
-					So(returnedResource2.Finalised, ShouldEqual, expectedResource2.Finalised)
-					So(returnedResource2.Published, ShouldEqual, expectedResource2.Published)
-					So(returnedResource2.DateChanges, ShouldEqual, expectedResource2.DateChanges)
-					So(returnedResource2.ProvisionalDate, ShouldEqual, expectedResource2.ProvisionalDate)
+					returnedResource1 := returnedResourceList[0].(map[string]interface{})
+					So(returnedResource1["URI"], ShouldEqual, expectedResource1["URI"])
+					So(returnedResource1["URIOld"], ShouldEqual, expectedResource1["URIOld"])
+					So(returnedResource1["ContentType"], ShouldEqual, expectedResource1["ContentType"])
+					So(returnedResource1["CDID"], ShouldEqual, expectedResource1["CDID"])
+					So(returnedResource1["DatasetID"], ShouldEqual, expectedResource1["DatasetID"])
+					So(returnedResource1["Edition"], ShouldEqual, expectedResource1["Edition"])
+					So(returnedResource1["MetaDescription"], ShouldEqual, expectedResource1["MetaDescription"])
+					So(returnedResource1["ReleaseDate"], ShouldEqual, expectedResource1["ReleaseDate"])
+					So(returnedResource1["Summary"], ShouldEqual, expectedResource1["Summary"])
+					So(returnedResource1["Title"], ShouldEqual, expectedResource1["Title"])
+					So(returnedResource1["Topics"], ShouldEqual, expectedResource1["Topics"])
+					So(returnedResource1["Language"], ShouldEqual, expectedResource1["Language"])
+					So(returnedResource1["Survey"], ShouldEqual, expectedResource1["Survey"])
+					So(returnedResource1["CanonicalTopic"], ShouldEqual, expectedResource1["CanonicalTopic"])
+					returnedResource2 := returnedResourceList[1].(map[string]interface{})
+					So(returnedResource2["URIOld"], ShouldEqual, expectedResource2["URIOld"])
+					So(returnedResource2["ContentType"], ShouldEqual, expectedResource2["ContentType"])
+					So(returnedResource2["CDID"], ShouldEqual, expectedResource2["CDID"])
+					So(returnedResource2["DatasetID"], ShouldEqual, expectedResource2["DatasetID"])
+					So(returnedResource2["Edition"], ShouldEqual, expectedResource2["Edition"])
+					So(returnedResource2["MetaDescription"], ShouldEqual, expectedResource2["MetaDescription"])
+					So(returnedResource2["ReleaseDate"], ShouldEqual, expectedResource2["ReleaseDate"])
+					So(returnedResource2["Summary"], ShouldEqual, expectedResource2["Summary"])
+					So(returnedResource2["Title"], ShouldEqual, expectedResource2["Title"])
+					So(returnedResource2["Topics"], ShouldEqual, expectedResource2["Topics"])
+					So(returnedResource2["Language"], ShouldEqual, expectedResource2["Language"])
+					So(returnedResource2["Survey"], ShouldEqual, expectedResource2["Survey"])
+					So(returnedResource2["CanonicalTopic"], ShouldEqual, expectedResource2["CanonicalTopic"])
+					So(returnedResource2["Cancelled"], ShouldEqual, expectedResource2["Cancelled"])
+					So(returnedResource2["Finalised"], ShouldEqual, expectedResource2["Finalised"])
+					So(returnedResource2["Published"], ShouldEqual, expectedResource2["Published"])
+					So(returnedResource2["DateChanges"], ShouldEqual, expectedResource2["DateChanges"])
+					So(returnedResource2["ProvisionalDate"], ShouldEqual, expectedResource2["ProvisionalDate"])
 				})
 			})
 		})
@@ -199,31 +224,31 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				err = json.Unmarshal(payload, &resourcesReturned)
 				So(err, ShouldBeNil)
 
-				expectedResource := expectedResource("/another/uri")
+				expectedResource := expectedReleaseResource("/another/uri")
 
 				Convey("And the returned list should contain the expected resource", func() {
 					returnedResourceList := resourcesReturned.ResourceList
 					So(returnedResourceList, ShouldHaveLength, 1)
-					returnedResource := returnedResourceList[0]
-					So(returnedResource.URI, ShouldEqual, expectedResource.URI)
-					So(returnedResource.URIOld, ShouldEqual, expectedResource.URIOld)
-					So(returnedResource.ContentType, ShouldEqual, expectedResource.ContentType)
-					So(returnedResource.CDID, ShouldEqual, expectedResource.CDID)
-					So(returnedResource.DatasetID, ShouldEqual, expectedResource.DatasetID)
-					So(returnedResource.Edition, ShouldEqual, expectedResource.Edition)
-					So(returnedResource.MetaDescription, ShouldEqual, expectedResource.MetaDescription)
-					So(returnedResource.ReleaseDate, ShouldEqual, expectedResource.ReleaseDate)
-					So(returnedResource.Summary, ShouldEqual, expectedResource.Summary)
-					So(returnedResource.Title, ShouldEqual, expectedResource.Title)
-					So(returnedResource.Topics, ShouldEqual, expectedResource.Topics)
-					So(returnedResource.Language, ShouldEqual, expectedResource.Language)
-					So(returnedResource.Survey, ShouldEqual, expectedResource.Survey)
-					So(returnedResource.CanonicalTopic, ShouldEqual, expectedResource.CanonicalTopic)
-					So(returnedResource.Cancelled, ShouldEqual, expectedResource.Cancelled)
-					So(returnedResource.Finalised, ShouldEqual, expectedResource.Finalised)
-					So(returnedResource.Published, ShouldEqual, expectedResource.Published)
-					So(returnedResource.DateChanges, ShouldEqual, expectedResource.DateChanges)
-					So(returnedResource.ProvisionalDate, ShouldEqual, expectedResource.ProvisionalDate)
+					returnedResource := returnedResourceList[0].(map[string]interface{})
+					So(returnedResource["URI"], ShouldEqual, expectedResource["URI"])
+					So(returnedResource["URIOld"], ShouldEqual, expectedResource["URIOld"])
+					So(returnedResource["ContentType"], ShouldEqual, expectedResource["ContentType"])
+					So(returnedResource["CDID"], ShouldEqual, expectedResource["CDID"])
+					So(returnedResource["DatasetID"], ShouldEqual, expectedResource["DatasetID"])
+					So(returnedResource["Edition"], ShouldEqual, expectedResource["Edition"])
+					So(returnedResource["MetaDescription"], ShouldEqual, expectedResource["MetaDescription"])
+					So(returnedResource["ReleaseDate"], ShouldEqual, expectedResource["ReleaseDate"])
+					So(returnedResource["Summary"], ShouldEqual, expectedResource["Summary"])
+					So(returnedResource["Title"], ShouldEqual, expectedResource["Title"])
+					So(returnedResource["Topics"], ShouldEqual, expectedResource["Topics"])
+					So(returnedResource["Language"], ShouldEqual, expectedResource["Language"])
+					So(returnedResource["Survey"], ShouldEqual, expectedResource["Survey"])
+					So(returnedResource["CanonicalTopic"], ShouldEqual, expectedResource["CanonicalTopic"])
+					So(returnedResource["Cancelled"], ShouldEqual, expectedResource["Cancelled"])
+					So(returnedResource["Finalised"], ShouldEqual, expectedResource["Finalised"])
+					So(returnedResource["Published"], ShouldEqual, expectedResource["Published"])
+					So(returnedResource["DateChanges"], ShouldEqual, expectedResource["DateChanges"])
+					So(returnedResource["ProvisionalDate"], ShouldEqual, expectedResource["ProvisionalDate"])
 				})
 			})
 		})
@@ -276,7 +301,7 @@ func TestGetResourcesHandlerWithEmptyResourceStoreSuccess(t *testing.T) {
 		t.Errorf("failed to retrieve default configuration, error: %v", err)
 	}
 
-	Convey("Given a Search Reindex Resource API that returns an empty list of resources", t, func() {
+	Convey("Given a Search Upstream API that returns an empty list of resources", t, func() {
 		dataStorerMock := &apiMock.DataStorerMock{
 			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
 				resources := models.Resources{}
