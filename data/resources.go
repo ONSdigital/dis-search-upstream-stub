@@ -68,7 +68,7 @@ func (r *ResourceStore) populateResourceList(resourceList []interface{}) ([]inte
 
 	resourceList[0] = tempResource1
 
-	tempResource2 := models.Resource{
+	tempResource2 := models.Release{
 		URI:             "/another/temp/uri",
 		URIOld:          "/another/old/uri",
 		ContentType:     "api_dataset_landing_page",

@@ -22,8 +22,8 @@ type Standard struct {
 	CanonicalTopic  string    `json:"canonical_topic"`
 }
 
-// Resource represents a resource metadata model and json representation for API
-type Resource struct {
+// Release represents a resource metadata model and json representation for API
+type Release struct {
 	URI             string    `json:"uri"`
 	URIOld          string    `json:"uri_old"`
 	ContentType     string    `json:"content_type"`
