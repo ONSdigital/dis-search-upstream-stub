@@ -16,6 +16,9 @@ Fake upstream search stub to mimic upstream services using a generic search cont
 | Environment variable         | Default                  | Description                                                                                                        |
 |------------------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------|
 | BIND_ADDR                    | :29600                   | The host and port to bind to                                                                                       |
+| DEFAULT_LIMIT                | 20                       | The default number of items to be returned from a list endpoint                                                    |
+| DEFAULT_MAXIMUM_LIMIT        | 1000                     | The maximum number of items to be returned in any list endpoint (to prevent performance issues)                    |
+| DEFAULT_OFFSET               | 0                        | The number of items into the full list (i.e. the 0-based index) that a particular response is starting at          |
 | GRACEFUL_SHUTDOWN_TIMEOUT    | 5s                       | The graceful shutdown timeout in seconds (`time.Duration` format)                                                  |
 | HEALTHCHECK_INTERVAL         | 30s                      | Time between self-healthchecks (`time.Duration` format)                                                            |
 | HEALTHCHECK_CRITICAL_TIMEOUT | 90s                      | Time to wait until an unhealthy dependent propagates its state to make this app unhealthy (`time.Duration` format) |

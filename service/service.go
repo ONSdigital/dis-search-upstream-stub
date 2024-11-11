@@ -12,7 +12,6 @@ import (
 
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	// "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
 // Service contains all the configs, server and clients to run the API
