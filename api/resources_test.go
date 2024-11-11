@@ -60,7 +60,7 @@ func expectedStandardResource(uri string) map[string]interface{} {
 
 // expectedReleaseResource returns a release resource that can be used to define and test expected values within it
 func expectedReleaseResource(uri string) map[string]interface{} {
-	releaseResource := models.Resource{
+	releaseResource := models.Release{
 		URI:             uri,
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
