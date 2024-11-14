@@ -3,13 +3,15 @@ package service
 import (
 	"context"
 
-	"github.com/ONSdigital/dis-search-upstream-stub/api"
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/data"
+
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
-	// "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/api"
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
 )
 
 // Service contains all the configs, server and clients to run the API
@@ -41,8 +43,8 @@ func Run(ctx context.Context, cfg *config.Config, serviceList *ExternalServiceLi
 
 	// TODO: Add other(s) to serviceList here
 
-	// Setup the API
-	a := api.Setup(ctx, r)
+	// Set up the API
+	a := api.Setup(r, cfg, &data.ResourceStore{})
 
 	hc, err := serviceList.GetHealthCheck(cfg, buildTime, gitCommit, version)
 

@@ -1,10 +1,12 @@
 package api
 
 import (
-	"context"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/data"
 
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
@@ -13,13 +15,12 @@ import (
 func TestSetup(t *testing.T) {
 	Convey("Given an API instance", t, func() {
 		r := mux.NewRouter()
-		ctx := context.Background()
-		api := Setup(ctx, r)
+		cfg, err := config.Get()
+		So(err, ShouldBeNil)
+		api := Setup(r, cfg, &data.ResourceStore{})
 
-		// TODO: remove hello world example handler route test case
 		Convey("When created the following routes should have been added", func() {
-			// Replace the check below with any newly added api endpoints
-			So(hasRoute(api.Router, "/hello", "GET"), ShouldBeTrue)
+			So(hasRoute(api.Router, "/resources", "GET"), ShouldBeTrue)
 		})
 	})
 }

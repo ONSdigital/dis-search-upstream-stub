@@ -10,7 +10,7 @@ servers:
   - url: /
 security: []
 paths:
-  /resource:
+  /resources:
     get:
       operationId: GetResources
       summary: "Get Resources Endpoint"

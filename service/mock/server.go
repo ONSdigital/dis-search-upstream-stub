@@ -5,8 +5,9 @@ package mock
 
 import (
 	"context"
-	"github.com/ONSdigital/dis-search-upstream-stub/service"
 	"sync"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/service"
 )
 
 // Ensure, that HTTPServerMock does implement service.HTTPServer.

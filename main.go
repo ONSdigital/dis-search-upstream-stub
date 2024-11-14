@@ -7,10 +7,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"github.com/ONSdigital/dis-search-upstream-stub/service"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/pkg/errors"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/config"
+	"github.com/ONSdigital/dis-search-upstream-stub/service"
 
 	dpotelgo "github.com/ONSdigital/dp-otel-go"
 )
@@ -25,11 +26,11 @@ var (
 	// Version represents the version of the service that is running
 	Version string
 
-	// TODO: remove below explainer before commiting
+	// TODO: remove below explainer before committing
 	/* NOTE: replace the above with the below to run code with for example vscode debugger.
-	   BuildTime string = "1601119818"
-	   GitCommit string = "6584b786caac36b6214ffe04bf62f058d4021538"
-	   Version   string = "v0.1.0"
+	BuildTime string = "1601119818"
+	GitCommit string = "6584b786caac36b6214ffe04bf62f058d4021538"
+	Version   string = "v0.1.0"
 	*/
 )
 
