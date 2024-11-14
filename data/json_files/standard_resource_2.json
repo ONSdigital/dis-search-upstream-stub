@@ -1,0 +1,21 @@
+{
+  "uri": "/a/second/temp/uri",
+  "uri_old": "/a/second/old/uri",
+  "content_type": "api_dataset_landing_page",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a second temporary edition",
+  "meta_description": "a second temporary description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a temporary second summary",
+  "title": "a temporary second title",
+  "topics": [
+    "a",
+    "b",
+    "e",
+    "f"
+  ],
+  "language": "second language",
+  "survey": "second survey",
+  "canonical_topic": "second topic"
+}
