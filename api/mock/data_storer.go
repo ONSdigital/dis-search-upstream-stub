@@ -18,19 +18,19 @@ var _ api.DataStorer = &DataStorerMock{}
 
 // DataStorerMock is a mock implementation of api.DataStorer.
 //
-// 	func TestSomethingThatUsesDataStorer(t *testing.T) {
+//	func TestSomethingThatUsesDataStorer(t *testing.T) {
 //
-// 		// make and configure a mocked api.DataStorer
-// 		mockedDataStorer := &DataStorerMock{
-// 			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
-// 				panic("mock out the GetResources method")
-// 			},
-// 		}
+//		// make and configure a mocked api.DataStorer
+//		mockedDataStorer := &DataStorerMock{
+//			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+//				panic("mock out the GetResources method")
+//			},
+//		}
 //
-// 		// use mockedDataStorer in code that requires api.DataStorer
-// 		// and then make assertions.
+//		// use mockedDataStorer in code that requires api.DataStorer
+//		// and then make assertions.
 //
-// 	}
+//	}
 type DataStorerMock struct {
 	// GetResourcesFunc mocks the GetResources method.
 	GetResourcesFunc func(ctx context.Context, options data.Options) (*models.Resources, error)
@@ -68,7 +68,8 @@ func (mock *DataStorerMock) GetResources(ctx context.Context, options data.Optio
 
 // GetResourcesCalls gets all the calls that were made to GetResources.
 // Check the length with:
-//     len(mockedDataStorer.GetResourcesCalls())
+//
+//	len(mockedDataStorer.GetResourcesCalls())
 func (mock *DataStorerMock) GetResourcesCalls() []struct {
 	Ctx     context.Context
 	Options data.Options
