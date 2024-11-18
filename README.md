@@ -4,6 +4,8 @@ Fake upstream search stub to mimic upstream services using a generic search cont
 
 ### Getting started
 
+Update README
+
 * Run `make debug` to run application on http://localhost:29600
 * Run `make help` to see full list of make targets
 
