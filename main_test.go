@@ -6,10 +6,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ONSdigital/dis-search-upstream-stub/features/steps"
 	componenttest "github.com/ONSdigital/dp-component-test"
 	"github.com/cucumber/godog"
 	"github.com/cucumber/godog/colors"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/features/steps"
 )
 
 var componentFlag = flag.Bool("component", false, "perform component tests")
