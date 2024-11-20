@@ -15,7 +15,7 @@ import (
 
 const (
 	serviceName = "dp-search-upstream-stub"
-	dataDir     = "data" // Directory with JSON files
+	dataDir     = "data/json_files" // Directory with JSON files
 )
 
 func main() {
