@@ -68,7 +68,7 @@ func Get() (*Config, error) {
 			ContentUpdatedGroup:       "dis-search-upstream-stub",
 			ContentUpdatedTopic:       "search-content-updated",
 			Addr:                      []string{"localhost:9092", "localhost:9093", "localhost:9094"},
-			Version:                   "1.0.0",
+			Version:                   "1.0.2",
 			OffsetOldest:              true,
 			NumWorkers:                1,
 			SecProtocol:               "",
