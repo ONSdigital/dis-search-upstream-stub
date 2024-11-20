@@ -55,6 +55,10 @@ test: ## Runs unit tests including checks for race conditions and returns covera
 test-component: ## Runs component test suite
 	go test -cover -coverpkg=github.com/ONSdigital/dis-search-upstream-stub/... -component
 
+.PHONY: produce
+produce: ## Runs a Kafka producer to write messages to Kafka topic from data directory JSON files
+	HUMAN_LOG=1 go run cmd/producer/main.go
+
 .PHONY: validate-specification
 validate-specification: ## Validates specification
 	redocly lint specification.yml
