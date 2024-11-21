@@ -19,8 +19,8 @@ var (
 func GetResources(api *API) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		ctx := req.Context()
-		offsetParam := req.URL.Query().Get("offset")
-		limitParam := req.URL.Query().Get("limit")
+		offsetParam := req.URL.Query().Get(ParamOffset)
+		limitParam := req.URL.Query().Get(ParamLimit)
 		logData := log.Data{}
 
 		// initialise pagination
