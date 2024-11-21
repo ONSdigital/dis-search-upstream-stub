@@ -62,7 +62,7 @@ func (cli *Client) Checker(ctx context.Context, check *health.CheckState) error 
 
 // GetSearch gets a list of search results based on the search request
 func (cli *Client) GetResources(ctx context.Context, options Options) (*models.Resources, apiError.Error) {
-	path := fmt.Sprintf("%s/%s", cli.hcCli.URL, cli.resourcesEndpoint)
+	path := fmt.Sprintf("%s%s", cli.hcCli.URL, cli.resourcesEndpoint)
 	if options.Query != nil {
 		path = path + "?" + options.Query.Encode()
 	}
