@@ -1,21 +1,21 @@
 {
-  "uri": "/a/third/temp/uri",
-  "uri_old": "/a/third/old/uri",
+  "uri": "/a/third/standard/uri",
+  "uri_old": "/a/third/standard/old/uri",
   "content_type": "api_dataset_landing_page",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-  "edition": "a temporary third edition",
-  "meta_description": "a temporary third description",
-  "release_date": "0001-03-01T00:00:00Z",
-  "summary": "a temporary third summary",
-  "title": "a temporary third title",
+  "edition": "a third standard edition",
+  "meta_description": "a third standard description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a standard third summary",
+  "title": "a standard third title",
   "topics": [
     "a",
     "b",
-    "g",
-    "h"
+    "e",
+    "f"
   ],
-  "language": "third language",
-  "survey": "third survey",
-  "canonical_topic": "third topic"
+  "language": "third standard language",
+  "survey": "third standard survey",
+  "canonical_topic": "third standard topic"
 }

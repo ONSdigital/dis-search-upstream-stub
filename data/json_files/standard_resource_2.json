@@ -1,21 +1,21 @@
 {
-  "uri": "/a/second/temp/uri",
-  "uri_old": "/a/second/old/uri",
+  "uri": "/a/second/standard/uri",
+  "uri_old": "/a/second/standard/old/uri",
   "content_type": "api_dataset_landing_page",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-  "edition": "a second temporary edition",
-  "meta_description": "a second temporary description",
+  "edition": "a second standard edition",
+  "meta_description": "a second standard description",
   "release_date": "0001-02-01T00:00:00Z",
-  "summary": "a temporary second summary",
-  "title": "a temporary second title",
+  "summary": "a standard second summary",
+  "title": "a standard second title",
   "topics": [
     "a",
     "b",
     "e",
     "f"
   ],
-  "language": "second language",
-  "survey": "second survey",
-  "canonical_topic": "second topic"
+  "language": "second standard language",
+  "survey": "second standard survey",
+  "canonical_topic": "second standard topic"
 }
