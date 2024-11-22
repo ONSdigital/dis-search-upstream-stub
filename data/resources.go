@@ -3,10 +3,12 @@ package data
 import (
 	"context"
 	"embed"
+
 	"encoding/json"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
 	"github.com/ONSdigital/log.go/v2/log"
+	"github.com/pkg/errors"
 )
 
 //go:embed json_files/*.json
@@ -17,10 +19,10 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	logData := log.Data{"option": option}
 	log.Info(ctx, "getting list of resources", logData)
 
-	items, numResources, err := r.populateItems(ctx)
+	items, err := r.populateItems()
 	if err != nil {
 		logData["items"] = items
-		logData["numResources"] = numResources
+		logData["count"] = len(items)
 		log.Error(ctx, "failed to populate resources list", err, logData)
 		return nil, err
 	}
@@ -30,41 +32,37 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 		Items:      items,
 		Limit:      option.Limit,
 		Offset:     option.Offset,
-		TotalCount: numResources,
+		TotalCount: len(items),
 	}
 
 	return resources, nil
 }
 
-func (r *ResourceStore) populateItems(ctx context.Context) (items []interface{}, numItems int, err error) {
+func (r *ResourceStore) populateItems() (items []interface{}, err error) {
 	logData := log.Data{}
 	// Get a list of JSON files in the embedded 'json_files' directory.
 	files, err := jsonFiles.ReadDir("json_files")
 	if err != nil {
-		log.Fatal(ctx, "Failed to read json_files directory", err)
+		return nil, errors.Wrap(err, "failed to read json_files directory")
 	}
-	for range files {
-		numItems++
-	}
-	items = make([]interface{}, numItems)
+	items = make([]interface{}, 0, len(files))
 
 	// Loop through files, read, and unmarshal each JSON file into Go structs.
-	for i := 0; i < numItems; i++ {
-		file := files[i]
+	for _, file := range files {
 		logData["file"] = file.Name()
 		fileBytes, err := jsonFiles.ReadFile("json_files/" + file.Name())
 		if err != nil {
-			log.Fatal(ctx, "Failed to read file", err, logData)
+			return nil, errors.Wrap(err, "failed to read file")
 		}
 
 		var jsonData map[string]interface{}
 		err = json.Unmarshal(fileBytes, &jsonData)
 		if err != nil {
-			log.Fatal(ctx, "Failed to unmarshal JSON for file: "+file.Name(), err)
+			return nil, errors.Wrap(err, "failed to unmarshal JSON for file")
 		}
 
-		items[i] = jsonData
+		items = append(items, jsonData)
 	}
 
-	return items, numItems, nil
+	return items, nil
 }
