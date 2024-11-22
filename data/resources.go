@@ -40,17 +40,20 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 
 func (r *ResourceStore) populateItems() (items []interface{}, err error) {
 	logData := log.Data{}
-	// Get a list of JSON files in the embedded 'json_files' directory.
-	files, err := jsonFiles.ReadDir("json_files")
+	// Get a list of JSON files and/or subdirectories in the embedded 'json_files' directory.
+	dirEntries, err := jsonFiles.ReadDir("json_files")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read json_files directory")
 	}
-	items = make([]interface{}, 0, len(files))
+	items = make([]interface{}, 0, len(dirEntries))
 
 	// Loop through files, read, and unmarshal each JSON file into Go structs.
-	for _, file := range files {
-		logData["file"] = file.Name()
-		fileBytes, err := jsonFiles.ReadFile("json_files/" + file.Name())
+	for _, dirEntry := range dirEntries {
+		if dirEntry.IsDir() {
+			continue
+		}
+		logData["file"] = dirEntry.Name()
+		fileBytes, err := jsonFiles.ReadFile("json_files/" + dirEntry.Name())
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to read file")
 		}
