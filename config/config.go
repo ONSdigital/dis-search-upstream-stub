@@ -31,7 +31,7 @@ func Get() (*Config, error) {
 	}
 
 	cfg = &Config{
-		BindAddr:                   "localhost:29600",
+		BindAddr:                   ":29600",
 		DefaultLimit:               20,
 		DefaultMaxLimit:            1000,
 		DefaultOffset:              0,

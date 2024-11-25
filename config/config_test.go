@@ -23,7 +23,7 @@ func TestConfig(t *testing.T) {
 				configuration, err = Get() // This Get() is only called once, when inside this function
 				So(err, ShouldBeNil)
 				So(configuration, ShouldResemble, &Config{
-					BindAddr:                   "localhost:29600",
+					BindAddr:                   ":29600",
 					DefaultLimit:               20,
 					DefaultMaxLimit:            1000,
 					DefaultOffset:              0,
