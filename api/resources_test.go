@@ -72,10 +72,12 @@ func expectedReleaseResource(uri string) models.Resource {
 		Language:        "string",
 		Survey:          "string",
 		CanonicalTopic:  "string",
-		Cancelled:       true,
-		Finalised:       true,
-		Published:       true,
-		ProvisionalDate: "October-November 2024",
+		Release: models.Release{
+			Cancelled:       true,
+			Finalised:       true,
+			Published:       true,
+			ProvisionalDate: "October-November 2024",
+		},
 	}
 
 	expectedResource := releaseResource
