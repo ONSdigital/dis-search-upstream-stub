@@ -2,9 +2,11 @@ package steps
 
 import (
 	_ "embed"
+	"encoding/json"
+	"fmt"
 	"io"
-	"strings"
 
+	"github.com/ONSdigital/dis-search-upstream-stub/models"
 	"github.com/cucumber/godog"
 	"github.com/stretchr/testify/assert"
 )
@@ -19,10 +21,22 @@ func (c *Component) RegisterSteps(ctx *godog.ScenarioContext) {
 }
 
 func (c *Component) iShouldReceiveAListOfResources() error {
+	var expectedResponse, actualResponse models.Resources
+
 	responseBody := c.apiFeature.HTTPResponse.Body
 	body, _ := io.ReadAll(responseBody)
 
-	assert.Equal(c, strings.TrimSpace(string(expectedResponseBody)), strings.TrimSpace(string(body)))
+	err := json.Unmarshal(expectedResponseBody, &expectedResponse)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal expected results from file - error: %v", err)
+	}
+
+	err = json.Unmarshal(body, &actualResponse)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal actual response from server - error: %v", err)
+	}
+
+	assert.Equal(c, expectedResponse, actualResponse)
 
 	return c.StepError()
 }
