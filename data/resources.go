@@ -39,7 +39,6 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 }
 
 func (r *ResourceStore) populateItems() (items []interface{}, err error) {
-	logData := log.Data{}
 	// Get a list of JSON files and/or subdirectories in the embedded 'json_files' directory.
 	dirEntries, err := jsonFiles.ReadDir("json_files")
 	if err != nil {
@@ -52,7 +51,6 @@ func (r *ResourceStore) populateItems() (items []interface{}, err error) {
 		if dirEntry.IsDir() {
 			continue
 		}
-		logData["file"] = dirEntry.Name()
 		fileBytes, err := jsonFiles.ReadFile("json_files/" + dirEntry.Name())
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to read file")
