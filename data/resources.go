@@ -38,13 +38,13 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	return resources, nil
 }
 
-func (r *ResourceStore) populateItems() (items []interface{}, err error) {
+func (r *ResourceStore) populateItems() (items []models.Resource, err error) {
 	// Get a list of JSON files and/or subdirectories in the embedded 'json_files' directory.
 	dirEntries, err := jsonFiles.ReadDir("json_files")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read json_files directory")
 	}
-	items = make([]interface{}, 0, len(dirEntries))
+	items = make([]models.Resource, 0, len(dirEntries))
 
 	// Loop through files, read, and unmarshal each JSON file into Go structs.
 	for _, dirEntry := range dirEntries {
@@ -56,13 +56,13 @@ func (r *ResourceStore) populateItems() (items []interface{}, err error) {
 			return nil, errors.Wrap(err, "failed to read file")
 		}
 
-		var jsonData map[string]interface{}
-		err = json.Unmarshal(fileBytes, &jsonData)
+		var resource models.Resource
+		err = json.Unmarshal(fileBytes, &resource)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to unmarshal JSON for file")
 		}
 
-		items = append(items, jsonData)
+		items = append(items, resource)
 	}
 
 	return items, nil
