@@ -8,7 +8,7 @@ as the source of truth of how each endpoint works.
 
 ## Example use of the API SDK
 
-Initialise new Search API client
+Initialise new Upstream API client
 
 ```go
 package main

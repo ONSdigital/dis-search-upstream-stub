@@ -60,7 +60,7 @@ func (cli *Client) Checker(ctx context.Context, check *health.CheckState) error 
 	return cli.hcCli.Checker(ctx, check)
 }
 
-// GetSearch gets a list of search results based on the search request
+// GetResources gets a list of upstream resources
 func (cli *Client) GetResources(ctx context.Context, options Options) (*models.Resources, apiError.Error) {
 	path := fmt.Sprintf("%s%s", cli.hcCli.URL, cli.resourcesEndpoint)
 	if options.Query != nil {

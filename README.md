@@ -2,7 +2,7 @@
 
 Fake upstream search stub to mimic upstream services using a generic search contract to integrate with our search stack
 
-### Getting started
+## Getting started
 
 * Run `make debug` to run application on http://localhost:29600
 * Run `make help` to see full list of make targets
@@ -17,7 +17,6 @@ To run `make validate-specification` you require Node v20.x and to install @redo
 ```sh
    npm install -g @redocly/cli
 ```
-
 
 ### Configuration
 
@@ -35,11 +34,11 @@ To run `make validate-specification` you require Node v20.x and to install @redo
 | OTEL_BATCH_TIMEOUT           | 5s                       | Timeout for OpenTelemetry                                                                                          |
 | OTEL_ENABLED                 | false                    | Feature flag to enable OpenTelemetry                                                                               |
 
-### Contributing
+## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### License
+## License
 
 Copyright © 2024, Office for National Statistics (https://www.ons.gov.uk)
 
