@@ -2,20 +2,18 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
-	"github.com/ONSdigital/dis-search-upstream-stub/models"
+	"github.com/ONSdigital/dis-search-upstream-stub/data"
+	"github.com/ONSdigital/dis-search-upstream-stub/schema"
 	kafka "github.com/ONSdigital/dp-kafka/v4"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
 const (
 	serviceName = "dp-search-upstream-stub"
-	dataDir     = "data/json_files" // Directory with JSON files
 )
 
 func main() {
@@ -55,61 +53,42 @@ func main() {
 
 	time.Sleep(500 * time.Millisecond)
 
-	// Process each JSON file in the data directory
-	files, err := os.ReadDir(dataDir)
+	// Initialize ResourceStore
+	resourceStore := &data.ResourceStore{}
+
+	// Define Options for fetching resources
+	options := data.Options{
+		Offset: 0,
+		Limit:  100,
+	}
+
+	// Call GetResources to fetch resources
+	resources, err := resourceStore.GetResources(ctx, options)
 	if err != nil {
-		log.Error(ctx, "error reading data directory", err)
+		log.Error(ctx, "failed to retrieve resources", err)
 		os.Exit(1)
 	}
 
-	for _, file := range files {
-		if file.IsDir() || filepath.Ext(file.Name()) != ".json" {
-			continue
-		}
-
-		filePath := filepath.Join(dataDir, file.Name())
-		log.Info(ctx, "processing file", log.Data{"file": filePath})
-
-		// Read file content
-		content, err := os.ReadFile(filePath)
+	// Marshal each resource to Kafka message format and send
+	for i := range resources.Items {
+		item := &resources.Items[i]
+		messageBytes, err := schema.SearchContentUpdateEvent.Marshal(item)
 		if err != nil {
-			log.Error(ctx, "error reading file", err, log.Data{"file": filePath})
-			continue
+			log.Error(ctx, "content-update event error", err)
+			os.Exit(1)
 		}
 
-		// Unmarshal into Resources struct
-		var resources models.Resources
-		if err := json.Unmarshal(content, &resources); err != nil {
-			log.Error(ctx, "error unmarshalling JSON", err, log.Data{"file": filePath})
-			continue
+		// Create a Kafka BytesMessage from the byte slice
+		kafkaMessage := kafka.BytesMessage{
+			Value: messageBytes,
 		}
 
-		log.Info(ctx, "successfully parsed resources", log.Data{"resources": resources})
-
-		// Marshal each resource to Kafka message format and send
-		for _, item := range resources.Items {
-			var messageBytes []byte
-			messageBytes, err = json.Marshal(item)
-			if err != nil {
-				log.Error(ctx, "error marshalling resource to JSON", err, log.Data{"item": item})
-				continue
-			}
-
-			// Create a Kafka BytesMessage from the byte slice
-			kafkaMessage := kafka.BytesMessage{
-				Value: messageBytes,
-			}
-
-			// Send the BytesMessage to Kafka
-			if err := kafkaProducer.Initialise(ctx); err != nil {
-				log.Warn(ctx, "failed to initialise kafka producer")
-				return
-			}
-			kafkaProducer.Channels().Output <- kafkaMessage
-			log.Info(ctx, "resource sent to Kafka", log.Data{"item": item})
+		// Send the BytesMessage to Kafka
+		if err := kafkaProducer.Initialise(ctx); err != nil {
+			log.Warn(ctx, "failed to initialise kafka producer")
+			return
 		}
+		kafkaProducer.Channels().Output <- kafkaMessage
+		log.Info(ctx, "resource sent to Kafka", log.Data{"item": item})
 	}
-
-	log.Info(ctx, "completed processing all JSON files")
-	time.Sleep(500 * time.Millisecond) // Ensure all messages are sent
 }

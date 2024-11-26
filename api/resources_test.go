@@ -10,17 +10,15 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
-	"time"
-
-	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
-	"github.com/gorilla/mux"
-	. "github.com/smartystreets/goconvey/convey"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	apiMock "github.com/ONSdigital/dis-search-upstream-stub/api/mock"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
+	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
+	"github.com/gorilla/mux"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 // Constants for testing
@@ -49,8 +47,6 @@ func expectedStandardResource(uri string) models.Resource {
 	}
 
 	expectedResource := standardResource
-	releaseDate := time.Time{}.UTC()
-	expectedResource.ReleaseDate = releaseDate
 	topics := []string{"a", "b", "c", "d"}
 	expectedResource.Topics = topics
 
@@ -67,6 +63,7 @@ func expectedReleaseResource(uri string) models.Resource {
 		DatasetID:       "ASELECTIONOFNUMBERSANDLETTERS456",
 		Edition:         "an edition",
 		MetaDescription: "a description",
+		ReleaseDate:     "2024-11-21:20:14Z",
 		Summary:         "a summary",
 		Title:           "a title",
 		Language:        "string",
@@ -81,12 +78,10 @@ func expectedReleaseResource(uri string) models.Resource {
 	}
 
 	expectedResource := releaseResource
-	releaseDate := time.Time{}.UTC()
-	expectedResource.ReleaseDate = releaseDate
 	topics := []string{"a", "b", "c", "d"}
 	expectedResource.Topics = topics
 	dateChanges := []string{"a change_notice", "a previous_date"}
-	expectedResource.DateChanges = dateChanges
+	expectedResource.Release.DateChanges = dateChanges
 
 	return expectedResource
 }
@@ -184,11 +179,11 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource2.Language, ShouldEqual, expectedResource2.Language)
 					So(returnedResource2.Survey, ShouldEqual, expectedResource2.Survey)
 					So(returnedResource2.CanonicalTopic, ShouldEqual, expectedResource2.CanonicalTopic)
-					So(returnedResource2.Cancelled, ShouldEqual, expectedResource2.Cancelled)
-					So(returnedResource2.Finalised, ShouldEqual, expectedResource2.Finalised)
-					So(returnedResource2.Published, ShouldEqual, expectedResource2.Published)
-					So(returnedResource2.DateChanges, ShouldEqual, expectedResource2.DateChanges)
-					So(returnedResource2.ProvisionalDate, ShouldEqual, expectedResource2.ProvisionalDate)
+					So(returnedResource2.Release.Cancelled, ShouldEqual, expectedResource2.Release.Cancelled)
+					So(returnedResource2.Release.Finalised, ShouldEqual, expectedResource2.Release.Finalised)
+					So(returnedResource2.Release.Published, ShouldEqual, expectedResource2.Release.Published)
+					So(returnedResource2.Release.DateChanges, ShouldEqual, expectedResource2.Release.DateChanges)
+					So(returnedResource2.Release.ProvisionalDate, ShouldEqual, expectedResource2.Release.ProvisionalDate)
 				})
 			})
 		})
@@ -245,11 +240,11 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource.Language, ShouldEqual, expectedResource.Language)
 					So(returnedResource.Survey, ShouldEqual, expectedResource.Survey)
 					So(returnedResource.CanonicalTopic, ShouldEqual, expectedResource.CanonicalTopic)
-					So(returnedResource.Cancelled, ShouldEqual, expectedResource.Cancelled)
-					So(returnedResource.Finalised, ShouldEqual, expectedResource.Finalised)
-					So(returnedResource.Published, ShouldEqual, expectedResource.Published)
-					So(returnedResource.DateChanges, ShouldEqual, expectedResource.DateChanges)
-					So(returnedResource.ProvisionalDate, ShouldEqual, expectedResource.ProvisionalDate)
+					So(returnedResource.Release.Cancelled, ShouldEqual, expectedResource.Release.Cancelled)
+					So(returnedResource.Release.Finalised, ShouldEqual, expectedResource.Release.Finalised)
+					So(returnedResource.Release.Published, ShouldEqual, expectedResource.Release.Published)
+					So(returnedResource.Release.DateChanges, ShouldEqual, expectedResource.Release.DateChanges)
+					So(returnedResource.Release.ProvisionalDate, ShouldEqual, expectedResource.Release.ProvisionalDate)
 				})
 			})
 		})

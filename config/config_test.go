@@ -9,39 +9,41 @@ import (
 )
 
 func TestConfig(t *testing.T) {
-	os.Clearenv()
-	var err error
-	var configuration *Config
-
 	Convey("Given an environment with no environment variables set", t, func() {
-		Convey("Then cfg should be nil", func() {
-			So(cfg, ShouldBeNil)
-		})
+		os.Clearenv()
+		cfg, err := Get()
 
 		Convey("When the config values are retrieved", func() {
-			Convey("Then there should be no error returned, and values are as expected", func() {
-				configuration, err = Get() // This Get() is only called once, when inside this function
+			Convey("Then there should be no error returned", func() {
 				So(err, ShouldBeNil)
-				So(configuration, ShouldResemble, &Config{
-					BindAddr:                   ":29600",
-					DefaultLimit:               20,
-					DefaultMaxLimit:            1000,
-					DefaultOffset:              0,
-					GracefulShutdownTimeout:    5 * time.Second,
-					HealthCheckInterval:        30 * time.Second,
-					HealthCheckCriticalTimeout: 90 * time.Second,
-					OTBatchTimeout:             5 * time.Second,
-					OTExporterOTLPEndpoint:     "localhost:4317",
-					OTServiceName:              "dis-search-upstream-stub",
-					OtelEnabled:                false,
-				})
 			})
 
-			Convey("Then a second call to config should return the same config", func() {
-				// This achieves code coverage of the first return in the Get() function.
-				newCfg, newErr := Get()
-				So(newErr, ShouldBeNil)
-				So(newCfg, ShouldResemble, cfg)
+			Convey("Then the values should be set to the expected defaults", func() {
+				So(cfg.BindAddr, ShouldEqual, ":29600")
+				So(cfg.DefaultLimit, ShouldEqual, 20)
+				So(cfg.DefaultMaxLimit, ShouldEqual, 1000)
+				So(cfg.DefaultOffset, ShouldEqual, 0)
+				So(cfg.GracefulShutdownTimeout, ShouldEqual, 5*time.Second)
+				So(cfg.HealthCheckInterval, ShouldEqual, 30*time.Second)
+				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, 90*time.Second)
+				So(cfg.OTBatchTimeout, ShouldEqual, 5*time.Second)
+				So(cfg.OTExporterOTLPEndpoint, ShouldEqual, "localhost:4317")
+				So(cfg.OTServiceName, ShouldEqual, "dis-search-upstream-stub")
+				So(cfg.OtelEnabled, ShouldBeFalse)
+				So(cfg.Kafka.ContentUpdatedGroup, ShouldEqual, "dis-search-upstream-stub")
+				So(cfg.Kafka.ContentUpdatedTopic, ShouldEqual, "search-content-updated")
+				So(cfg.Kafka.Addr, ShouldResemble, []string{"localhost:9092", "localhost:9093", "localhost:9094"})
+				So(cfg.Kafka.Version, ShouldEqual, "1.0.2")
+				So(cfg.Kafka.OffsetOldest, ShouldBeTrue)
+				So(cfg.Kafka.NumWorkers, ShouldEqual, 1)
+				So(cfg.Kafka.SecProtocol, ShouldEqual, "")
+				So(cfg.Kafka.SecCACerts, ShouldEqual, "")
+				So(cfg.Kafka.SecClientCert, ShouldEqual, "")
+				So(cfg.Kafka.SecClientKey, ShouldEqual, "")
+				So(cfg.Kafka.SecSkipVerify, ShouldBeFalse)
+				So(cfg.Kafka.MaxBytes, ShouldEqual, 2000000)
+				So(cfg.Kafka.ConsumerMinBrokersHealthy, ShouldEqual, 1)
+				So(cfg.Kafka.ProducerMinBrokersHealthy, ShouldEqual, 1)
 			})
 		})
 	})

@@ -35,6 +35,9 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 		TotalCount: len(items),
 	}
 
+	log.Info(ctx, "retrieved resoucres", log.Data{
+		"Count": len(items),
+	})
 	return resources, nil
 }
 

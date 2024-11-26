@@ -34,7 +34,7 @@ func getMockResponse() models.Resources {
 		DatasetID:       "MRET",
 		Edition:         "January",
 		MetaDescription: "Some meta text",
-		ReleaseDate:     time.Date(2024, 11, 21, 20, 34, 58, 651387237, time.UTC),
+		ReleaseDate:     "2024-11-21:20:14Z",
 		Summary:         "A summary",
 		Title:           "Bulletin title",
 		Topics:          []string{"2213"},
