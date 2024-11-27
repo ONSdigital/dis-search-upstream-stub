@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"time"
 
@@ -69,26 +70,45 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Marshal each resource to Kafka message format and send
-	for i := range resources.Items {
+	// Display the list of resources with title and URI
+	fmt.Println("Available resources:")
+	for i := 0; i < len(resources.Items); i++ {
 		item := &resources.Items[i]
-		messageBytes, err := schema.SearchContentUpdateEvent.Marshal(item)
-		if err != nil {
-			log.Error(ctx, "content-update event error", err)
-			os.Exit(1)
-		}
-
-		// Create a Kafka BytesMessage from the byte slice
-		kafkaMessage := kafka.BytesMessage{
-			Value: messageBytes,
-		}
-
-		// Send the BytesMessage to Kafka
-		if err := kafkaProducer.Initialise(ctx); err != nil {
-			log.Warn(ctx, "failed to initialise kafka producer")
-			return
-		}
-		kafkaProducer.Channels().Output <- kafkaMessage
-		log.Info(ctx, "resource sent to Kafka", log.Data{"item": item})
+		fmt.Printf("[%d] Title: %s, URL: %s\n", i+1, item.Title, item.URI) // Display title and URL
 	}
+
+	// Ask the user to select a resource
+	var selection int
+	for {
+		fmt.Print("Enter the number of the resource to send: ")
+		_, err := fmt.Scanln(&selection)
+		if err != nil || selection < 1 || selection > len(resources.Items) { // Adjust range for 1-based indexing
+			fmt.Println("Invalid selection. Please try again.")
+			continue
+		}
+		break
+	}
+
+	// Get the selected item (adjust for 1-based indexing)
+	selectedItem := &resources.Items[selection-1]
+
+	// Marshal the selected resource to Kafka message format and send
+	messageBytes, err := schema.SearchContentUpdateEvent.Marshal(selectedItem)
+	if err != nil {
+		log.Error(ctx, "content-update event error", err)
+		os.Exit(1)
+	}
+
+	// Create a Kafka BytesMessage from the byte slice
+	kafkaMessage := kafka.BytesMessage{
+		Value: messageBytes,
+	}
+
+	// Send the BytesMessage to Kafka
+	if err := kafkaProducer.Initialise(ctx); err != nil {
+		log.Warn(ctx, "failed to initialise kafka producer")
+		return
+	}
+	kafkaProducer.Channels().Output <- kafkaMessage
+	log.Info(ctx, "resource sent to Kafka", log.Data{"item": selectedItem})
 }
