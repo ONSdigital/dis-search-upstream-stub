@@ -1,0 +1,21 @@
+{
+  "uri": "/an/undated/standard/uri",
+  "uri_old": "/an/undated/standard/old/uri",
+  "content_type": "api_dataset_landing_page",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "an undated standard edition",
+  "meta_description": "an undated standard description",
+  "release_date": "0000-00-00T00:00:00Z",
+  "summary": "a standard undated summary",
+  "title": "a standard undated title",
+  "topics": [
+    "a",
+    "b",
+    "e",
+    "f"
+  ],
+  "language": "undated standard language",
+  "survey": "undated standard survey",
+  "canonical_topic": "undated standard topic"
+}

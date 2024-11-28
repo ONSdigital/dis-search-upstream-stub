@@ -1,51 +1,38 @@
 {
-    "count": 6,
+    "count": 8,
     "items": [
         {
-            "cancelled": true,
-            "canonical_topic": "first release topic",
+            "canonical_topic": "past release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "api_dataset_landing_page",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "date_changes": [
-                "a change_notice",
-                "a previous_date"
-            ],
-            "edition": "a first release edition",
-            "finalised": false,
-            "language": "first release language",
-            "meta_description": "a first release description",
-            "provisional_date": "0001-03-01T00:00:00Z",
-            "published": true,
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a first release summary",
-            "survey": "first release survey",
-            "title": "a first release title",
+            "edition": "a past release edition",
+            "language": "past release language",
+            "meta_description": "a past release description",
+            "release_date": "1997-07-22T21:31:03Z",
+            "summary": "a past release summary",
+            "survey": "past release survey",
+            "title": "a past release title",
             "topics": [
                 "a",
                 "b",
                 "e",
                 "f"
             ],
-            "uri": "/a/first/release/uri",
-            "uri_old": "/a/first/release/old/uri"
+            "uri": "/a/past/release/uri",
+            "uri_old": "/a/past/release/old/uri",
+            "release": {
+
+            }
         },
         {
-            "cancelled": true,
             "canonical_topic": "second release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "api_dataset_landing_page",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "date_changes": [
-                "a change_notice",
-                "a previous_date"
-            ],
             "edition": "a second release edition",
-            "finalised": false,
             "language": "second release language",
             "meta_description": "a second release description",
-            "provisional_date": "0001-03-01T00:00:00Z",
-            "published": true,
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "a second release summary",
             "survey": "second release survey",
@@ -57,24 +44,19 @@
                 "f"
             ],
             "uri": "/a/second/release/uri",
-            "uri_old": "/a/second/release/old/uri"
+            "uri_old": "/a/second/release/old/uri",
+            "release": {
+
+            }
         },
         {
-            "cancelled": true,
             "canonical_topic": "third release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "api_dataset_landing_page",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "date_changes": [
-                "a change_notice",
-                "a previous_date"
-            ],
             "edition": "a third release edition",
-            "finalised": false,
             "language": "third release language",
             "meta_description": "a third release description",
-            "provisional_date": "0001-03-01T00:00:00Z",
-            "published": true,
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "a third release summary",
             "survey": "third release survey",
@@ -86,28 +68,58 @@
                 "f"
             ],
             "uri": "/a/third/release/uri",
-            "uri_old": "/a/third/release/old/uri"
+            "uri_old": "/a/third/release/old/uri",
+            "release": {
+
+            }
         },
         {
-            "canonical_topic": "first standard topic",
+            "canonical_topic": "undated release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "api_dataset_landing_page",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a first standard edition",
-            "language": "first standard language",
-            "meta_description": "a first standard description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard first summary",
-            "survey": "first standard survey",
-            "title": "a standard first title",
+            "edition": "an undated release edition",
+            "language": "undated release language",
+            "meta_description": "an undated release description",
+            "release_date": "0000-00-00T00:00:00Z",
+            "summary": "an undated release summary",
+            "survey": "undated release survey",
+            "title": "an undated release title",
             "topics": [
                 "a",
                 "b",
                 "e",
                 "f"
             ],
-            "uri": "/a/first/standard/uri",
-            "uri_old": "/a/first/standard/old/uri"
+            "uri": "/an/undated/release/uri",
+            "uri_old": "/an/undated/release/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "past standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "api_dataset_landing_page",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a past standard edition",
+            "language": "past standard language",
+            "meta_description": "a past standard description",
+            "release_date": "2005-09-12T08:14:23Z",
+            "summary": "a standard past summary",
+            "survey": "past standard survey",
+            "title": "a standard past title",
+            "topics": [
+                "a",
+                "b",
+                "e",
+                "f"
+            ],
+            "uri": "/a/past/standard/uri",
+            "uri_old": "/a/past/standard/old/uri",
+            "release": {
+
+            }
         },
         {
             "canonical_topic": "second standard topic",
@@ -128,7 +140,10 @@
                 "f"
             ],
             "uri": "/a/second/standard/uri",
-            "uri_old": "/a/second/standard/old/uri"
+            "uri_old": "/a/second/standard/old/uri",
+            "release": {
+
+            }
         },
         {
             "canonical_topic": "third standard topic",
@@ -149,10 +164,37 @@
                 "f"
             ],
             "uri": "/a/third/standard/uri",
-            "uri_old": "/a/third/standard/old/uri"
+            "uri_old": "/a/third/standard/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "undated standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "api_dataset_landing_page",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "an undated standard edition",
+            "language": "undated standard language",
+            "meta_description": "an undated standard description",
+            "release_date": "0000-00-00T00:00:00Z",
+            "summary": "a standard undated summary",
+            "survey": "undated standard survey",
+            "title": "a standard undated title",
+            "topics": [
+                "a",
+                "b",
+                "e",
+                "f"
+            ],
+            "uri": "/an/undated/standard/uri",
+            "uri_old": "/an/undated/standard/old/uri",
+            "release": {
+
+            }
         }
     ],
     "limit": 20,
     "offset": 0,
-    "total_count": 6
+    "total_count": 8
 }

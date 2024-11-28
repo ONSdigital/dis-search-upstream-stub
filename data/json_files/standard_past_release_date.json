@@ -1,0 +1,21 @@
+{
+  "uri": "/a/past/standard/uri",
+  "uri_old": "/a/past/standard/old/uri",
+  "content_type": "api_dataset_landing_page",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a past standard edition",
+  "meta_description": "a past standard description",
+  "release_date": "2005-09-12T08:14:23Z",
+  "summary": "a standard past summary",
+  "title": "a standard past title",
+  "topics": [
+    "a",
+    "b",
+    "e",
+    "f"
+  ],
+  "language": "past standard language",
+  "survey": "past standard survey",
+  "canonical_topic": "past standard topic"
+}

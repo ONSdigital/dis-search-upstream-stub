@@ -1,0 +1,26 @@
+{
+  "uri": "/an/undated/release/uri",
+  "uri_old": "/an/undated/release/old/uri",
+  "content_type": "api_dataset_landing_page",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "an undated release edition",
+  "meta_description": "an undated release description",
+  "release_date": "0000-00-00T00:00:00Z",
+  "summary": "an undated release summary",
+  "title": "an undated release title",
+  "topics": [
+    "a",
+    "b",
+    "e",
+    "f"
+  ],
+  "language": "undated release language",
+  "survey": "undated release survey",
+  "canonical_topic": "undated release topic",
+  "cancelled": true,
+  "finalised": false,
+  "published": true,
+  "date_changes": ["a change_notice", "a previous_date"],
+  "provisional_date": "0001-03-01T00:00:00Z"
+}

@@ -19,7 +19,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	logData := log.Data{"option": option}
 	log.Info(ctx, "getting list of resources", logData)
 
-	items, err := r.populateItems()
+	items, err := populateItems()
 	if err != nil {
 		logData["items"] = items
 		logData["count"] = len(items)
@@ -41,7 +41,7 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 	return resources, nil
 }
 
-func (r *ResourceStore) populateItems() (items []models.Resource, err error) {
+func populateItems() (items []models.Resource, err error) {
 	// Get a list of JSON files and/or subdirectories in the embedded 'json_files' directory.
 	dirEntries, err := jsonFiles.ReadDir("json_files")
 	if err != nil {

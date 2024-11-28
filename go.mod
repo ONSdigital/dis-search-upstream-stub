@@ -3,6 +3,7 @@ module github.com/ONSdigital/dis-search-upstream-stub
 go 1.23
 
 require (
+	github.com/ONSdigital/dp-api-clients-go/v2 v2.261.0
 	github.com/ONSdigital/dp-component-test v0.15.0
 	github.com/ONSdigital/dp-healthcheck v1.6.3
 	github.com/ONSdigital/dp-kafka/v4 v4.1.0
@@ -10,7 +11,6 @@ require (
 	github.com/ONSdigital/dp-otel-go v0.0.8
 	github.com/ONSdigital/log.go/v2 v2.4.3
 	github.com/cucumber/godog v0.15.0
-	github.com/fatih/structs v1.1.0
 	github.com/gorilla/mux v1.8.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1
@@ -20,7 +20,6 @@ require (
 )
 
 require (
-	github.com/ONSdigital/dp-api-clients-go/v2 v2.261.0 // indirect
 	github.com/ONSdigital/dp-mongodb-in-memory v1.7.0 // indirect
 	github.com/Shopify/sarama v1.38.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect

@@ -1,6 +1,6 @@
 package models
 
-// Standard represents a standard resource metadata model and json representation for API
+// Resource represents a standard resource metadata model and json representation for API
 type Resource struct {
 	CanonicalTopic  string   `avro:"canonical_topic" json:"canonical_topic"`
 	CDID            string   `avro:"cdid" json:"cdid"`
@@ -19,7 +19,7 @@ type Resource struct {
 	Release         Release  `avro:"release" json:"release"`
 }
 
-// These fields are only used for content_type=release
+// Release contains the additional resource fields that are only used for content_type=release
 type Release struct {
 	Cancelled       bool     `avro:"cancelled,omitempty" json:"cancelled,omitempty"`
 	Finalised       bool     `avro:"finalised,omitempty" json:"finalised,omitempty"`
