@@ -1,10 +1,94 @@
 {
-    "count": 8,
+    "count": 16,
     "items": [
+        {
+            "canonical_topic": "future release topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a future release edition",
+            "language": "future release language",
+            "meta_description": "a future release description",
+            "release_date": "2997-07-22T21:31:03Z",
+            "summary": "a future release summary",
+            "survey": "future release survey",
+            "title": "a future release title",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/a/future/release/uri",
+            "uri_old": "/a/future/release/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "invalid-topic release topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "an invalid-topic release edition",
+            "language": "invalid-topic release language",
+            "meta_description": "an invalid-topic release description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "an invalid-topic release summary",
+            "survey": "invalid-topic release survey",
+            "title": "an invalid-topic release title",
+            "topics": [
+                "an-invalid-topic",
+                "another-invalid-topic"
+            ],
+            "uri": "/an/invalid-topic/release/uri",
+            "uri_old": "/an/invalid-topic/release/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "no-topics release topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a no-topics release edition",
+            "language": "no-topics release language",
+            "meta_description": "a no-topics release description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a no-topics release summary",
+            "survey": "no-topics release survey",
+            "title": "a no-topics release title",
+            "topics": [],
+            "uri": "/a/no-topics/release/uri",
+            "uri_old": "/a/no-topics/release/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "single-topic release topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a single-topic release edition",
+            "language": "single-topic release language",
+            "meta_description": "a single-topic release description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a single-topic release summary",
+            "survey": "single-topic release survey",
+            "title": "a single-topic release title",
+            "topics": [
+                "4972"
+            ],
+            "uri": "/a/single-topic/release/uri",
+            "uri_old": "/a/single-topic/release/old/uri",
+            "release": {
+
+            }
+        },
         {
             "canonical_topic": "past release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
+            "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "a past release edition",
             "language": "past release language",
@@ -14,10 +98,8 @@
             "survey": "past release survey",
             "title": "a past release title",
             "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
+                "4972",
+                "1245"
             ],
             "uri": "/a/past/release/uri",
             "uri_old": "/a/past/release/old/uri",
@@ -26,33 +108,9 @@
             }
         },
         {
-            "canonical_topic": "second release topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a second release edition",
-            "language": "second release language",
-            "meta_description": "a second release description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a second release summary",
-            "survey": "second release survey",
-            "title": "a second release title",
-            "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
-            ],
-            "uri": "/a/second/release/uri",
-            "uri_old": "/a/second/release/old/uri",
-            "release": {
-
-            }
-        },
-        {
             "canonical_topic": "third release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
+            "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "a third release edition",
             "language": "third release language",
@@ -74,9 +132,31 @@
             }
         },
         {
+            "canonical_topic": "two-topics release topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a two-topics release edition",
+            "language": "two-topics release language",
+            "meta_description": "a two-topics release description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a two-topics release summary",
+            "survey": "two-topics release survey",
+            "title": "a two-topics release title",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/a/two-topics/release/uri",
+            "uri_old": "/a/two-topics/release/old/uri",
+            "release": {
+
+            }
+        },
+        {
             "canonical_topic": "undated release topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
+            "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "an undated release edition",
             "language": "undated release language",
@@ -86,10 +166,8 @@
             "survey": "undated release survey",
             "title": "an undated release title",
             "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
+                "4972",
+                "1245"
             ],
             "uri": "/an/undated/release/uri",
             "uri_old": "/an/undated/release/old/uri",
@@ -98,9 +176,93 @@
             }
         },
         {
+            "canonical_topic": "future standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a future standard edition",
+            "language": "future standard language",
+            "meta_description": "a future standard description",
+            "release_date": "2205-09-12T08:14:23Z",
+            "summary": "a standard future summary",
+            "survey": "future standard survey",
+            "title": "a standard future title",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/a/future/standard/uri",
+            "uri_old": "/a/future/standard/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "invalid-topic standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "an invalid-topic standard edition",
+            "language": "invalid-topic standard language",
+            "meta_description": "an invalid-topic standard description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a standard invalid-topic summary",
+            "survey": "invalid-topic standard survey",
+            "title": "a standard invalid-topic title",
+            "topics": [
+                "an-invalid-topic",
+                "another-invalid-topic"
+            ],
+            "uri": "/an/invalid-topic/standard/uri",
+            "uri_old": "/an/invalid-topic/standard/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "no-topics standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a no-topics standard edition",
+            "language": "no-topics standard language",
+            "meta_description": "a no-topics standard description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a standard no-topics summary",
+            "survey": "no-topics standard survey",
+            "title": "a standard no-topics title",
+            "topics": [],
+            "uri": "/a/no-topics/standard/uri",
+            "uri_old": "/a/no-topics/standard/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "single-topic standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a single-topic standard edition",
+            "language": "single-topic standard language",
+            "meta_description": "a single-topic standard description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a standard single-topic summary",
+            "survey": "single-topic standard survey",
+            "title": "a standard single-topic title",
+            "topics": [
+                "1245"
+            ],
+            "uri": "/a/single-topic/standard/uri",
+            "uri_old": "/a/single-topic/standard/old/uri",
+            "release": {
+
+            }
+        },
+        {
             "canonical_topic": "past standard topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
+            "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "a past standard edition",
             "language": "past standard language",
@@ -110,10 +272,8 @@
             "survey": "past standard survey",
             "title": "a standard past title",
             "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
+                "4972",
+                "1245"
             ],
             "uri": "/a/past/standard/uri",
             "uri_old": "/a/past/standard/old/uri",
@@ -122,33 +282,9 @@
             }
         },
         {
-            "canonical_topic": "second standard topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a second standard edition",
-            "language": "second standard language",
-            "meta_description": "a second standard description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard second summary",
-            "survey": "second standard survey",
-            "title": "a standard second title",
-            "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
-            ],
-            "uri": "/a/second/standard/uri",
-            "uri_old": "/a/second/standard/old/uri",
-            "release": {
-
-            }
-        },
-        {
             "canonical_topic": "third standard topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
+            "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "a third standard edition",
             "language": "third standard language",
@@ -170,9 +306,31 @@
             }
         },
         {
+            "canonical_topic": "two-topics standard topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "a two-topics standard edition",
+            "language": "two-topics standard language",
+            "meta_description": "a two-topics standard description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "a standard two-topics summary",
+            "survey": "two-topics standard survey",
+            "title": "a standard two-topics title",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/a/two-topics/standard/uri",
+            "uri_old": "/a/two-topics/standard/old/uri",
+            "release": {
+
+            }
+        },
+        {
             "canonical_topic": "undated standard topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "api_dataset_landing_page",
+            "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "an undated standard edition",
             "language": "undated standard language",
@@ -182,10 +340,8 @@
             "survey": "undated standard survey",
             "title": "a standard undated title",
             "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
+                "4972",
+                "1245"
             ],
             "uri": "/an/undated/standard/uri",
             "uri_old": "/an/undated/standard/old/uri",
@@ -196,5 +352,5 @@
     ],
     "limit": 20,
     "offset": 0,
-    "total_count": 8
+    "total_count": 16
 }

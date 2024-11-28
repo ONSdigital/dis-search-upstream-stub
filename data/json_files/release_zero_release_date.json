@@ -1,7 +1,7 @@
 {
   "uri": "/an/undated/release/uri",
   "uri_old": "/an/undated/release/old/uri",
-  "content_type": "api_dataset_landing_page",
+  "content_type": "release",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "an undated release edition",
@@ -10,10 +10,8 @@
   "summary": "an undated release summary",
   "title": "an undated release title",
   "topics": [
-    "a",
-    "b",
-    "e",
-    "f"
+    "4972",
+    "1245"
   ],
   "language": "undated release language",
   "survey": "undated release survey",

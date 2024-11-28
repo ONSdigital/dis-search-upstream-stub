@@ -1,7 +1,7 @@
 {
   "uri": "/a/past/standard/uri",
   "uri_old": "/a/past/standard/old/uri",
-  "content_type": "api_dataset_landing_page",
+  "content_type": "standard",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "a past standard edition",
@@ -10,10 +10,8 @@
   "summary": "a standard past summary",
   "title": "a standard past title",
   "topics": [
-    "a",
-    "b",
-    "e",
-    "f"
+    "4972",
+    "1245"
   ],
   "language": "past standard language",
   "survey": "past standard survey",

@@ -1,0 +1,19 @@
+{
+  "uri": "/a/future/standard/uri",
+  "uri_old": "/a/future/standard/old/uri",
+  "content_type": "standard",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a future standard edition",
+  "meta_description": "a future standard description",
+  "release_date": "2205-09-12T08:14:23Z",
+  "summary": "a standard future summary",
+  "title": "a standard future title",
+  "topics": [
+    "4972",
+    "1245"
+  ],
+  "language": "future standard language",
+  "survey": "future standard survey",
+  "canonical_topic": "future standard topic"
+}

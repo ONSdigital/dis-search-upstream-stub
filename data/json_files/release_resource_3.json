@@ -1,7 +1,7 @@
 {
   "uri": "/a/third/release/uri",
   "uri_old": "/a/third/release/old/uri",
-  "content_type": "api_dataset_landing_page",
+  "content_type": "release",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "a third release edition",

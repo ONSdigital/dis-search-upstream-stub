@@ -1,0 +1,24 @@
+{
+  "uri": "/a/future/release/uri",
+  "uri_old": "/a/future/release/old/uri",
+  "content_type": "release",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a future release edition",
+  "meta_description": "a future release description",
+  "release_date": "2997-07-22T21:31:03Z",
+  "summary": "a future release summary",
+  "title": "a future release title",
+  "topics": [
+    "4972",
+    "1245"
+  ],
+  "language": "future release language",
+  "survey": "future release survey",
+  "canonical_topic": "future release topic",
+  "cancelled": true,
+  "finalised": false,
+  "published": true,
+  "date_changes": ["a change_notice", "a previous_date"],
+  "provisional_date": "0001-03-01T00:00:00Z"
+}

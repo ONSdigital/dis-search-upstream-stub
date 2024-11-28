@@ -1,0 +1,19 @@
+{
+  "uri": "/a/two-topics/standard/uri",
+  "uri_old": "/a/two-topics/standard/old/uri",
+  "content_type": "standard",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a two-topics standard edition",
+  "meta_description": "a two-topics standard description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a standard two-topics summary",
+  "title": "a standard two-topics title",
+  "topics": [
+    "4972",
+    "1245"
+  ],
+  "language": "two-topics standard language",
+  "survey": "two-topics standard survey",
+  "canonical_topic": "two-topics standard topic"
+}

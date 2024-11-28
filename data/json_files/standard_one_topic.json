@@ -1,0 +1,18 @@
+{
+  "uri": "/a/single-topic/standard/uri",
+  "uri_old": "/a/single-topic/standard/old/uri",
+  "content_type": "standard",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a single-topic standard edition",
+  "meta_description": "a single-topic standard description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a standard single-topic summary",
+  "title": "a standard single-topic title",
+  "topics": [
+    "1245"
+  ],
+  "language": "single-topic standard language",
+  "survey": "single-topic standard survey",
+  "canonical_topic": "single-topic standard topic"
+}

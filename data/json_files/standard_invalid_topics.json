@@ -1,0 +1,19 @@
+{
+  "uri": "/an/invalid-topic/standard/uri",
+  "uri_old": "/an/invalid-topic/standard/old/uri",
+  "content_type": "standard",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "an invalid-topic standard edition",
+  "meta_description": "an invalid-topic standard description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a standard invalid-topic summary",
+  "title": "a standard invalid-topic title",
+  "topics": [
+    "an-invalid-topic",
+    "another-invalid-topic"
+  ],
+  "language": "invalid-topic standard language",
+  "survey": "invalid-topic standard survey",
+  "canonical_topic": "invalid-topic standard topic"
+}

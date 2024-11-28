@@ -1,7 +1,7 @@
 {
   "uri": "/a/past/release/uri",
   "uri_old": "/a/past/release/old/uri",
-  "content_type": "api_dataset_landing_page",
+  "content_type": "release",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "a past release edition",
@@ -10,10 +10,8 @@
   "summary": "a past release summary",
   "title": "a past release title",
   "topics": [
-    "a",
-    "b",
-    "e",
-    "f"
+    "4972",
+    "1245"
   ],
   "language": "past release language",
   "survey": "past release survey",

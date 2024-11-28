@@ -1,7 +1,7 @@
 {
   "uri": "/a/third/standard/uri",
   "uri_old": "/a/third/standard/old/uri",
-  "content_type": "api_dataset_landing_page",
+  "content_type": "standard",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "a third standard edition",

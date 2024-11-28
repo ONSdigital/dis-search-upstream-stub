@@ -1,0 +1,16 @@
+{
+  "uri": "/a/no-topics/standard/uri",
+  "uri_old": "/a/no-topics/standard/old/uri",
+  "content_type": "standard",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a no-topics standard edition",
+  "meta_description": "a no-topics standard description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a standard no-topics summary",
+  "title": "a standard no-topics title",
+  "topics": [],
+  "language": "no-topics standard language",
+  "survey": "no-topics standard survey",
+  "canonical_topic": "no-topics standard topic"
+}

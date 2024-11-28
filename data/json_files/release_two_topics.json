@@ -1,0 +1,24 @@
+{
+  "uri": "/a/two-topics/release/uri",
+  "uri_old": "/a/two-topics/release/old/uri",
+  "content_type": "release",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "a two-topics release edition",
+  "meta_description": "a two-topics release description",
+  "release_date": "0001-02-01T00:00:00Z",
+  "summary": "a two-topics release summary",
+  "title": "a two-topics release title",
+  "topics": [
+    "4972",
+    "1245"
+  ],
+  "language": "two-topics release language",
+  "survey": "two-topics release survey",
+  "canonical_topic": "two-topics release topic",
+  "cancelled": true,
+  "finalised": false,
+  "published": true,
+  "date_changes": ["a change_notice", "a previous_date"],
+  "provisional_date": "0001-03-01T00:00:00Z"
+}
