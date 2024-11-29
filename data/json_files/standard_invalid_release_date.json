@@ -4,16 +4,16 @@
   "content_type": "standard",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-  "edition": "past edition",
-  "meta_description": "past description",
-  "release_date": "2005-09-12T08:14:23Z",
-  "summary": "past summary",
-  "title": "past title",
+  "edition": "some edition",
+  "meta_description": "some description",
+  "release_date": "an invalid date",
+  "summary": "some summary",
+  "title": "some title",
   "topics": [
     "4972",
     "1245"
   ],
-  "language": "past language",
-  "survey": "past survey",
-  "canonical_topic": "past canonical topic"
+  "language": "some language",
+  "survey": "some survey",
+  "canonical_topic": "some canonical topic"
 }

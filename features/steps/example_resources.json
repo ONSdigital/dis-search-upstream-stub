@@ -2,349 +2,345 @@
     "count": 16,
     "items": [
         {
-            "canonical_topic": "future release topic",
+            "canonical_topic": "future canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a future release edition",
-            "language": "future release language",
-            "meta_description": "a future release description",
+            "edition": "future edition",
+            "language": "future language",
+            "meta_description": "future description",
             "release_date": "2997-07-22T21:31:03Z",
-            "summary": "a future release summary",
-            "survey": "future release survey",
-            "title": "a future release title",
+            "summary": "future summary",
+            "survey": "future survey",
+            "title": "future title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/a/future/release/uri",
-            "uri_old": "/a/future/release/old/uri",
+            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "invalid-topic release topic",
+            "canonical_topic": "some canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "an invalid-topic release edition",
-            "language": "invalid-topic release language",
-            "meta_description": "an invalid-topic release description",
+            "edition": "some edition",
+            "language": "some language",
+            "meta_description": "some description",
+            "release_date": "an invalid date",
+            "summary": "some summary",
+            "survey": "some survey",
+            "title": "some title",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "an invalid-topic release summary",
-            "survey": "invalid-topic release survey",
-            "title": "an invalid-topic release title",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "latest title",
             "topics": [
                 "an-invalid-topic",
                 "another-invalid-topic"
             ],
-            "uri": "/an/invalid-topic/release/uri",
-            "uri_old": "/an/invalid-topic/release/old/uri",
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "no-topics release topic",
+            "canonical_topic": "interesting canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a no-topics release edition",
-            "language": "no-topics release language",
-            "meta_description": "a no-topics release description",
+            "edition": "interesting edition",
+            "language": "interesting language",
+            "meta_description": "interesting description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a no-topics release summary",
-            "survey": "no-topics release survey",
-            "title": "a no-topics release title",
+            "summary": "interesting summary",
+            "survey": "interesting survey",
+            "title": "interesting title",
             "topics": [],
-            "uri": "/a/no-topics/release/uri",
-            "uri_old": "/a/no-topics/release/old/uri",
+            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "single-topic release topic",
+            "canonical_topic": "this canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a single-topic release edition",
-            "language": "single-topic release language",
-            "meta_description": "a single-topic release description",
+            "edition": "this edition",
+            "language": "this language",
+            "meta_description": "this description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a single-topic release summary",
-            "survey": "single-topic release survey",
-            "title": "a single-topic release title",
+            "summary": "this summary",
+            "survey": "this survey",
+            "title": "this title",
             "topics": [
                 "4972"
             ],
-            "uri": "/a/single-topic/release/uri",
-            "uri_old": "/a/single-topic/release/old/uri",
+            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "past release topic",
+            "canonical_topic": "past canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a past release edition",
-            "language": "past release language",
-            "meta_description": "a past release description",
+            "edition": "past edition",
+            "language": "past language",
+            "meta_description": "past description",
             "release_date": "1997-07-22T21:31:03Z",
-            "summary": "a past release summary",
-            "survey": "past release survey",
-            "title": "a past release title",
+            "summary": "past summary",
+            "survey": "past survey",
+            "title": "past title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/a/past/release/uri",
-            "uri_old": "/a/past/release/old/uri",
+            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "third release topic",
+            "canonical_topic": "latest canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a third release edition",
-            "language": "third release language",
-            "meta_description": "a third release description",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a third release summary",
-            "survey": "third release survey",
-            "title": "a third release title",
-            "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
-            ],
-            "uri": "/a/third/release/uri",
-            "uri_old": "/a/third/release/old/uri",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "two-topics release topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a two-topics release edition",
-            "language": "two-topics release language",
-            "meta_description": "a two-topics release description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a two-topics release summary",
-            "survey": "two-topics release survey",
-            "title": "a two-topics release title",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "latest title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/a/two-topics/release/uri",
-            "uri_old": "/a/two-topics/release/old/uri",
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "undated release topic",
+            "canonical_topic": "interesting canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "an undated release edition",
-            "language": "undated release language",
-            "meta_description": "an undated release description",
+            "edition": "an interesting edition",
+            "language": "interesting language",
+            "meta_description": "an interesting description",
             "release_date": "0000-00-00T00:00:00Z",
-            "summary": "an undated release summary",
-            "survey": "undated release survey",
-            "title": "an undated release title",
+            "summary": "an interesting summary",
+            "survey": "interesting survey",
+            "title": "an interesting title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/an/undated/release/uri",
-            "uri_old": "/an/undated/release/old/uri",
+            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "future standard topic",
+            "canonical_topic": "future canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a future standard edition",
-            "language": "future standard language",
-            "meta_description": "a future standard description",
+            "edition": "a future edition",
+            "language": "future language",
+            "meta_description": "a future description",
             "release_date": "2205-09-12T08:14:23Z",
-            "summary": "a standard future summary",
-            "survey": "future standard survey",
-            "title": "a standard future title",
+            "summary": "a future summary",
+            "survey": "future survey",
+            "title": "a future title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/a/future/standard/uri",
-            "uri_old": "/a/future/standard/old/uri",
+            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "invalid-topic standard topic",
+            "canonical_topic": "some canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "an invalid-topic standard edition",
-            "language": "invalid-topic standard language",
-            "meta_description": "an invalid-topic standard description",
+            "edition": "some edition",
+            "language": "some language",
+            "meta_description": "some description",
+            "release_date": "an invalid date",
+            "summary": "some summary",
+            "survey": "some survey",
+            "title": "some title",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "some topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "some edition",
+            "language": "some language",
+            "meta_description": "some description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard invalid-topic summary",
-            "survey": "invalid-topic standard survey",
-            "title": "a standard invalid-topic title",
+            "summary": "some summary",
+            "survey": "some survey",
+            "title": "some title",
             "topics": [
                 "an-invalid-topic",
                 "another-invalid-topic"
             ],
-            "uri": "/an/invalid-topic/standard/uri",
-            "uri_old": "/an/invalid-topic/standard/old/uri",
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "no-topics standard topic",
+            "canonical_topic": "latest canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a no-topics standard edition",
-            "language": "no-topics standard language",
-            "meta_description": "a no-topics standard description",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard no-topics summary",
-            "survey": "no-topics standard survey",
-            "title": "a standard no-topics title",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "latest title",
             "topics": [],
-            "uri": "/a/no-topics/standard/uri",
-            "uri_old": "/a/no-topics/standard/old/uri",
+            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "single-topic standard topic",
+            "canonical_topic": "interesting canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a single-topic standard edition",
-            "language": "single-topic standard language",
-            "meta_description": "a single-topic standard description",
+            "edition": "interesting edition",
+            "language": "interesting language",
+            "meta_description": "interesting description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard single-topic summary",
-            "survey": "single-topic standard survey",
-            "title": "a standard single-topic title",
+            "summary": "interesting summary",
+            "survey": "interesting survey",
+            "title": "interesting title",
             "topics": [
                 "1245"
             ],
-            "uri": "/a/single-topic/standard/uri",
-            "uri_old": "/a/single-topic/standard/old/uri",
+            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "past standard topic",
+            "canonical_topic": "past canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a past standard edition",
-            "language": "past standard language",
-            "meta_description": "a past standard description",
+            "edition": "past edition",
+            "language": "past language",
+            "meta_description": "past description",
             "release_date": "2005-09-12T08:14:23Z",
-            "summary": "a standard past summary",
-            "survey": "past standard survey",
-            "title": "a standard past title",
+            "summary": "past summary",
+            "survey": "past survey",
+            "title": "past title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/a/past/standard/uri",
-            "uri_old": "/a/past/standard/old/uri",
+            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "third standard topic",
+            "canonical_topic": "latest canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a third standard edition",
-            "language": "third standard language",
-            "meta_description": "a third standard description",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
             "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard third summary",
-            "survey": "third standard survey",
-            "title": "a standard third title",
-            "topics": [
-                "a",
-                "b",
-                "e",
-                "f"
-            ],
-            "uri": "/a/third/standard/uri",
-            "uri_old": "/a/third/standard/old/uri",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "two-topics standard topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a two-topics standard edition",
-            "language": "two-topics standard language",
-            "meta_description": "a two-topics standard description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "a standard two-topics summary",
-            "survey": "two-topics standard survey",
-            "title": "a standard two-topics title",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "latest title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/a/two-topics/standard/uri",
-            "uri_old": "/a/two-topics/standard/old/uri",
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }
         },
         {
-            "canonical_topic": "undated standard topic",
+            "canonical_topic": "interesting canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "an undated standard edition",
-            "language": "undated standard language",
-            "meta_description": "an undated standard description",
+            "edition": "interesting edition",
+            "language": "interesting language",
+            "meta_description": "interesting description",
             "release_date": "0000-00-00T00:00:00Z",
-            "summary": "a standard undated summary",
-            "survey": "undated standard survey",
-            "title": "a standard undated title",
+            "summary": "interesting summary",
+            "survey": "interesting survey",
+            "title": "interesting title",
             "topics": [
                 "4972",
                 "1245"
             ],
-            "uri": "/an/undated/standard/uri",
-            "uri_old": "/an/undated/standard/old/uri",
+            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+            "uri_old": "/an/old/uri",
             "release": {
 
             }

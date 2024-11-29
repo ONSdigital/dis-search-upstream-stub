@@ -1,19 +1,19 @@
 {
-  "uri": "/an/undated/standard/uri",
-  "uri_old": "/an/undated/standard/old/uri",
+  "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+  "uri_old": "/an/old/uri",
   "content_type": "standard",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-  "edition": "an undated standard edition",
-  "meta_description": "an undated standard description",
+  "edition": "interesting edition",
+  "meta_description": "interesting description",
   "release_date": "0000-00-00T00:00:00Z",
-  "summary": "a standard undated summary",
-  "title": "a standard undated title",
+  "summary": "interesting summary",
+  "title": "interesting title",
   "topics": [
     "4972",
     "1245"
   ],
-  "language": "undated standard language",
-  "survey": "undated standard survey",
-  "canonical_topic": "undated standard topic"
+  "language": "interesting language",
+  "survey": "interesting survey",
+  "canonical_topic": "interesting canonical topic"
 }

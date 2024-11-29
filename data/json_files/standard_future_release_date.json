@@ -1,19 +1,19 @@
 {
-  "uri": "/a/future/standard/uri",
-  "uri_old": "/a/future/standard/old/uri",
+  "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+  "uri_old": "/an/old/uri",
   "content_type": "standard",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-  "edition": "a future standard edition",
-  "meta_description": "a future standard description",
+  "edition": "a future edition",
+  "meta_description": "a future description",
   "release_date": "2205-09-12T08:14:23Z",
-  "summary": "a standard future summary",
-  "title": "a standard future title",
+  "summary": "a future summary",
+  "title": "a future title",
   "topics": [
     "4972",
     "1245"
   ],
-  "language": "future standard language",
-  "survey": "future standard survey",
-  "canonical_topic": "future standard topic"
+  "language": "future language",
+  "survey": "future survey",
+  "canonical_topic": "future canonical topic"
 }
