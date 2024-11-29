@@ -12,7 +12,7 @@
             "release_date": "2997-07-22T21:31:03Z",
             "summary": "future summary",
             "survey": "future survey",
-            "title": "future title",
+            "title": "A Release with a Future Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -34,7 +34,7 @@
             "release_date": "an invalid date",
             "summary": "some summary",
             "survey": "some survey",
-            "title": "some title",
+            "title": "A Release with an Invalid Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -56,7 +56,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "latest title",
+            "title": "A Release with Invalid Topics",
             "topics": [
                 "an-invalid-topic",
                 "another-invalid-topic"
@@ -78,7 +78,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "interesting summary",
             "survey": "interesting survey",
-            "title": "interesting title",
+            "title": "A Release with No Topics",
             "topics": [],
             "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
             "uri_old": "/an/old/uri",
@@ -97,7 +97,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "this summary",
             "survey": "this survey",
-            "title": "this title",
+            "title": "A Release with a Single Topic",
             "topics": [
                 "4972"
             ],
@@ -118,7 +118,7 @@
             "release_date": "1997-07-22T21:31:03Z",
             "summary": "past summary",
             "survey": "past survey",
-            "title": "past title",
+            "title": "A Release with a Past Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -140,7 +140,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "latest title",
+            "title": "A Release with Two Topics",
             "topics": [
                 "4972",
                 "1245"
@@ -162,7 +162,7 @@
             "release_date": "0000-00-00T00:00:00Z",
             "summary": "an interesting summary",
             "survey": "interesting survey",
-            "title": "an interesting title",
+            "title": "A Release with a Zero Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -184,7 +184,7 @@
             "release_date": "2205-09-12T08:14:23Z",
             "summary": "a future summary",
             "survey": "future survey",
-            "title": "a future title",
+            "title": "A Standard Resource with a Future Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -206,7 +206,7 @@
             "release_date": "an invalid date",
             "summary": "some summary",
             "survey": "some survey",
-            "title": "some title",
+            "title": "A Standard Resource with an Invalid Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -218,7 +218,7 @@
             }
         },
         {
-            "canonical_topic": "some topic",
+            "canonical_topic": "some canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
@@ -228,7 +228,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "some summary",
             "survey": "some survey",
-            "title": "some title",
+            "title": "A Standard Resource with Invalid Topics",
             "topics": [
                 "an-invalid-topic",
                 "another-invalid-topic"
@@ -250,7 +250,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "latest title",
+            "title": "A Standard Resource with No Topics",
             "topics": [],
             "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
             "uri_old": "/an/old/uri",
@@ -269,7 +269,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "interesting summary",
             "survey": "interesting survey",
-            "title": "interesting title",
+            "title": "A Standard Resource with One Topic",
             "topics": [
                 "1245"
             ],
@@ -290,7 +290,7 @@
             "release_date": "2005-09-12T08:14:23Z",
             "summary": "past summary",
             "survey": "past survey",
-            "title": "past title",
+            "title": "A Standard Resource with a Past Release Date",
             "topics": [
                 "4972",
                 "1245"
@@ -312,7 +312,7 @@
             "release_date": "0001-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "latest title",
+            "title": "A Standard Resource with Two Topics",
             "topics": [
                 "4972",
                 "1245"
@@ -334,7 +334,7 @@
             "release_date": "0000-00-00T00:00:00Z",
             "summary": "interesting summary",
             "survey": "interesting survey",
-            "title": "interesting title",
+            "title": "A Standard Resource with a Zero Release Date",
             "topics": [
                 "4972",
                 "1245"

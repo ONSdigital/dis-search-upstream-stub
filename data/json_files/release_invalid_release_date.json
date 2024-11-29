@@ -8,7 +8,7 @@
   "meta_description": "some description",
   "release_date": "an invalid date",
   "summary": "some summary",
-  "title": "some title",
+  "title": "A Release with an Invalid Release Date",
   "topics": [
     "4972",
     "1245"

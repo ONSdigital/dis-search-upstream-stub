@@ -8,7 +8,7 @@
   "meta_description": "latest description",
   "release_date": "0001-02-01T00:00:00Z",
   "summary": "latest summary",
-  "title": "latest title",
+  "title": "A Release with Invalid Topics",
   "topics": [
     "an-invalid-topic",
     "another-invalid-topic"

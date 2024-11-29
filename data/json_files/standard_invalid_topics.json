@@ -8,12 +8,12 @@
   "meta_description": "some description",
   "release_date": "0001-02-01T00:00:00Z",
   "summary": "some summary",
-  "title": "some title",
+  "title": "A Standard Resource with Invalid Topics",
   "topics": [
     "an-invalid-topic",
     "another-invalid-topic"
   ],
   "language": "some language",
   "survey": "some survey",
-  "canonical_topic": "some topic"
+  "canonical_topic": "some canonical topic"
 }
