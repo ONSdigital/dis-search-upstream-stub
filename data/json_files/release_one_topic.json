@@ -15,9 +15,9 @@
   "language": "this language",
   "survey": "this survey",
   "canonical_topic": "this canonical topic",
-  "cancelled": true,
+  "cancelled": false,
   "finalised": false,
-  "published": true,
+  "published": false,
   "date_changes": ["a change_notice", "a previous_date"],
   "provisional_date": "0001-03-01T00:00:00Z"
 }

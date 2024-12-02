@@ -17,8 +17,8 @@
   "survey": "some survey",
   "canonical_topic": "some canonical topic",
   "cancelled": true,
-  "finalised": false,
-  "published": true,
+  "finalised": true,
+  "published": false,
   "date_changes": ["a change_notice", "a previous_date"],
   "provisional_date": "0001-03-01T00:00:00Z"
 }
