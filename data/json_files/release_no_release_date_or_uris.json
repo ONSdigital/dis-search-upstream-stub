@@ -1,14 +1,14 @@
 {
-  "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-  "uri_old": "/an/old/uri",
+  "uri": "",
+  "uri_old": "",
   "content_type": "release",
   "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "latest edition",
   "meta_description": "latest description",
-  "release_date": "2010-02-01T00:00:00Z",
+  "release_date": "",
   "summary": "latest summary",
-  "title": "A Release with A Change Notice for a Future Date",
+  "title": "A Release with No Release Date, URI, or URI_Old",
   "topics": [
     "4972",
     "1245"
@@ -16,9 +16,9 @@
   "language": "latest language",
   "survey": "latest survey",
   "canonical_topic": "latest canonical topic",
-  "cancelled": false,
-  "finalised": true,
+  "cancelled": true,
+  "finalised": false,
   "published": false,
-  "date_changes": ["a change_notice", "2059-07-01T12:07:20Z"],
+  "date_changes": ["a change_notice", "a previous_date"],
   "provisional_date": "0001-03-01T00:00:00Z"
 }

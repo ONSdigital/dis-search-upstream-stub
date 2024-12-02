@@ -1,5 +1,5 @@
 {
-    "count": 21,
+    "count": 36,
     "items": [
         {
             "canonical_topic": "latest canonical topic",
@@ -12,7 +12,29 @@
             "release_date": "2010-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "A Release with Two Topics",
+            "title": "A Release with A Change Notice for a Future Date",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "2010-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with a Future Provisional Date",
             "topics": [
                 "4972",
                 "1245"
@@ -56,7 +78,29 @@
             "release_date": "2010-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "A Release with Two Topics",
+            "title": "A Release with A Change Notice for an Invalid Date",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "2010-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with an Invalid Provisional Date",
             "topics": [
                 "4972",
                 "1245"
@@ -113,6 +157,28 @@
         },
         {
             "canonical_topic": "latest canonical topic",
+            "cdid": "",
+            "content_type": "",
+            "dataset_id": "",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with No Content Type, CDID, or Dataset ID",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
             "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
@@ -122,7 +188,117 @@
             "release_date": "2010-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "A Release with Two Topics",
+            "title": "A Release with A Change Notice for an Empty Date",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "",
+            "language": "latest language",
+            "meta_description": "",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "",
+            "survey": "latest survey",
+            "title": "A Release with No Edition, Meta Description, or Summary",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "2010-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with no Provisional Date",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with No Release Date, URI, or URI_Old",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "",
+            "uri_old": "",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "",
+            "title": "A Release with No Survey or Canonical Topic",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "",
+            "meta_description": "latest description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "",
             "topics": [
                 "4972",
                 "1245"
@@ -184,7 +360,29 @@
             "release_date": "2010-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "A Release with Two Topics",
+            "title": "A Release with A Change Notice for a Past Date",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "2021-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with a Past Provisional Date",
             "topics": [
                 "4972",
                 "1245"
@@ -250,7 +448,29 @@
             "release_date": "2010-02-01T00:00:00Z",
             "summary": "latest summary",
             "survey": "latest survey",
-            "title": "A Release with Two Topics",
+            "title": "A Release with A Change Notice for a Zero Date",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "release",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "2010-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Release with a Zero Provisional Date",
             "topics": [
                 "4972",
                 "1245"
@@ -313,7 +533,7 @@
             "edition": "some edition",
             "language": "some language",
             "meta_description": "some description",
-            "release_date": "an invalid date",
+            "release_date": "bananas",
             "summary": "some summary",
             "survey": "some survey",
             "title": "A Standard Resource with an Invalid Release Date",
@@ -342,6 +562,116 @@
             "topics": [
                 "an-invalid-topic",
                 "another-invalid-topic"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "",
+            "content_type": "",
+            "dataset_id": "",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Standard Resource with No Content Type, CDID, or Dataset ID",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "",
+            "language": "latest language",
+            "meta_description": "",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "",
+            "survey": "latest survey",
+            "title": "A Standard Resource with No Edition, Meta Description, or Summary",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "A Standard Resource with No Release Date, URI, or URI_Old",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "",
+            "uri_old": "",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "latest language",
+            "meta_description": "latest description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "",
+            "title": "A Standard Resource with No Survey or Canonical Topic",
+            "topics": [
+                "4972",
+                "1245"
+            ],
+            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+            "uri_old": "/an/old/uri",
+            "release": {
+
+            }
+        },
+        {
+            "canonical_topic": "latest canonical topic",
+            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "content_type": "standard",
+            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+            "edition": "latest edition",
+            "language": "",
+            "meta_description": "latest description",
+            "release_date": "0001-02-01T00:00:00Z",
+            "summary": "latest summary",
+            "survey": "latest survey",
+            "title": "",
+            "topics": [
+                "4972",
+                "1245"
             ],
             "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
             "uri_old": "/an/old/uri",
@@ -458,5 +788,5 @@
     ],
     "limit": 20,
     "offset": 0,
-    "total_count": 21
+    "total_count": 36
 }

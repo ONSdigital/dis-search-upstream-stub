@@ -1,0 +1,19 @@
+{
+  "uri": "",
+  "uri_old": "",
+  "content_type": "standard",
+  "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+  "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+  "edition": "latest edition",
+  "meta_description": "latest description",
+  "release_date": "",
+  "summary": "latest summary",
+  "title": "A Standard Resource with No Release Date, URI, or URI_Old",
+  "topics": [
+    "4972",
+    "1245"
+  ],
+  "language": "latest language",
+  "survey": "latest survey",
+  "canonical_topic": "latest canonical topic"
+}
