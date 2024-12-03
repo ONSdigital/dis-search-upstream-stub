@@ -3,7 +3,7 @@
     "items": [
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -25,7 +25,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -47,7 +47,7 @@
         },
         {
             "canonical_topic": "future canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "future edition",
@@ -69,7 +69,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -91,7 +91,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -113,7 +113,7 @@
         },
         {
             "canonical_topic": "some canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "some edition",
@@ -135,7 +135,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -179,7 +179,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -201,7 +201,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "",
@@ -223,7 +223,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -245,7 +245,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -267,7 +267,7 @@
         },
         {
             "canonical_topic": "",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -289,7 +289,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -311,7 +311,7 @@
         },
         {
             "canonical_topic": "interesting canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "interesting edition",
@@ -330,7 +330,7 @@
         },
         {
             "canonical_topic": "this canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "this edition",
@@ -351,7 +351,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -373,7 +373,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -395,7 +395,7 @@
         },
         {
             "canonical_topic": "past canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "past edition",
@@ -417,7 +417,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -439,7 +439,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -461,7 +461,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -483,7 +483,7 @@
         },
         {
             "canonical_topic": "interesting canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "release",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "an interesting edition",
@@ -505,7 +505,7 @@
         },
         {
             "canonical_topic": "future canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "a future edition",
@@ -527,7 +527,7 @@
         },
         {
             "canonical_topic": "some canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "some edition",
@@ -549,7 +549,7 @@
         },
         {
             "canonical_topic": "some canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "some edition",
@@ -593,7 +593,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "",
@@ -615,7 +615,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -637,7 +637,7 @@
         },
         {
             "canonical_topic": "",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -659,7 +659,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -681,7 +681,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -700,7 +700,7 @@
         },
         {
             "canonical_topic": "interesting canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "interesting edition",
@@ -721,7 +721,7 @@
         },
         {
             "canonical_topic": "past canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "past edition",
@@ -743,7 +743,7 @@
         },
         {
             "canonical_topic": "latest canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "latest edition",
@@ -765,7 +765,7 @@
         },
         {
             "canonical_topic": "interesting canonical topic",
-            "cdid": "ASELECTIONOFNUMBERSANDLETTERS123",
+            "cdid": "A321B",
             "content_type": "standard",
             "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
             "edition": "interesting edition",
