@@ -20,20 +20,11 @@ var searchContentUpdate = `{
     {"name": "topics", "type": {"type": "array", "items": "string"}, "default": []},
     {"name": "uri", "type": "string", "default": ""},
     {"name": "uri_old", "type": "string", "default": ""},
-	    {
-      "name": "release",
-      "type": {
-        "type": "record",
-        "name": "release",
-        "fields": [
-          {"name": "cancelled", "type": "boolean", "default": false},
-          {"name": "finalised", "type": "boolean", "default": false},
-          {"name": "published", "type": "boolean", "default": false},
-          {"name": "date_changes", "type": {"type": "array", "items": "string"}, "default": []},
-          {"name": "provisional_date", "type": "string", "default": ""}
-        ]
-      }
-    }
+    {"name": "cancelled", "type": "boolean", "default": false},
+    {"name": "finalised", "type": "boolean", "default": false},
+    {"name": "published", "type": "boolean", "default": false},
+    {"name": "date_changes", "type": {"type": "array", "items": "string"}, "default": []},
+    {"name": "provisional_date", "type": "string", "default": ""}
   ]
 }`
 

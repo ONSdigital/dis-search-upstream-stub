@@ -69,21 +69,15 @@ func expectedReleaseResource(uri string) models.Resource {
 		Language:        "string",
 		Survey:          "string",
 		CanonicalTopic:  "string",
-		Release: models.Release{
-			Cancelled:       true,
-			Finalised:       true,
-			Published:       true,
-			ProvisionalDate: "October-November 2024",
-		},
+		Cancelled:       true,
+		Finalised:       true,
+		Published:       true,
+		ProvisionalDate: "October-November 2024",
+		Topics:          []string{"a", "b", "c", "d"},
+		DateChanges:     []string{"a change_notice", "a previous_date"},
 	}
 
-	expectedResource := releaseResource
-	topics := []string{"a", "b", "c", "d"}
-	expectedResource.Topics = topics
-	dateChanges := []string{"a change_notice", "a previous_date"}
-	expectedResource.Release.DateChanges = dateChanges
-
-	return expectedResource
+	return releaseResource
 }
 
 func expectedResources(limit, offset int) models.Resources {
@@ -179,11 +173,11 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource2.Language, ShouldEqual, expectedResource2.Language)
 					So(returnedResource2.Survey, ShouldEqual, expectedResource2.Survey)
 					So(returnedResource2.CanonicalTopic, ShouldEqual, expectedResource2.CanonicalTopic)
-					So(returnedResource2.Release.Cancelled, ShouldEqual, expectedResource2.Release.Cancelled)
-					So(returnedResource2.Release.Finalised, ShouldEqual, expectedResource2.Release.Finalised)
-					So(returnedResource2.Release.Published, ShouldEqual, expectedResource2.Release.Published)
-					So(returnedResource2.Release.DateChanges, ShouldEqual, expectedResource2.Release.DateChanges)
-					So(returnedResource2.Release.ProvisionalDate, ShouldEqual, expectedResource2.Release.ProvisionalDate)
+					So(returnedResource2.Cancelled, ShouldEqual, expectedResource2.Cancelled)
+					So(returnedResource2.Finalised, ShouldEqual, expectedResource2.Finalised)
+					So(returnedResource2.Published, ShouldEqual, expectedResource2.Published)
+					So(returnedResource2.DateChanges, ShouldEqual, expectedResource2.DateChanges)
+					So(returnedResource2.ProvisionalDate, ShouldEqual, expectedResource2.ProvisionalDate)
 				})
 			})
 		})
@@ -240,11 +234,11 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource.Language, ShouldEqual, expectedResource.Language)
 					So(returnedResource.Survey, ShouldEqual, expectedResource.Survey)
 					So(returnedResource.CanonicalTopic, ShouldEqual, expectedResource.CanonicalTopic)
-					So(returnedResource.Release.Cancelled, ShouldEqual, expectedResource.Release.Cancelled)
-					So(returnedResource.Release.Finalised, ShouldEqual, expectedResource.Release.Finalised)
-					So(returnedResource.Release.Published, ShouldEqual, expectedResource.Release.Published)
-					So(returnedResource.Release.DateChanges, ShouldEqual, expectedResource.Release.DateChanges)
-					So(returnedResource.Release.ProvisionalDate, ShouldEqual, expectedResource.Release.ProvisionalDate)
+					So(returnedResource.Cancelled, ShouldEqual, expectedResource.Cancelled)
+					So(returnedResource.Finalised, ShouldEqual, expectedResource.Finalised)
+					So(returnedResource.Published, ShouldEqual, expectedResource.Published)
+					So(returnedResource.DateChanges, ShouldEqual, expectedResource.DateChanges)
+					So(returnedResource.ProvisionalDate, ShouldEqual, expectedResource.ProvisionalDate)
 				})
 			})
 		})

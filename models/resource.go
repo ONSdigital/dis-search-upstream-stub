@@ -15,15 +15,11 @@ type Resource struct {
 	Title           string   `avro:"title" json:"title"`
 	Topics          []string `avro:"topics" json:"topics"`
 	URI             string   `avro:"uri" json:"uri"`
-	URIOld          string   `avro:"uri_old" json:"uri_old,omitempty"`
-	Release         Release  `avro:"release" json:"release"`
-}
-
-// Release contains the additional resource fields that are only used for content_type=release
-type Release struct {
-	Cancelled       bool     `avro:"cancelled,omitempty" json:"cancelled,omitempty"`
-	Finalised       bool     `avro:"finalised,omitempty" json:"finalised,omitempty"`
-	Published       bool     `avro:"published,omitempty" json:"published,omitempty"`
-	DateChanges     []string `avro:"date_changes,omitempty" json:"date_changes,omitempty"`
-	ProvisionalDate string   `avro:"provisional_date,omitempty" json:"provisional_date,omitempty"`
+	URIOld          string   `avro:"uri_old" json:"uri_old"`
+	// These fields are only used for content_type=release
+	Cancelled       bool     `avro:"cancelled" json:"cancelled,omitempty"`
+	Finalised       bool     `avro:"finalised" json:"finalised,omitempty"`
+	Published       bool     `avro:"published" json:"published,omitempty"`
+	DateChanges     []string `avro:"date_changes" json:"date_changes,omitempty"`
+	ProvisionalDate string   `avro:"provisional_date" json:"provisional_date,omitempty"`
 }
