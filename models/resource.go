@@ -15,7 +15,7 @@ type Resource struct {
 	Title           string   `avro:"title" json:"title"`
 	Topics          []string `avro:"topics" json:"topics"`
 	URI             string   `avro:"uri" json:"uri"`
-	URIOld          string   `avro:"uri_old" json:"uri_old"`
+	URIOld          string   `avro:"uri_old" json:"uri_old,omitempty"`
 	Release         Release  `avro:"release" json:"release"`
 }
 
