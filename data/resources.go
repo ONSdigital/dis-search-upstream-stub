@@ -73,6 +73,8 @@ func populateItems() (items []models.Resource, err error) {
 	return items, nil
 }
 
+// filterItems filters a list of resources by limit and offset, capping the maximum value
+// at the returned items length
 func filterItems(items []models.Resource, options Options) []models.Resource {
 	var maxItem int
 	maxRequested := options.Offset + options.Limit
