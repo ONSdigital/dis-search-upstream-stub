@@ -15,8 +15,8 @@ import (
 var jsonFiles embed.FS
 
 // GetResources retrieves all the resources from the collection
-func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*models.Resources, error) {
-	logData := log.Data{"option": option}
+func (r *ResourceStore) GetResources(ctx context.Context, options Options) (*models.Resources, error) {
+	logData := log.Data{"options": options}
 	log.Info(ctx, "getting list of resources", logData)
 
 	items, err := populateItems()
@@ -27,11 +27,13 @@ func (r *ResourceStore) GetResources(ctx context.Context, option Options) (*mode
 		return nil, err
 	}
 
+	filteredItems := filterItems(items, options)
+
 	resources := &models.Resources{
-		Count:      len(items),
-		Items:      items,
-		Limit:      option.Limit,
-		Offset:     option.Offset,
+		Count:      len(filteredItems),
+		Items:      filteredItems,
+		Limit:      options.Limit,
+		Offset:     options.Offset,
 		TotalCount: len(items),
 	}
 
@@ -69,4 +71,17 @@ func populateItems() (items []models.Resource, err error) {
 	}
 
 	return items, nil
+}
+
+func filterItems(items []models.Resource, options Options) []models.Resource {
+	var maxItem int
+	maxRequested := options.Offset + options.Limit
+
+	if len(items) < maxRequested {
+		maxItem = len(items)
+	} else {
+		maxItem = maxRequested
+	}
+
+	return items[options.Offset:maxItem]
 }
