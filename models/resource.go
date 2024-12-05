@@ -17,9 +17,14 @@ type Resource struct {
 	URI             string   `avro:"uri" json:"uri"`
 	URIOld          string   `avro:"uri_old" json:"uri_old"`
 	// These fields are only used for content_type=release
-	Cancelled       bool     `avro:"cancelled" json:"cancelled"`
-	Finalised       bool     `avro:"finalised" json:"finalised"`
-	Published       bool     `avro:"published" json:"published"`
-	DateChanges     []string `avro:"date_changes" json:"date_changes"`
-	ProvisionalDate string   `avro:"provisional_date" json:"provisional_date"`
+	Cancelled       bool                 `avro:"cancelled" json:"cancelled"`
+	DateChanges     []ReleaseDateDetails `avro:"date_changes" json:"date_changes"`
+	Finalised       bool                 `avro:"finalised" json:"finalised"`
+	ProvisionalDate string               `avro:"provisional_date" json:"provisional_date"`
+	Published       bool                 `avro:"published" json:"published"`
+}
+
+type ReleaseDateDetails struct {
+	ChangeNotice string `avro:"change_notice" json:"change_notice"`
+	PreviousDate string `avro:"previous_date" json:"previous_date"`
 }

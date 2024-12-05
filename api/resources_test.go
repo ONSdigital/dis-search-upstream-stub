@@ -74,7 +74,12 @@ func expectedReleaseResource(uri string) models.Resource {
 		Published:       true,
 		ProvisionalDate: "October-November 2024",
 		Topics:          []string{"a", "b", "c", "d"},
-		DateChanges:     []string{"a change_notice", "a previous_date"},
+		DateChanges: []models.ReleaseDateDetails{
+			models.ReleaseDateDetails{
+				ChangeNotice: "a change_notice",
+				PreviousDate: "a previous_date",
+			},
+		},
 	}
 
 	return releaseResource

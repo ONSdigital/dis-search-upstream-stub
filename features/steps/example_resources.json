@@ -1,792 +1,979 @@
 {
     "count": 36,
     "items": [
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with A Change Notice for a Future Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with a Future Provisional Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "future canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "future edition",
-            "language": "future language",
-            "meta_description": "future description",
-            "release_date": "2997-07-22T21:31:03Z",
-            "summary": "future summary",
-            "survey": "future survey",
-            "title": "A Release with a Future Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with A Change Notice for an Invalid Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with an Invalid Provisional Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "some canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "some edition",
-            "language": "some language",
-            "meta_description": "some description",
-            "release_date": "an invalid date",
-            "summary": "some summary",
-            "survey": "some survey",
-            "title": "A Release with an Invalid Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with Invalid Topics",
-            "topics": [
-                "an-invalid-topic",
-                "another-invalid-topic"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "",
-            "content_type": "",
-            "dataset_id": "",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with No Content Type, CDID, or Dataset ID",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with A Change Notice for an Empty Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "",
-            "language": "latest language",
-            "meta_description": "",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "",
-            "survey": "latest survey",
-            "title": "A Release with No Edition, Meta Description, or Summary",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with no Provisional Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with No Release Date, URI, or URI_Old",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "",
-            "title": "A Release with No Survey or Canonical Topic",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "interesting canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "interesting edition",
-            "language": "interesting language",
-            "meta_description": "interesting description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "interesting summary",
-            "survey": "interesting survey",
-            "title": "A Release with No Topics",
-            "topics": [],
-            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "this canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "this edition",
-            "language": "this language",
-            "meta_description": "this description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "this summary",
-            "survey": "this survey",
-            "title": "A Release with a Single Topic",
-            "topics": [
-                "4972"
-            ],
-            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with A Change Notice for a Past Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2021-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with a Past Provisional Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "past canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "past edition",
-            "language": "past language",
-            "meta_description": "past description",
-            "release_date": "1997-07-22T21:31:03Z",
-            "summary": "past summary",
-            "survey": "past survey",
-            "title": "A Release with a Past Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with Two Topics",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with A Change Notice for a Zero Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "2010-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Release with a Zero Provisional Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "interesting canonical topic",
-            "cdid": "A321B",
-            "content_type": "release",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "an interesting edition",
-            "language": "interesting language",
-            "meta_description": "an interesting description",
-            "release_date": "0000-00-00T00:00:00Z",
-            "summary": "an interesting summary",
-            "survey": "interesting survey",
-            "title": "A Release with a Zero Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "future canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "a future edition",
-            "language": "future language",
-            "meta_description": "a future description",
-            "release_date": "2205-09-12T08:14:23Z",
-            "summary": "a future summary",
-            "survey": "future survey",
-            "title": "A Standard Resource with a Future Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "some canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "some edition",
-            "language": "some language",
-            "meta_description": "some description",
-            "release_date": "bananas",
-            "summary": "some summary",
-            "survey": "some survey",
-            "title": "A Standard Resource with an Invalid Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "some canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "some edition",
-            "language": "some language",
-            "meta_description": "some description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "some summary",
-            "survey": "some survey",
-            "title": "A Standard Resource with Invalid Topics",
-            "topics": [
-                "an-invalid-topic",
-                "another-invalid-topic"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "",
-            "content_type": "",
-            "dataset_id": "",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Standard Resource with No Content Type, CDID, or Dataset ID",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "",
-            "language": "latest language",
-            "meta_description": "",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "",
-            "survey": "latest survey",
-            "title": "A Standard Resource with No Edition, Meta Description, or Summary",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Standard Resource with No Release Date, URI, or URI_Old",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "",
-            "title": "A Standard Resource with No Survey or Canonical Topic",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Standard Resource with No Topics",
-            "topics": [],
-            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "interesting canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "interesting edition",
-            "language": "interesting language",
-            "meta_description": "interesting description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "interesting summary",
-            "survey": "interesting survey",
-            "title": "A Standard Resource with One Topic",
-            "topics": [
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "past canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "past edition",
-            "language": "past language",
-            "meta_description": "past description",
-            "release_date": "2005-09-12T08:14:23Z",
-            "summary": "past summary",
-            "survey": "past survey",
-            "title": "A Standard Resource with a Past Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "latest canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "latest edition",
-            "language": "latest language",
-            "meta_description": "latest description",
-            "release_date": "0001-02-01T00:00:00Z",
-            "summary": "latest summary",
-            "survey": "latest survey",
-            "title": "A Standard Resource with Two Topics",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
-            "uri_old": "",
-            "release": {
-
-            }
-        },
-        {
-            "canonical_topic": "interesting canonical topic",
-            "cdid": "A321B",
-            "content_type": "standard",
-            "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
-            "edition": "interesting edition",
-            "language": "interesting language",
-            "meta_description": "interesting description",
-            "release_date": "0000-00-00T00:00:00Z",
-            "summary": "interesting summary",
-            "survey": "interesting survey",
-            "title": "A Standard Resource with a Zero Release Date",
-            "topics": [
-                "4972",
-                "1245"
-            ],
-            "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
-            "uri_old": "",
-            "release": {
-
-            }
-        }
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with A Change Notice for a Future Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "2059-07-01T12:07:20Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "March 1991",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with a Future Provisional Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "2019-07-01T12:07:20Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "July 2059",
+        "published": false
+      },
+      {
+        "canonical_topic": "future canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "future edition",
+        "language": "future language",
+        "meta_description": "future description",
+        "release_date": "2997-07-22T21:31:03Z",
+        "summary": "future summary",
+        "survey": "future survey",
+        "title": "A Release with a Future Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "March 1991",
+        "published": true
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with A Change Notice for an Invalid Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "an invalid date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "April 1993",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with an Invalid Provisional Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "an invalid date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "bananas",
+        "published": false
+      },
+      {
+        "canonical_topic": "some canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "some edition",
+        "language": "some language",
+        "meta_description": "some description",
+        "release_date": "an invalid date",
+        "summary": "some summary",
+        "survey": "some survey",
+        "title": "A Release with an Invalid Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "May 1995",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with Invalid Topics",
+        "topics": [
+          "an-invalid-topic",
+          "another-invalid-topic"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "July 1997",
+        "published": true
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "",
+        "content_type": "",
+        "dataset_id": "",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with No Content Type, CDID, or Dataset ID",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "September 1999",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with A Change Notice for an Empty Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": ""
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "February 2007",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "",
+        "language": "latest language",
+        "meta_description": "",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "",
+        "survey": "latest survey",
+        "title": "A Release with No Edition, Meta Description, or Summary",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "November 2002",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with no Provisional Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "2011-03-01T00:00:00Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with No Release Date, URI, or URI_Old",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "January 2005",
+        "published": false
+      },
+      {
+        "canonical_topic": "",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "",
+        "title": "A Release with No Survey or Canonical Topic",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "June 2009",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "August 2011",
+        "published": false
+      },
+      {
+        "canonical_topic": "interesting canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "interesting edition",
+        "language": "interesting language",
+        "meta_description": "interesting description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "interesting summary",
+        "survey": "interesting survey",
+        "title": "A Release with No Topics",
+        "topics": [],
+        "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "October 2013",
+        "published": true
+      },
+      {
+        "canonical_topic": "this canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "this edition",
+        "language": "this language",
+        "meta_description": "this description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "this summary",
+        "survey": "this survey",
+        "title": "A Release with a Single Topic",
+        "topics": [
+          "4972"
+        ],
+        "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "December 2015",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with A Change Notice for a Past Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "2009-07-01T12:07:20Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "January 2014",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2021-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with a Past Provisional Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "2009-07-01T12:07:20Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "March 2011",
+        "published": false
+      },
+      {
+        "canonical_topic": "past canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "past edition",
+        "language": "past language",
+        "meta_description": "past description",
+        "release_date": "1997-07-22T21:31:03Z",
+        "summary": "past summary",
+        "survey": "past survey",
+        "title": "A Release with a Past Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "February 2016",
+        "published": true
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with Two Topics",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": true,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": false,
+        "provisional_date": "March 2018",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with A Change Notice for a Zero Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "0000-00-00T00:00:00Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "April 2020",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "2010-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Release with a Zero Provisional Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "0000-00-00T00:00:00Z"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "May 2022",
+        "published": false
+      },
+      {
+        "canonical_topic": "interesting canonical topic",
+        "cdid": "A321B",
+        "content_type": "release",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "an interesting edition",
+        "language": "interesting language",
+        "meta_description": "an interesting description",
+        "release_date": "0000-00-00T00:00:00Z",
+        "summary": "an interesting summary",
+        "survey": "interesting survey",
+        "title": "A Release with a Zero Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": [
+          {
+            "change_notice": "a change_notice",
+            "previous_date": "a previous_date"
+          }
+        ],
+        "finalised": true,
+        "provisional_date": "June 2024",
+        "published": false
+      },
+      {
+        "canonical_topic": "future canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "a future edition",
+        "language": "future language",
+        "meta_description": "a future description",
+        "release_date": "2205-09-12T08:14:23Z",
+        "summary": "a future summary",
+        "survey": "future survey",
+        "title": "A Standard Resource with a Future Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "some canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "some edition",
+        "language": "some language",
+        "meta_description": "some description",
+        "release_date": "bananas",
+        "summary": "some summary",
+        "survey": "some survey",
+        "title": "A Standard Resource with an Invalid Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "some canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "some edition",
+        "language": "some language",
+        "meta_description": "some description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "some summary",
+        "survey": "some survey",
+        "title": "A Standard Resource with Invalid Topics",
+        "topics": [
+          "an-invalid-topic",
+          "another-invalid-topic"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "",
+        "content_type": "",
+        "dataset_id": "",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Standard Resource with No Content Type, CDID, or Dataset ID",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "",
+        "language": "latest language",
+        "meta_description": "",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "",
+        "survey": "latest survey",
+        "title": "A Standard Resource with No Edition, Meta Description, or Summary",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Standard Resource with No Release Date, URI, or URI_Old",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "",
+        "title": "A Standard Resource with No Survey or Canonical Topic",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Standard Resource with No Topics",
+        "topics": [],
+        "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "interesting canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "interesting edition",
+        "language": "interesting language",
+        "meta_description": "interesting description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "interesting summary",
+        "survey": "interesting survey",
+        "title": "A Standard Resource with One Topic",
+        "topics": [
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/bulletins/housepriceindex/april2022",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "past canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "past edition",
+        "language": "past language",
+        "meta_description": "past description",
+        "release_date": "2005-09-12T08:14:23Z",
+        "summary": "past summary",
+        "survey": "past survey",
+        "title": "A Standard Resource with a Past Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/economy/inflationandpriceindices/timeseries/ju37/mm22",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "latest canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "latest edition",
+        "language": "latest language",
+        "meta_description": "latest description",
+        "release_date": "0001-02-01T00:00:00Z",
+        "summary": "latest summary",
+        "survey": "latest survey",
+        "title": "A Standard Resource with Two Topics",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/employmentandlabourmarket/peoplenotinwork/unemployment/datasets/unemploymentbypreviousoccupationunem02",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      },
+      {
+        "canonical_topic": "interesting canonical topic",
+        "cdid": "A321B",
+        "content_type": "standard",
+        "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
+        "edition": "interesting edition",
+        "language": "interesting language",
+        "meta_description": "interesting description",
+        "release_date": "0000-00-00T00:00:00Z",
+        "summary": "interesting summary",
+        "survey": "interesting survey",
+        "title": "A Standard Resource with a Zero Release Date",
+        "topics": [
+          "4972",
+          "1245"
+        ],
+        "uri": "/businessindustryandtrade/changestobusiness/businessbirthsdeathsandsurvivalrates/adhocs/14144demographyforscottishdistricts2020",
+        "uri_old": "",
+        "cancelled": false,
+        "date_changes": null,
+        "finalised": false,
+        "provisional_date": "",
+        "published": false
+      }
     ],
     "limit": 20,
     "offset": 0,
     "total_count": 36
-}
+  }

@@ -19,6 +19,9 @@
   "cancelled": false,
   "finalised": true,
   "published": false,
-  "date_changes": ["a change_notice", "an invalid date"],
+  "date_changes": [{
+    "change_notice": "a change_notice",
+    "previous_date": "an invalid date"
+  }],
   "provisional_date": "bananas"
 }
