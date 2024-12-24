@@ -1,10 +1,11 @@
 package sdk
 
 import (
-	"github.com/ONSdigital/dis-search-upstream-stub/api"
-	"github.com/ONSdigital/dp-net/v2/request"
 	"net/http"
 	"net/url"
+
+	"github.com/ONSdigital/dis-search-upstream-stub/api"
+	"github.com/ONSdigital/dp-net/v2/request"
 )
 
 const (
