@@ -1,11 +1,10 @@
 package sdk
 
 import (
-	"net/http"
-	"net/url"
-
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	"github.com/ONSdigital/dp-net/v2/request"
+	"net/http"
+	"net/url"
 )
 
 const (
@@ -21,13 +20,31 @@ type Options struct {
 
 // Limit sets the 'limit' Query parameter to the request
 func (o *Options) Limit(val string) *Options {
-	o.Query.Add(api.ParamLimit, val)
+	if o.Query == nil {
+		var queryParams url.Values = make(map[string][]string)
+		o.Query = queryParams
+	}
+	_, paramExists := o.Query[api.ParamLimit]
+	if paramExists {
+		o.Query.Set(api.ParamLimit, val)
+	} else {
+		o.Query.Add(api.ParamLimit, val)
+	}
 	return o
 }
 
 // Offset sets the 'offset' Query parameter to the request
 func (o *Options) Offset(val string) *Options {
-	o.Query.Add(api.ParamOffset, val)
+	if o.Query == nil {
+		var queryParams url.Values = make(map[string][]string)
+		o.Query = queryParams
+	}
+	_, paramExists := o.Query[api.ParamOffset]
+	if paramExists {
+		o.Query.Set(api.ParamOffset, val)
+	} else {
+		o.Query.Add(api.ParamOffset, val)
+	}
 	return o
 }
 
