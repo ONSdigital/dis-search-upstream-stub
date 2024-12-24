@@ -21,30 +21,18 @@ type Options struct {
 // Limit sets the 'limit' Query parameter to the request
 func (o *Options) Limit(val string) *Options {
 	if o.Query == nil {
-		var queryParams url.Values = make(map[string][]string)
-		o.Query = queryParams
+		o.Query = make(map[string][]string)
 	}
-	_, paramExists := o.Query[api.ParamLimit]
-	if paramExists {
-		o.Query.Set(api.ParamLimit, val)
-	} else {
-		o.Query.Add(api.ParamLimit, val)
-	}
+	o.Query.Set(api.ParamLimit, val)
 	return o
 }
 
 // Offset sets the 'offset' Query parameter to the request
 func (o *Options) Offset(val string) *Options {
 	if o.Query == nil {
-		var queryParams url.Values = make(map[string][]string)
-		o.Query = queryParams
+		o.Query = make(map[string][]string)
 	}
-	_, paramExists := o.Query[api.ParamOffset]
-	if paramExists {
-		o.Query.Set(api.ParamOffset, val)
-	} else {
-		o.Query.Add(api.ParamOffset, val)
-	}
+	o.Query.Set(api.ParamOffset, val)
 	return o
 }
 
