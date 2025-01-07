@@ -6,7 +6,7 @@
   "dataset_id": "ASELECTIONOFNUMBERSANDLETTERS456",
   "edition": "interesting edition",
   "meta_description": "interesting description",
-  "release_date": "0001-02-01T00:00:00Z",
+  "release_date": "2009-07-22T21:31:03Z",
   "summary": "interesting summary",
   "title": "A Release with No Topics",
   "topics": [],
@@ -18,7 +18,7 @@
   "published": true,
   "date_changes": [{
     "change_notice": "a change_notice",
-    "previous_date": "a previous_date"
+    "previous_date": "2007-07-22T21:31:03Z"
   }],
   "provisional_date": "October 2013"
 }
