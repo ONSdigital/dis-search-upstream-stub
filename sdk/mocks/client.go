@@ -18,22 +18,22 @@ var _ sdk.Clienter = &ClienterMock{}
 
 // ClienterMock is a mock implementation of sdk.Clienter.
 //
-//	func TestSomethingThatUsesClienter(t *testing.T) {
+// 	func TestSomethingThatUsesClienter(t *testing.T) {
 //
-//		// make and configure a mocked sdk.Clienter
-//		mockedClienter := &ClienterMock{
-//			CheckerFunc: func(ctx context.Context, check *health.CheckState) error {
-//				panic("mock out the Checker method")
-//			},
-//			GetResourcesFunc: func(ctx context.Context, options sdk.Options) (*models.Resources, apiError.Error) {
-//				panic("mock out the GetResources method")
-//			},
-//		}
+// 		// make and configure a mocked sdk.Clienter
+// 		mockedClienter := &ClienterMock{
+// 			CheckerFunc: func(ctx context.Context, check *health.CheckState) error {
+// 				panic("mock out the Checker method")
+// 			},
+// 			GetResourcesFunc: func(ctx context.Context, options sdk.Options) (*models.Resources, apiError.Error) {
+// 				panic("mock out the GetResources method")
+// 			},
+// 		}
 //
-//		// use mockedClienter in code that requires sdk.Clienter
-//		// and then make assertions.
+// 		// use mockedClienter in code that requires sdk.Clienter
+// 		// and then make assertions.
 //
-//	}
+// 	}
 type ClienterMock struct {
 	// CheckerFunc mocks the Checker method.
 	CheckerFunc func(ctx context.Context, check *health.CheckState) error
@@ -82,8 +82,7 @@ func (mock *ClienterMock) Checker(ctx context.Context, check *health.CheckState)
 
 // CheckerCalls gets all the calls that were made to Checker.
 // Check the length with:
-//
-//	len(mockedClienter.CheckerCalls())
+//     len(mockedClienter.CheckerCalls())
 func (mock *ClienterMock) CheckerCalls() []struct {
 	Ctx   context.Context
 	Check *health.CheckState
@@ -118,8 +117,7 @@ func (mock *ClienterMock) GetResources(ctx context.Context, options sdk.Options)
 
 // GetResourcesCalls gets all the calls that were made to GetResources.
 // Check the length with:
-//
-//	len(mockedClienter.GetResourcesCalls())
+//     len(mockedClienter.GetResourcesCalls())
 func (mock *ClienterMock) GetResourcesCalls() []struct {
 	Ctx     context.Context
 	Options sdk.Options
