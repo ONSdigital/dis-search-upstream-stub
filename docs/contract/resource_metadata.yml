@@ -41,6 +41,7 @@ components:
             - static_methodology_download
             - static_page
             - static_qmi
+            - statistical_article
             - taxonomy_landing_page
             - timeseries
             - visualisation

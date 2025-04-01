@@ -74,7 +74,7 @@ func main() {
 	fmt.Println("Available resources:")
 	for i := 0; i < len(resources.Items); i++ {
 		item := &resources.Items[i]
-		fmt.Printf("[%d] Title: %s, URL: %s\n", i+1, item.Title, item.URI) // Display title and URL
+		fmt.Printf("[%d] Title: %s, URL: %s, content type: %s,\n", i+1, item.Title, item.URI, item.ContentType) // Display title and URL
 	}
 
 	// Ask the user to select a resource
