@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
+	dpresponse "github.com/ONSdigital/dp-net/v3/handlers/response"
 	"github.com/ONSdigital/log.go/v2/log"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/apierrors"

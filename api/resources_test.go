@@ -16,7 +16,7 @@ import (
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
-	dpresponse "github.com/ONSdigital/dp-net/v2/handlers/response"
+	dpresponse "github.com/ONSdigital/dp-net/v3/handlers/response"
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
 )

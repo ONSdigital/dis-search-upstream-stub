@@ -13,7 +13,7 @@ import (
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
 	healthcheck "github.com/ONSdigital/dp-api-clients-go/v2/health"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
-	dphttp "github.com/ONSdigital/dp-net/v2/http"
+	dphttp "github.com/ONSdigital/dp-net/v3/http"
 	c "github.com/smartystreets/goconvey/convey"
 )
 

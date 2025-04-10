@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
-	"github.com/ONSdigital/dp-net/v2/request"
+	"github.com/ONSdigital/dp-net/v3/request"
 )
 
 const (
