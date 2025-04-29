@@ -26,7 +26,7 @@ var (
 func getMockResponse() models.Resources {
 	items := make([]models.Resource, 1)
 
-	mockItem := models.Resource{
+	mockItem := models.SearchContentUpdatedResource{
 		URI:             "http://www.ons.gov.uk/economy",
 		URIOld:          "http://www.ons.gov.uk/economy",
 		ContentType:     "bulletin",

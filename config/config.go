@@ -29,6 +29,7 @@ type Config struct {
 type Kafka struct {
 	ContentUpdatedGroup       string   `envconfig:"KAFKA_CONTENT_UPDATED_GROUP"`
 	ContentUpdatedTopic       string   `envconfig:"KAFKA_CONTENT_UPDATED_TOPIC"`
+	SearchContentUpdatedTopic string   `envconfig:"KAFKA_SEARCH_CONTENT_UPDATED_TOPIC"`
 	Addr                      []string `envconfig:"KAFKA_ADDR"`
 	Version                   string   `envconfig:"KAFKA_VERSION"`
 	OffsetOldest              bool     `envconfig:"KAFKA_OFFSET_OLDEST"`
@@ -66,7 +67,8 @@ func Get() (*Config, error) {
 		OtelEnabled:                false,
 		Kafka: &Kafka{
 			ContentUpdatedGroup:       "dis-search-upstream-stub",
-			ContentUpdatedTopic:       "search-content-updated",
+			ContentUpdatedTopic:       "content-updated",
+			SearchContentUpdatedTopic: "search-content-updated",
 			Addr:                      []string{"localhost:9092", "localhost:9093", "localhost:9094"},
 			Version:                   "1.0.2",
 			OffsetOldest:              true,

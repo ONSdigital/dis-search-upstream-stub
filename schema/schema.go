@@ -39,3 +39,21 @@ var searchContentUpdate = `{
 var SearchContentUpdateEvent = &avro.Schema{
 	Definition: searchContentUpdate,
 }
+
+var contentUpdated = `{
+  "type": "record",
+  "name": "content-updated",
+  "fields": [
+    {"name": "uri", "type": "string", "default": ""},
+    {"name": "data_type", "type": "string", "default": ""},
+    {"name": "collection_id", "type": "string", "default": ""},
+    {"name": "job_id", "type": "string", "default": ""},
+    {"name": "search_index", "type": "string", "default": ""},
+    {"name": "trace_id", "type": "string", "default": ""}
+  ]
+}`
+
+// ContentPublishedEvent is the Avro schema for Content Published messages.
+var ContentPublishedEvent = &avro.Schema{
+	Definition: contentUpdated,
+}

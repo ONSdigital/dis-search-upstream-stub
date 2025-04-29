@@ -17,6 +17,7 @@ import (
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
 	dpresponse "github.com/ONSdigital/dp-net/v3/handlers/response"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
 )
@@ -30,8 +31,8 @@ const (
 )
 
 // expectedStandardResource returns a release resource that can be used to define and test expected values within it
-func expectedStandardResource(uri string) models.Resource {
-	standardResource := models.Resource{
+func expectedStandardResource(uri string) models.SearchContentUpdatedResource {
+	standardResource := models.SearchContentUpdatedResource{
 		URI:             uri,
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
@@ -54,8 +55,8 @@ func expectedStandardResource(uri string) models.Resource {
 }
 
 // expectedReleaseResource returns a release resource that can be used to define and test expected values within it
-func expectedReleaseResource(uri string) models.Resource {
-	releaseResource := models.Resource{
+func expectedReleaseResource(uri string) models.SearchContentUpdatedResource {
+	releaseResource := models.SearchContentUpdatedResource{
 		URI:             uri,
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
@@ -110,6 +111,7 @@ func expectedResources(limit, offset int) models.Resources {
 
 func TestGetResourcesHandlerSuccess(t *testing.T) {
 	t.Parallel()
+	ctx := context.Background()
 
 	cfg, configErr := config.Get()
 	if configErr != nil {
@@ -149,7 +151,24 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				Convey("And the returned list should contain expected resources", func() {
 					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 2)
-					returnedResource1 := returnedResourceList[0]
+
+					// Initialize a slice to hold the mapped SearchContentUpdatedResource items
+					var returnedResources []*models.SearchContentUpdatedResource
+
+					// Loop through each resource in the resources.Items slice
+					for _, item := range returnedResourceList {
+						// Assert the item as SearchContentUpdatedResource
+						switch r := item.(type) {
+						case *models.SearchContentUpdatedResource:
+							// If the item is of the correct type, append it to the result slice
+							returnedResources = append(returnedResources, r)
+						default:
+							// Log unsupported types (optional)
+							log.Info(ctx, "unsupported resource type", log.Data{"type": r})
+						}
+					}
+
+					returnedResource1 := returnedResources[0]
 					So(returnedResource1.URI, ShouldEqual, expectedResource1.URI)
 					So(returnedResource1.URIOld, ShouldEqual, expectedResource1.URIOld)
 					So(returnedResource1.ContentType, ShouldEqual, expectedResource1.ContentType)
@@ -164,7 +183,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource1.Language, ShouldEqual, expectedResource1.Language)
 					So(returnedResource1.Survey, ShouldEqual, expectedResource1.Survey)
 					So(returnedResource1.CanonicalTopic, ShouldEqual, expectedResource1.CanonicalTopic)
-					returnedResource2 := returnedResourceList[1]
+					returnedResource2 := returnedResources[1]
 					So(returnedResource2.URIOld, ShouldEqual, expectedResource2.URIOld)
 					So(returnedResource2.ContentType, ShouldEqual, expectedResource2.ContentType)
 					So(returnedResource2.CDID, ShouldEqual, expectedResource2.CDID)
@@ -224,7 +243,24 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				Convey("And the returned list should contain the expected resource", func() {
 					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 1)
-					returnedResource := returnedResourceList[0]
+
+					// Initialize a slice to hold the mapped SearchContentUpdatedResource items
+					var returnedResources []*models.SearchContentUpdatedResource
+
+					// Loop through each resource in the resources.Items slice
+					for _, item := range returnedResourceList {
+						// Assert the item as SearchContentUpdatedResource
+						switch r := item.(type) {
+						case *models.SearchContentUpdatedResource:
+							// If the item is of the correct type, append it to the result slice
+							returnedResources = append(returnedResources, r)
+						default:
+							// Log unsupported types (optional)
+							log.Info(ctx, "unsupported resource type", log.Data{"type": r})
+						}
+					}
+
+					returnedResource := returnedResources[0]
 					So(returnedResource.URI, ShouldEqual, expectedResource.URI)
 					So(returnedResource.URIOld, ShouldEqual, expectedResource.URIOld)
 					So(returnedResource.ContentType, ShouldEqual, expectedResource.ContentType)
