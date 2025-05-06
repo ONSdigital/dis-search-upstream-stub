@@ -57,7 +57,11 @@ test-component: ## Runs component test suite
 
 .PHONY: produce
 produce: ## Runs a Kafka producer to write messages to Kafka topic from data directory JSON files
-	HUMAN_LOG=1 go run cmd/producer/main.go
+	HUMAN_LOG=1 go run kafka-tools/generate-message/main.go
+
+.PHONY: mass-produce
+mass-produce: ## Runs a script to write messages for two Kafka topics from data directory JSON files
+	HUMAN_LOG=1 go run kafka-tools/load-test/load.go
 
 .PHONY: validate-specification
 validate-specification: ## Validates specification
