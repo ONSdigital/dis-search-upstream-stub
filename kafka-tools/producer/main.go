@@ -8,13 +8,14 @@ import (
 
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
+	"github.com/ONSdigital/dis-search-upstream-stub/models"
 	"github.com/ONSdigital/dis-search-upstream-stub/schema"
 	kafka "github.com/ONSdigital/dp-kafka/v4"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
 const (
-	serviceName = "dp-search-upstream-stub"
+	serviceName = "dis-search-upstream-stub"
 )
 
 func main() {
@@ -31,7 +32,7 @@ func main() {
 	// Create Kafka Producer
 	pConfig := &kafka.ProducerConfig{
 		BrokerAddrs:     cfg.Kafka.Addr,
-		Topic:           cfg.Kafka.ContentUpdatedTopic,
+		Topic:           cfg.Kafka.SearchContentUpdatedTopic,
 		KafkaVersion:    &cfg.Kafka.Version,
 		MaxMessageBytes: &cfg.Kafka.MaxBytes,
 	}
@@ -64,7 +65,7 @@ func main() {
 	}
 
 	// Call GetResources to fetch resources
-	resources, err := resourceStore.GetResources(ctx, options)
+	resources, err := resourceStore.GetResources(ctx, "", options)
 	if err != nil {
 		log.Error(ctx, "failed to retrieve resources", err)
 		os.Exit(1)
@@ -72,9 +73,18 @@ func main() {
 
 	// Display the list of resources with title and URI
 	fmt.Println("Available resources:")
-	for i := 0; i < len(resources.Items); i++ {
-		item := &resources.Items[i]
-		fmt.Printf("[%d] Title: %s, URL: %s, content type: %s,\n", i+1, item.Title, item.URI, item.ContentType) // Display title and URL
+	for i, item := range resources.Items {
+		switch r := item.(type) {
+		case models.ContentUpdatedResource:
+			// Display ContentUpdatedResource fields
+			fmt.Printf("[%d] URL: %s, CollectionID: %s, Data Type: %s\n", i+1, r.URI, r.CollectionID, r.DataType)
+		case models.SearchContentUpdatedResource:
+			// Display SearchContentUpdatedResource fields
+			fmt.Printf("[%d] Title: %s, URL: %s, Content type: %s\n", i+1, r.Title, r.URI, r.ContentType)
+		default:
+			// Default case in case of unknown resource type
+			fmt.Printf("[%d] Unknown resource type\n", i+1)
+		}
 	}
 
 	// Ask the user to select a resource
@@ -92,23 +102,38 @@ func main() {
 	// Get the selected item (adjust for 1-based indexing)
 	selectedItem := &resources.Items[selection-1]
 
-	// Marshal the selected resource to Kafka message format and send
-	messageBytes, err := schema.SearchContentUpdateEvent.Marshal(selectedItem)
-	if err != nil {
-		log.Error(ctx, "content-update event error", err)
-		os.Exit(1)
+	var messageBytes []byte
+	var eventType string
+
+	// Marshal the resource to Kafka message format based on the topic type
+	switch r := (*selectedItem).(type) {
+	case models.ContentUpdatedResource:
+		// Marshal for the legacy topic (ContentPublishedEvent)
+		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
+		eventType = "ContentPublishedEvent"
+	case models.SearchContentUpdatedResource:
+		// Marshal for the new topic (SearchContentUpdateEvent)
+		messageBytes, err = schema.SearchContentUpdateEvent.Marshal(r)
+		eventType = "SearchContentUpdateEvent"
+	default:
+		log.Error(context.Background(), "unsupported resource type", fmt.Errorf("resource type: %v", selectedItem))
+		return
 	}
 
-	// Create a Kafka BytesMessage from the byte slice
+	if err != nil {
+		log.Error(context.Background(), "update event error", err)
+		return
+	}
+
+	// Create a Kafka BytesMessage
 	kafkaMessage := kafka.BytesMessage{
 		Value: messageBytes,
 	}
 
-	// Send the BytesMessage to Kafka
-	if err := kafkaProducer.Initialise(ctx); err != nil {
-		log.Warn(ctx, "failed to initialise kafka producer")
-		return
-	}
+	// Send message to Kafka
 	kafkaProducer.Channels().Output <- kafkaMessage
-	log.Info(ctx, "resource sent to Kafka", log.Data{"item": selectedItem})
+	log.Info(context.Background(), "resource sent to Kafka", log.Data{
+		"item":       selectedItem,
+		"event_type": eventType,
+	})
 }

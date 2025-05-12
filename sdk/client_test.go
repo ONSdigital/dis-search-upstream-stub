@@ -23,10 +23,12 @@ var (
 	initialTestState = healthcheck.CreateCheckState(service)
 )
 
-func getMockResponse() models.Resources {
-	items := make([]models.Resource, 1)
+func getMockResponse() *models.Resources {
+	// Initialize items as an empty slice of pointers to SearchContentUpdatedResource
+	items := make([]models.SearchContentUpdatedResource, 0)
 
-	mockItem := models.Resource{
+	// Create the mock item
+	mockItem := models.SearchContentUpdatedResource{
 		URI:             "http://www.ons.gov.uk/economy",
 		URIOld:          "http://www.ons.gov.uk/economy",
 		ContentType:     "bulletin",
@@ -43,15 +45,27 @@ func getMockResponse() models.Resources {
 		CanonicalTopic:  "2213",
 	}
 
+	// Append the pointer to the items slice
 	items = append(items, mockItem)
 
-	mockResourcesResponse := models.Resources{
+	// Pre-allocate resourceItems slice with the same length as items
+	resourceItems := make([]models.Resource, 0, len(items))
+
+	// Convert the items slice of pointers to []models.Resource
+	for _, item := range items {
+		// Directly append the pointer to the resourceItems slice
+		resourceItems = append(resourceItems, item)
+	}
+
+	// Return the mock resources response
+	mockResourcesResponse := &models.Resources{
 		Count:      1,
 		TotalCount: 1,
 		Limit:      10,
 		Offset:     0,
-		Items:      items,
+		Items:      resourceItems,
 	}
+
 	return mockResourcesResponse
 }
 
@@ -142,7 +156,7 @@ func TestGetResources(t *testing.T) {
 			resp, err := upstreamAPIClient.GetResources(ctx, Options{})
 
 			c.Convey("Then the expected response body is returned", func() {
-				c.So(*resp, c.ShouldResemble, getMockResponse())
+				c.So(resp, c.ShouldResemble, getMockResponse())
 
 				c.Convey("And no error is returned", func() {
 					c.So(err, c.ShouldBeNil)

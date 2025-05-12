@@ -3,6 +3,8 @@ package data
 import (
 	"context"
 	"embed"
+	"fmt"
+	"io/fs"
 
 	"encoding/json"
 
@@ -11,18 +13,35 @@ import (
 	"github.com/pkg/errors"
 )
 
-//go:embed json_files/*.json
+//go:embed json_files/search_content_updated/*.json json_files/content_updated/*.json
 var jsonFiles embed.FS
 
-// GetResources retrieves all the resources from the collection
-func (r *ResourceStore) GetResources(ctx context.Context, options Options) (*models.Resources, error) {
+var searchContentUpdatedResourceType = "SearchContentUpdatedResource"
+var contentUpdatedResourceType = "ContentUpdatedResource"
+
+// GetResources is the method that satisfies the DataStorer interface
+// It calls the existing GetResourcesWithType with a default resourceType
+func (r *ResourceStore) GetResources(ctx context.Context, typeParam string, options Options) (*models.Resources, error) {
+	// Use a default resourceType (or it could be dynamic based on your use case)
+	resourceType := searchContentUpdatedResourceType
+	if typeParam == "content-updated" {
+		resourceType = contentUpdatedResourceType
+	}
+
+	// Call the existing method with resourceType
+	return r.GetResourcesWithType(ctx, resourceType, options)
+}
+
+// GetResourcesWithType retrieves all the resources from the collection
+func (r *ResourceStore) GetResourcesWithType(ctx context.Context, resourceType string, options Options) (*models.Resources, error) {
 	logData := log.Data{"options": options}
 	log.Info(ctx, "getting list of resources", logData)
 
-	items, err := populateItems()
+	items, err := populateItems(resourceType)
 	if err != nil {
 		logData["items"] = items
 		logData["count"] = len(items)
+		logData["type"] = resourceType
 		log.Error(ctx, "failed to populate resources list", err, logData)
 		return nil, err
 	}
@@ -36,35 +55,64 @@ func (r *ResourceStore) GetResources(ctx context.Context, options Options) (*mod
 		Offset:     options.Offset,
 		TotalCount: len(items),
 	}
-
 	log.Info(ctx, "retrieved resources", log.Data{
 		"Count": len(items),
 	})
 	return resources, nil
 }
 
-func populateItems() (items []models.Resource, err error) {
-	// Get a list of JSON files and/or subdirectories in the embedded 'json_files' directory.
-	dirEntries, err := jsonFiles.ReadDir("json_files")
+// populateItems retrieves items from the content_updated and search_content_updated directories
+func populateItems(resourceType string) ([]models.Resource, error) {
+	var dir string
+
+	// Determine which directory to read from based on the resource type
+	switch resourceType {
+	case contentUpdatedResourceType:
+		dir = "json_files/content_updated"
+	case searchContentUpdatedResourceType:
+		dir = "json_files/search_content_updated"
+	default:
+		return nil, fmt.Errorf("unknown resource type: %s", resourceType)
+	}
+
+	// Read files from the appropriate directory
+	dirEntries, err := fs.ReadDir(jsonFiles, dir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read json_files directory")
 	}
-	items = make([]models.Resource, 0, len(dirEntries))
+
+	items := make([]models.Resource, 0, len(dirEntries))
 
 	// Loop through files, read, and unmarshal each JSON file into Go structs.
 	for _, dirEntry := range dirEntries {
 		if dirEntry.IsDir() {
 			continue
 		}
-		fileBytes, err := jsonFiles.ReadFile("json_files/" + dirEntry.Name())
+
+		// Read the content of each file
+		fileBytes, err := jsonFiles.ReadFile(dir + "/" + dirEntry.Name())
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to read file")
 		}
 
 		var resource models.Resource
-		err = json.Unmarshal(fileBytes, &resource)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to unmarshal JSON for file")
+
+		// Determine which type of resource to unmarshal into
+		switch resourceType {
+		case contentUpdatedResourceType:
+			var contentUpdated models.ContentUpdatedResource
+			err = json.Unmarshal(fileBytes, &contentUpdated)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to unmarshal ContentUpdatedResource JSON")
+			}
+			resource = contentUpdated
+		case searchContentUpdatedResourceType:
+			var searchContentUpdated models.SearchContentUpdatedResource
+			err = json.Unmarshal(fileBytes, &searchContentUpdated)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to unmarshal SearchContentUpdatedResource JSON")
+			}
+			resource = searchContentUpdated
 		}
 
 		items = append(items, resource)

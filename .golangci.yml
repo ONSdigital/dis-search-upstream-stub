@@ -84,6 +84,7 @@ issues:
         - errcheck
         - dupl
         - gosec
+        - gocritic
         - revive
     # Allow dot import in test files for goconvey
     - path: _test.go
