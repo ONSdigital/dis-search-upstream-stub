@@ -20,8 +20,8 @@ const (
 	serviceName          = "dis-search-upstream-stub"
 	KafkaTLSProtocolFlag = "TLS"
 	// Default values for message counts
-	defaultLegacyMessages = 1
-	defaultNewMessages    = 100
+	defaultLegacyMessages = 1000
+	defaultNewMessages    = 20
 )
 
 func sendMessageToKafka(producer *kafka.Producer, item models.Resource, wg *sync.WaitGroup) {
@@ -29,15 +29,18 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, wg *sync
 
 	var messageBytes []byte
 	var err error
+	var eventType string
 
 	// Marshal the resource to Kafka message format based on the topic type
 	switch r := item.(type) {
 	case models.ContentUpdatedResource:
 		// Marshal for the legacy topic (ContentPublishedEvent)
 		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
+		eventType = "ContentPublishedEvent"
 	case models.SearchContentUpdatedResource:
 		// Marshal for the new topic (SearchContentUpdateEvent)
 		messageBytes, err = schema.SearchContentUpdateEvent.Marshal(r)
+		eventType = "SearchContentUpdateEvent"
 	default:
 		log.Error(context.Background(), "unsupported resource type", fmt.Errorf("resource type: %v", item))
 		return
@@ -55,7 +58,10 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, wg *sync
 
 	// Send message to Kafka
 	producer.Channels().Output <- kafkaMessage
-	log.Info(context.Background(), "resource sent to Kafka", log.Data{"item": item})
+	log.Info(context.Background(), "resource sent to Kafka", log.Data{
+		"item":       item,
+		"event_type": eventType,
+	})
 }
 
 func main() {
@@ -74,6 +80,8 @@ func main() {
 		log.Error(ctx, "error getting config", err)
 		os.Exit(1)
 	}
+
+	log.Info(ctx, "Script config", log.Data{"cfg": cfg})
 
 	// Create Kafka Producers for both topics
 	legacyTopicConfig := &kafka.ProducerConfig{

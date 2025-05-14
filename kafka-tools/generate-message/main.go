@@ -138,5 +138,4 @@ func main() {
 	log.Info(context.Background(), "message sent to Kafka", log.Data{"message": string(messageBytes)})
 
 	log.Info(context.Background(), "resource sent to Kafka", log.Data{"item": selectedItem})
-
 }

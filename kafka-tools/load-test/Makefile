@@ -7,7 +7,7 @@ ENV?=sandbox
 SUBNET?=publishing
 TIMEOUT?=30s
 
-host_num?=publishing 1
+host_num?=publishing 3
 host_bin=bin-$(APP)
 
 GOOS?=$(shell go env GOOS)
@@ -19,9 +19,9 @@ BUILD_SCRIPT=$(BUILD_ARCH)/$(APP).sh
 
 DP_CONFIGS?=../../../dp-configs
 
-SECRETS_APP?=dp-search-data-extractor
+SECRETS_APP?=dis-search-upstream-stub
 
-MESSAGE_COUNT_LEGACY ?= 10
+MESSAGE_COUNT_LEGACY ?= 100
 MESSAGE_COUNT_NEW ?= 10
 
 # Default target
