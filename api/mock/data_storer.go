@@ -5,11 +5,10 @@ package mock
 
 import (
 	"context"
-	"sync"
-
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
+	"sync"
 )
 
 // Ensure, that DataStorerMock does implement api.DataStorer.
@@ -22,7 +21,7 @@ var _ api.DataStorer = &DataStorerMock{}
 //
 //		// make and configure a mocked api.DataStorer
 //		mockedDataStorer := &DataStorerMock{
-//			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+//			GetResourcesFunc: func(ctx context.Context, typeParam string, options data.Options) (*models.Resources, error) {
 //				panic("mock out the GetResources method")
 //			},
 //		}
@@ -33,7 +32,7 @@ var _ api.DataStorer = &DataStorerMock{}
 //	}
 type DataStorerMock struct {
 	// GetResourcesFunc mocks the GetResources method.
-	GetResourcesFunc func(ctx context.Context, options data.Options) (*models.Resources, error)
+	GetResourcesFunc func(ctx context.Context, typeParam string, options data.Options) (*models.Resources, error)
 
 	// calls tracks calls to the methods.
 	calls struct {
@@ -41,6 +40,8 @@ type DataStorerMock struct {
 		GetResources []struct {
 			// Ctx is the ctx argument value.
 			Ctx context.Context
+			// TypeParam is the typeParam argument value.
+			TypeParam string
 			// Options is the options argument value.
 			Options data.Options
 		}
@@ -49,21 +50,23 @@ type DataStorerMock struct {
 }
 
 // GetResources calls GetResourcesFunc.
-func (mock *DataStorerMock) GetResources(ctx context.Context, options data.Options) (*models.Resources, error) {
+func (mock *DataStorerMock) GetResources(ctx context.Context, typeParam string, options data.Options) (*models.Resources, error) {
 	if mock.GetResourcesFunc == nil {
 		panic("DataStorerMock.GetResourcesFunc: method is nil but DataStorer.GetResources was just called")
 	}
 	callInfo := struct {
-		Ctx     context.Context
-		Options data.Options
+		Ctx       context.Context
+		TypeParam string
+		Options   data.Options
 	}{
-		Ctx:     ctx,
-		Options: options,
+		Ctx:       ctx,
+		TypeParam: typeParam,
+		Options:   options,
 	}
 	mock.lockGetResources.Lock()
 	mock.calls.GetResources = append(mock.calls.GetResources, callInfo)
 	mock.lockGetResources.Unlock()
-	return mock.GetResourcesFunc(ctx, options)
+	return mock.GetResourcesFunc(ctx, typeParam, options)
 }
 
 // GetResourcesCalls gets all the calls that were made to GetResources.
@@ -71,12 +74,14 @@ func (mock *DataStorerMock) GetResources(ctx context.Context, options data.Optio
 //
 //	len(mockedDataStorer.GetResourcesCalls())
 func (mock *DataStorerMock) GetResourcesCalls() []struct {
-	Ctx     context.Context
-	Options data.Options
+	Ctx       context.Context
+	TypeParam string
+	Options   data.Options
 } {
 	var calls []struct {
-		Ctx     context.Context
-		Options data.Options
+		Ctx       context.Context
+		TypeParam string
+		Options   data.Options
 	}
 	mock.lockGetResources.RLock()
 	calls = mock.calls.GetResources

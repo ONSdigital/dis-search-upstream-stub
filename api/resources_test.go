@@ -31,7 +31,7 @@ const (
 
 // expectedStandardResource returns a release resource that can be used to define and test expected values within it
 func expectedStandardResource(uri string) models.Resource {
-	standardResource := models.Resource{
+	standardResource := models.SearchContentUpdatedResource{
 		URI:             uri,
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
@@ -55,7 +55,7 @@ func expectedStandardResource(uri string) models.Resource {
 
 // expectedReleaseResource returns a release resource that can be used to define and test expected values within it
 func expectedReleaseResource(uri string) models.Resource {
-	releaseResource := models.Resource{
+	releaseResource := models.SearchContentUpdatedResource{
 		URI:             uri,
 		URIOld:          "/an/old/uri",
 		ContentType:     "api_dataset_landing_page",
@@ -117,7 +117,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 	}
 
 	dataStorerMock := &apiMock.DataStorerMock{
-		GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+		GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 			resources := expectedResources(cfg.DefaultLimit, cfg.DefaultOffset)
 			return &resources, nil
 		},
@@ -139,17 +139,24 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					t.Errorf("failed to read payload with io.ReadAll, error: %v", err)
 				}
 
+				// Log the raw response payload for debugging
+				t.Log("Response payload:", string(payload))
+
+				// Unmarshal the JSON response into models.Resources
 				resourcesReturned := models.Resources{}
 				err = json.Unmarshal(payload, &resourcesReturned)
 				So(err, ShouldBeNil)
 
-				expectedResource1 := expectedStandardResource("/a/uri")
-				expectedResource2 := expectedReleaseResource("/another/uri")
+				// Check the length of the items slice
+				t.Log("Items length:", len(resourcesReturned.Items))
+
+				expectedResource1 := expectedStandardResource("/a/uri").(models.SearchContentUpdatedResource)
+				expectedResource2 := expectedReleaseResource("/another/uri").(models.SearchContentUpdatedResource)
 
 				Convey("And the returned list should contain expected resources", func() {
 					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 2)
-					returnedResource1 := returnedResourceList[0]
+					returnedResource1 := returnedResourceList[0].(models.SearchContentUpdatedResource)
 					So(returnedResource1.URI, ShouldEqual, expectedResource1.URI)
 					So(returnedResource1.URIOld, ShouldEqual, expectedResource1.URIOld)
 					So(returnedResource1.ContentType, ShouldEqual, expectedResource1.ContentType)
@@ -164,7 +171,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 					So(returnedResource1.Language, ShouldEqual, expectedResource1.Language)
 					So(returnedResource1.Survey, ShouldEqual, expectedResource1.Survey)
 					So(returnedResource1.CanonicalTopic, ShouldEqual, expectedResource1.CanonicalTopic)
-					returnedResource2 := returnedResourceList[1]
+					returnedResource2 := returnedResourceList[1].(models.SearchContentUpdatedResource)
 					So(returnedResource2.URIOld, ShouldEqual, expectedResource2.URIOld)
 					So(returnedResource2.ContentType, ShouldEqual, expectedResource2.ContentType)
 					So(returnedResource2.CDID, ShouldEqual, expectedResource2.CDID)
@@ -193,7 +200,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 		validLimit := 20
 
 		customValidPaginationDataStore := &apiMock.DataStorerMock{
-			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+			GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 				resources := expectedResources(validLimit, validOffset)
 				return &resources, nil
 			},
@@ -219,12 +226,12 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 				err = json.Unmarshal(payload, &resourcesReturned)
 				So(err, ShouldBeNil)
 
-				expectedResource := expectedReleaseResource("/another/uri")
+				expectedResource := expectedReleaseResource("/another/uri").(models.SearchContentUpdatedResource)
 
 				Convey("And the returned list should contain the expected resource", func() {
 					returnedResourceList := resourcesReturned.Items
 					So(returnedResourceList, ShouldHaveLength, 1)
-					returnedResource := returnedResourceList[0]
+					returnedResource := returnedResourceList[0].(models.SearchContentUpdatedResource)
 					So(returnedResource.URI, ShouldEqual, expectedResource.URI)
 					So(returnedResource.URIOld, ShouldEqual, expectedResource.URIOld)
 					So(returnedResource.ContentType, ShouldEqual, expectedResource.ContentType)
@@ -253,7 +260,7 @@ func TestGetResourcesHandlerSuccess(t *testing.T) {
 		greaterOffset := 10
 
 		greaterOffsetDataStore := &apiMock.DataStorerMock{
-			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+			GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 				resources := expectedResources(cfg.DefaultLimit, greaterOffset)
 				return &resources, nil
 			},
@@ -298,7 +305,7 @@ func TestGetResourcesHandlerWithEmptyResourceStoreSuccess(t *testing.T) {
 
 	Convey("Given a Search Upstream API that returns an empty list of resources", t, func() {
 		dataStorerMock := &apiMock.DataStorerMock{
-			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+			GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 				resources := models.Resources{}
 				return &resources, nil
 			},
@@ -341,7 +348,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 	}
 
 	dataStorerMock := &apiMock.DataStorerMock{
-		GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+		GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 			resources := expectedResources(options.Limit, options.Offset)
 			return &resources, err
 		},
@@ -435,7 +442,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 		greaterLimit := 1001
 
 		greaterLimitDataStore := &apiMock.DataStorerMock{
-			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+			GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 				resources := expectedResources(greaterLimit, cfg.DefaultOffset)
 				return &resources, nil
 			},
@@ -459,7 +466,7 @@ func TestGetResourcesHandlerFail(t *testing.T) {
 
 	Convey("Given a Search Upstream API that failed to connect to the Data Store", t, func() {
 		dataStorerMock := &apiMock.DataStorerMock{
-			GetResourcesFunc: func(ctx context.Context, options data.Options) (*models.Resources, error) {
+			GetResourcesFunc: func(ctx context.Context, resourceType string, options data.Options) (*models.Resources, error) {
 				return nil, errors.New("something went wrong in the server")
 			},
 		}

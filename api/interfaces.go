@@ -11,7 +11,7 @@ import (
 
 // DataStorer is an interface for a type that can store and retrieve resources
 type DataStorer interface {
-	GetResources(ctx context.Context, options data.Options) (resource *models.Resources, err error)
+	GetResources(ctx context.Context, typeParam string, options data.Options) (resource *models.Resources, err error)
 }
 
 // Paginator defines the required methods from the paginator package

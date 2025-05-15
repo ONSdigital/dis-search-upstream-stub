@@ -40,8 +40,10 @@ func GetResources(api *API) http.HandlerFunc {
 		}
 
 		// get resources from datastore
-		resources, err := api.DataStore.GetResources(ctx, options)
+		typeParam := req.URL.Query().Get(ParamType)
+		resources, err := api.DataStore.GetResources(ctx, typeParam, options)
 		if err != nil {
+			logData["type_parameter"] = typeParam
 			logData["options"] = options
 			log.Error(ctx, "getting list of resources failed", err, logData)
 			http.Error(w, serverErrorMessage, http.StatusInternalServerError)
