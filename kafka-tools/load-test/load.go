@@ -20,8 +20,8 @@ const (
 	serviceName          = "dis-search-upstream-stub"
 	KafkaTLSProtocolFlag = "TLS"
 	// Default values for message counts
-	defaultLegacyMessages = 1000
-	defaultNewMessages    = 20
+	defaultLegacyMessages = 6000
+	defaultNewMessages    = 100
 )
 
 func sendMessageToKafka(producer *kafka.Producer, item models.Resource, wg *sync.WaitGroup) {

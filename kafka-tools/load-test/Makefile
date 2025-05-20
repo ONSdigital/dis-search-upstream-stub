@@ -21,8 +21,8 @@ DP_CONFIGS?=../../../dp-configs
 
 SECRETS_APP?=dis-search-upstream-stub
 
-MESSAGE_COUNT_LEGACY ?= 100
-MESSAGE_COUNT_NEW ?= 10
+MESSAGE_COUNT_LEGACY ?= 6000
+MESSAGE_COUNT_NEW ?= 100
 
 # Default target
 .PHONY: all
@@ -37,7 +37,7 @@ pre-build:
 # Build target
 .PHONY: build
 build: pre-build
-	go build -o $(BUILD_ARCH)/$(APP) load.go
+	GOOS=linux GOARCH=amd64 go build -o $(BUILD_ARCH)/$(APP) load.go
 
 # Script generation
 .PHONY: script
@@ -54,7 +54,7 @@ env-vars:
 
 # Deploy target
 .PHONY: deploy
-deploy: build script
+deploy: script build
 	dp scp $(ENV) $(host_num) -r -- $(BUILD_ARCH) $(host_bin)
 	dp ssh $(ENV) $(host_num) -- 'bash -c "cd $(host_bin) && source ./$(APP).sh && ./$(APP)"'
 
