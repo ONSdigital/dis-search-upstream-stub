@@ -1,6 +1,6 @@
-# dis-search-upstream-stub Deployment
+# Load Test Script
 
-This repository contains the `Makefile` to build and deploy the `dis-search-upstream-stub` application.
+This module contains the `Makefile` and a `mass-produce` script to load test our search pipeline and examine its performance in including kafka.
 
 ## Default Variables
 

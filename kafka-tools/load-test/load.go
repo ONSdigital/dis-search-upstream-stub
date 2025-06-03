@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"os"
 	"sync"
-	"time"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
@@ -84,51 +83,21 @@ func main() {
 	log.Info(ctx, "Script config", log.Data{"cfg": cfg})
 
 	// Create Kafka Producers for both topics
-	legacyTopicConfig := &kafka.ProducerConfig{
-		BrokerAddrs:     cfg.Kafka.Addr,
-		Topic:           cfg.Kafka.ContentUpdatedTopic, // Legacy topic
-		KafkaVersion:    &cfg.Kafka.Version,
-		MaxMessageBytes: &cfg.Kafka.MaxBytes,
-	}
-	if cfg.Kafka.SecProtocol == config.KafkaTLSProtocol {
-		legacyTopicConfig.SecurityConfig = kafka.GetSecurityConfig(
-			cfg.Kafka.SecCACerts,
-			cfg.Kafka.SecClientCert,
-			cfg.Kafka.SecClientKey,
-			cfg.Kafka.SecSkipVerify,
-		)
-	}
-	legacyKafkaProducer, err := kafka.NewProducer(ctx, legacyTopicConfig)
+	legacyKafkaProducer, err := createKafkaProducer(ctx, cfg, cfg.Kafka.ContentUpdatedTopic)
 	if err != nil {
-		log.Error(ctx, "fatal error trying to create kafka producer for legacy topic", err)
+		log.Error(ctx, "failed to create kafka producer for legacy topic", err)
 		os.Exit(1)
 	}
 
-	newTopicConfig := &kafka.ProducerConfig{
-		BrokerAddrs:     cfg.Kafka.Addr,
-		Topic:           cfg.Kafka.SearchContentUpdatedTopic, // New topic
-		KafkaVersion:    &cfg.Kafka.Version,
-		MaxMessageBytes: &cfg.Kafka.MaxBytes,
-	}
-	if cfg.Kafka.SecProtocol == config.KafkaTLSProtocol {
-		newTopicConfig.SecurityConfig = kafka.GetSecurityConfig(
-			cfg.Kafka.SecCACerts,
-			cfg.Kafka.SecClientCert,
-			cfg.Kafka.SecClientKey,
-			cfg.Kafka.SecSkipVerify,
-		)
-	}
-	newKafkaProducer, err := kafka.NewProducer(ctx, newTopicConfig)
+	newKafkaProducer, err := createKafkaProducer(ctx, cfg, cfg.Kafka.SearchContentUpdatedTopic)
 	if err != nil {
-		log.Error(ctx, "fatal error trying to create kafka producer for new topic", err)
+		log.Error(ctx, "failed to create kafka producer for new topic", err)
 		os.Exit(1)
 	}
 
 	// kafka error logging go-routines
 	legacyKafkaProducer.LogErrors(ctx)
 	newKafkaProducer.LogErrors(ctx)
-
-	time.Sleep(500 * time.Millisecond)
 
 	// Initialize ResourceStore
 	resourceStore := &data.ResourceStore{}
@@ -184,7 +153,32 @@ func main() {
 
 	// Wait for all messages to be processed
 	wg.Wait()
+}
 
-	// Allow some time for messages to be processed before exit
-	time.Sleep(5 * time.Second)
+func createKafkaProducer(ctx context.Context, cfg *config.Config, topic string) (*kafka.Producer, error) {
+	// Create Kafka producer configuration
+	producerConfig := &kafka.ProducerConfig{
+		BrokerAddrs:     cfg.Kafka.Addr,
+		Topic:           topic,
+		KafkaVersion:    &cfg.Kafka.Version,
+		MaxMessageBytes: &cfg.Kafka.MaxBytes,
+	}
+
+	// Set security config if needed
+	if cfg.Kafka.SecProtocol == config.KafkaTLSProtocol {
+		producerConfig.SecurityConfig = kafka.GetSecurityConfig(
+			cfg.Kafka.SecCACerts,
+			cfg.Kafka.SecClientCert,
+			cfg.Kafka.SecClientKey,
+			cfg.Kafka.SecSkipVerify,
+		)
+	}
+
+	// Create and return the Kafka producer
+	producer, err := kafka.NewProducer(ctx, producerConfig)
+	if err != nil {
+		return nil, fmt.Errorf("fatal error trying to create kafka producer for topic %s: %w", topic, err)
+	}
+
+	return producer, nil
 }

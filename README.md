@@ -34,6 +34,10 @@ To run `make validate-specification` you require Node v20.x and to install @redo
 | OTEL_BATCH_TIMEOUT           | 5s                       | Timeout for OpenTelemetry                                                                                          |
 | OTEL_ENABLED                 | false                    | Feature flag to enable OpenTelemetry                                                                               |
 
+
+### Note:
+The `type` parameter in the resource API is optional for the upstream service and is intended for internal team use. It allows specifying the resource type as either "old" - `content-updated` or "new" - `search-content-updated` By default, it returns "new" if not specified.
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.
