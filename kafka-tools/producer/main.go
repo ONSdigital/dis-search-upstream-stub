@@ -14,9 +14,7 @@ import (
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
-const (
-	serviceName = "dis-search-upstream-stub"
-)
+const serviceName = "dis-search-upstream-stub"
 
 func main() {
 	log.Namespace = serviceName
@@ -29,43 +27,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Create Kafka Producer
-	pConfig := &kafka.ProducerConfig{
-		BrokerAddrs:     cfg.Kafka.Addr,
-		Topic:           cfg.Kafka.SearchContentUpdatedTopic,
-		KafkaVersion:    &cfg.Kafka.Version,
-		MaxMessageBytes: &cfg.Kafka.MaxBytes,
-	}
-	if cfg.Kafka.SecProtocol == config.KafkaTLSProtocol {
-		pConfig.SecurityConfig = kafka.GetSecurityConfig(
-			cfg.Kafka.SecCACerts,
-			cfg.Kafka.SecClientCert,
-			cfg.Kafka.SecClientKey,
-			cfg.Kafka.SecSkipVerify,
-		)
-	}
-	kafkaProducer, err := kafka.NewProducer(ctx, pConfig)
-	if err != nil {
-		log.Error(ctx, "fatal error trying to create kafka producer", err, log.Data{"topic": cfg.Kafka.ContentUpdatedTopic})
-		os.Exit(1)
-	}
-
-	// kafka error logging go-routines
-	kafkaProducer.LogErrors(ctx)
-
-	time.Sleep(500 * time.Millisecond)
-
-	// Initialize ResourceStore
-	resourceStore := &data.ResourceStore{}
-
-	// Define Options for fetching resources
-	options := data.Options{
-		Offset: 0,
-		Limit:  100,
-	}
-
 	// Call GetResources to fetch resources
-	resources, err := resourceStore.GetResources(ctx, "", options)
+	resourceStore := &data.ResourceStore{}
+	resources, err := resourceStore.GetResources(ctx, "", data.Options{Offset: 0, Limit: 100})
 	if err != nil {
 		log.Error(ctx, "failed to retrieve resources", err)
 		os.Exit(1)
@@ -91,28 +55,31 @@ func main() {
 	var selection int
 	for {
 		fmt.Print("Enter the number of the resource to send: ")
-		_, err := fmt.Scanln(&selection)
-		if err != nil || selection < 1 || selection > len(resources.Items) { // Adjust range for 1-based indexing
+		if _, err := fmt.Scanln(&selection); err != nil || selection < 1 || selection > len(resources.Items) {
 			fmt.Println("Invalid selection. Please try again.")
 			continue
 		}
 		break
 	}
+	selectedItem := resources.Items[selection-1]
 
-	// Get the selected item (adjust for 1-based indexing)
-	selectedItem := &resources.Items[selection-1]
-
-	var messageBytes []byte
-	var eventType string
+	// Decide topic + marshal payload
+	var (
+		topic        string
+		messageBytes []byte
+		eventType    string
+	)
 
 	// Marshal the resource to Kafka message format based on the topic type
-	switch r := (*selectedItem).(type) {
+	switch r := selectedItem.(type) {
 	case models.ContentUpdatedResource:
 		// Marshal for the legacy topic (ContentPublishedEvent)
+		topic = cfg.Kafka.ContentUpdatedTopic
 		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
 		eventType = "ContentPublishedEvent"
 	case models.SearchContentUpdatedResource:
 		// Marshal for the new topic (SearchContentUpdateEvent)
+		topic = cfg.Kafka.SearchContentUpdatedTopic
 		messageBytes, err = schema.SearchContentUpdateEvent.Marshal(r)
 		eventType = "SearchContentUpdateEvent"
 	default:
@@ -121,19 +88,53 @@ func main() {
 	}
 
 	if err != nil {
-		log.Error(context.Background(), "update event error", err)
-		return
+		log.Error(ctx, "failed to marshal event", err, log.Data{"event_type": eventType})
+		os.Exit(1)
 	}
 
-	// Create a Kafka BytesMessage
-	kafkaMessage := kafka.BytesMessage{
-		Value: messageBytes,
+	// Build a producer for the chosen topic
+	producer, err := newProducerForTopic(ctx, cfg.Kafka, topic)
+	if err != nil {
+		log.Error(ctx, "fatal error creating kafka producer", err, log.Data{"topic": topic})
+		os.Exit(1)
+	}
+	defer func() {
+		shutdownCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		if cerr := producer.Close(shutdownCtx); cerr != nil {
+			log.Error(ctx, "failed to close kafka producer", cerr)
+		}
+	}()
+
+	producer.LogErrors(ctx)
+
+	// Initialise and send
+	if err := producer.Initialise(ctx); err != nil {
+		log.Error(ctx, "failed to initialise kafka producer", err)
 	}
 
-	// Send message to Kafka
-	kafkaProducer.Channels().Output <- kafkaMessage
-	log.Info(context.Background(), "resource sent to Kafka", log.Data{
-		"item":       selectedItem,
+	producer.Channels().Output <- kafka.BytesMessage{Value: messageBytes}
+
+	log.Info(ctx, "resource sent to Kafka", log.Data{
 		"event_type": eventType,
+		"topic":      topic,
 	})
+}
+
+func newProducerForTopic(ctx context.Context, kcfg *config.Kafka, topic string) (kafka.IProducer, error) {
+	pcfg := &kafka.ProducerConfig{
+		BrokerAddrs:     kcfg.Addr,
+		Topic:           topic,
+		KafkaVersion:    &kcfg.Version,
+		MaxMessageBytes: &kcfg.MaxBytes,
+	}
+	if kcfg.SecProtocol == config.KafkaTLSProtocol {
+		pcfg.SecurityConfig = kafka.GetSecurityConfig(
+			kcfg.SecCACerts,
+			kcfg.SecClientCert,
+			kcfg.SecClientKey,
+			kcfg.SecSkipVerify,
+		)
+	}
+	return kafka.NewProducer(ctx, pcfg)
 }
