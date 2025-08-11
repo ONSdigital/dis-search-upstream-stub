@@ -92,6 +92,8 @@ type SearchContentUpdatedResource struct {
 	ReleaseDate     string   `avro:"release_date" json:"release_date"`
 	Summary         string   `avro:"summary" json:"summary"`
 	Survey          string   `avro:"survey" json:"survey"`
+	SearchIndex     string   `avro:"search_index" json:"search_index"`
+	TraceID         string   `avro:"trace_id" json:"trace_id"`
 	Title           string   `avro:"title" json:"title"`
 	Topics          []string `avro:"topics" json:"topics"`
 	URI             string   `avro:"uri" json:"uri"`
