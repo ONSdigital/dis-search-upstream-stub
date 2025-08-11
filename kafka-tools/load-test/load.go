@@ -20,19 +20,12 @@ const (
 	serviceName          = "dis-search-upstream-stub"
 	KafkaTLSProtocolFlag = "TLS"
 	// Default values for message counts
-	defaultLegacyMessages = 0
-	defaultNewMessages    = 500
+	defaultLegacySearchMessages  = 0
+	defaultSearchContentMessages = 500
 )
 
 func makeStubTraceID(loopIndex int) string {
 	return fmt.Sprintf("stub-%d-%d", time.Now().UnixMilli(), loopIndex)
-}
-
-func ensureTraceID(existing string, loopIndex int) string {
-	if existing != "" {
-		return existing
-	}
-	return makeStubTraceID(loopIndex)
 }
 
 func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopIndex int, wg *sync.WaitGroup) {
@@ -49,13 +42,17 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopInde
 	switch r := item.(type) {
 	case models.ContentUpdatedResource:
 		// Marshal for the legacy topic (ContentPublishedEvent)
-		r.TraceID = ensureTraceID(r.TraceID, loopIndex)
+		if r.TraceID != "" {
+			r.TraceID = makeStubTraceID(loopIndex)
+		}
 		traceID = r.TraceID
 		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
 		eventType = "ContentPublishedEvent"
 	case models.SearchContentUpdatedResource:
 		// Marshal for the new topic (SearchContentUpdateEvent)
-		r.TraceID = ensureTraceID(r.TraceID, loopIndex)
+		if r.TraceID != "" {
+			r.TraceID = makeStubTraceID(loopIndex)
+		}
 		traceID = r.TraceID
 		messageBytes, err = schema.SearchContentUpdateEvent.Marshal(r)
 		eventType = "SearchContentUpdateEvent"
@@ -84,8 +81,8 @@ func main() {
 
 	// Define flags for MESSAGE_COUNT_LEGACY and MESSAGE_COUNT_NEW
 	var messageCountLegacy, messageCountNew int
-	flag.IntVar(&messageCountLegacy, "legacy", defaultLegacyMessages, "Number of messages for the legacy topic (default 10)")
-	flag.IntVar(&messageCountNew, "new", defaultNewMessages, "Number of messages for the new topic (default 10)")
+	flag.IntVar(&messageCountLegacy, "legacy", defaultLegacySearchMessages, "Number of messages for the legacy topic (default 10)")
+	flag.IntVar(&messageCountNew, "new", defaultSearchContentMessages, "Number of messages for the new topic (default 10)")
 	flag.Parse()
 
 	// Get Config
