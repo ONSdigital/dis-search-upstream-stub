@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
@@ -19,25 +20,43 @@ const (
 	serviceName          = "dis-search-upstream-stub"
 	KafkaTLSProtocolFlag = "TLS"
 	// Default values for message counts
-	defaultLegacyMessages = 6000
-	defaultNewMessages    = 100
+	defaultLegacyMessages = 0
+	defaultNewMessages    = 500
 )
 
-func sendMessageToKafka(producer *kafka.Producer, item models.Resource, wg *sync.WaitGroup) {
+func makeStubTraceID(loopIndex int) string {
+	return fmt.Sprintf("stub-%d-%d", time.Now().UnixMilli(), loopIndex)
+}
+
+func ensureTraceID(existing string, loopIndex int) string {
+	if existing != "" {
+		return existing
+	}
+	return makeStubTraceID(loopIndex)
+}
+
+func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopIndex int, wg *sync.WaitGroup) {
 	defer wg.Done()
 
-	var messageBytes []byte
-	var err error
-	var eventType string
+	var (
+		messageBytes []byte
+		err          error
+		eventType    string
+		traceID      string
+	)
 
 	// Marshal the resource to Kafka message format based on the topic type
 	switch r := item.(type) {
 	case models.ContentUpdatedResource:
 		// Marshal for the legacy topic (ContentPublishedEvent)
+		r.TraceID = ensureTraceID(r.TraceID, loopIndex)
+		traceID = r.TraceID
 		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
 		eventType = "ContentPublishedEvent"
 	case models.SearchContentUpdatedResource:
 		// Marshal for the new topic (SearchContentUpdateEvent)
+		r.TraceID = ensureTraceID(r.TraceID, loopIndex)
+		traceID = r.TraceID
 		messageBytes, err = schema.SearchContentUpdateEvent.Marshal(r)
 		eventType = "SearchContentUpdateEvent"
 	default:
@@ -46,20 +65,16 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, wg *sync
 	}
 
 	if err != nil {
-		log.Error(context.Background(), "update event error", err)
+		log.Error(context.Background(), "update event marshal error", err)
 		return
 	}
 
-	// Create a Kafka BytesMessage
-	kafkaMessage := kafka.BytesMessage{
-		Value: messageBytes,
-	}
-
 	// Send message to Kafka
-	producer.Channels().Output <- kafkaMessage
+	producer.Channels().Output <- kafka.BytesMessage{Value: messageBytes}
 	log.Info(context.Background(), "resource sent to Kafka", log.Data{
-		"item":       item,
 		"event_type": eventType,
+		"trace_id":   traceID,
+		"item":       item,
 	})
 }
 
@@ -99,6 +114,17 @@ func main() {
 	legacyKafkaProducer.LogErrors(ctx)
 	newKafkaProducer.LogErrors(ctx)
 
+	// Initialise producers and wait until ready
+	if err := legacyKafkaProducer.Initialise(ctx); err != nil {
+		log.Error(ctx, "failed to initialise legacy kafka producer", err)
+		os.Exit(1)
+	}
+	if err := newKafkaProducer.Initialise(ctx); err != nil {
+		log.Error(ctx, "failed to initialise new kafka producer", err)
+		os.Exit(1)
+	}
+	log.Info(ctx, "kafka producers initialised", log.Data{})
+
 	// Initialize ResourceStore
 	resourceStore := &data.ResourceStore{}
 
@@ -123,7 +149,7 @@ func main() {
 	}
 
 	// Validate passed message count values
-	if messageCountLegacy <= 0 || messageCountNew <= 0 {
+	if messageCountLegacy < 0 || messageCountNew < 0 {
 		log.Error(ctx, "invalid message counts for topics", nil)
 		os.Exit(1)
 	}
@@ -138,7 +164,7 @@ func main() {
 
 		// Send message to legacy topic concurrently
 		wg.Add(1)
-		go sendMessageToKafka(legacyKafkaProducer, *item, &wg)
+		go sendMessageToKafka(legacyKafkaProducer, *item, i, &wg)
 	}
 
 	// Send messages to new topic concurrently
@@ -148,11 +174,21 @@ func main() {
 
 		// Send message to new topic concurrently
 		wg.Add(1)
-		go sendMessageToKafka(newKafkaProducer, *item, &wg)
+		go sendMessageToKafka(newKafkaProducer, *item, i, &wg)
 	}
 
 	// Wait for all messages to be processed
 	wg.Wait()
+
+	// Close producers to flush and release resources
+	if err := legacyKafkaProducer.Close(ctx); err != nil {
+		log.Error(ctx, "error closing legacy kafka producer", err)
+	}
+	if err := newKafkaProducer.Close(ctx); err != nil {
+		log.Error(ctx, "error closing new kafka producer", err)
+	}
+
+	log.Info(ctx, "done sending messages", log.Data{})
 }
 
 func createKafkaProducer(ctx context.Context, cfg *config.Config, topic string) (*kafka.Producer, error) {
