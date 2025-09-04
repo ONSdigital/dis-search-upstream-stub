@@ -10,7 +10,7 @@ type Resource interface {
 	GetResourceType() string
 }
 
-// Custom unmarshalling for Resources
+// UnmarshalJSON provides custom unmarshalling for Resources
 func (r *Resources) UnmarshalJSON(data []byte) error {
 	// Define a temporary structure for unmarshalling
 	var aux struct {
@@ -92,7 +92,6 @@ type SearchContentUpdatedResource struct {
 	ReleaseDate     string   `avro:"release_date" json:"release_date"`
 	Summary         string   `avro:"summary" json:"summary"`
 	Survey          string   `avro:"survey" json:"survey"`
-	SearchIndex     string   `avro:"search_index" json:"search_index"`
 	TraceID         string   `avro:"trace_id" json:"trace_id"`
 	Title           string   `avro:"title" json:"title"`
 	Topics          []string `avro:"topics" json:"topics"`
