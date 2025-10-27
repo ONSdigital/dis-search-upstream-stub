@@ -113,3 +113,15 @@ type ReleaseDateDetails struct {
 func (r SearchContentUpdatedResource) GetResourceType() string {
 	return "SearchContentUpdatedResource"
 }
+
+// SearchContentDeletedResource represents event data for search-content-deleted
+type SearchContentDeletedResource struct {
+	URI          string `avro:"uri" json:"uri"`
+	CollectionID string `avro:"collection_id" json:"collection_id"`
+	SearchIndex  string `avro:"search_index" json:"search_index"`
+	TraceID      string `avro:"trace_id" json:"trace_id"`
+}
+
+func (r SearchContentDeletedResource) GetResourceType() string {
+	return "SearchContentDeletedResource"
+}

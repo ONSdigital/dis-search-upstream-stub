@@ -7,56 +7,73 @@ RESET  := $(shell tput -Txterm sgr0)
 # Environment and default values
 SHELL=bash
 APP=dis-search-upstream-stub
+BUILD = build
+
+GOOS=linux
+GOARCH=amd64
 
 # Default environment variables
 ENV?=sandbox
 SUBNET?=publishing
 TIMEOUT?=30s
-
 host_num?=publishing 3
 host_bin=bin-$(APP)
 
-GOOS=linux
-GOARCH=amd64
+DP_CONFIGS?=../../../dp-configs
+SECRETS_APP?=dis-search-upstream-stub
 
-BUILD=build
+# Derived paths
 BUILD_ARCH=$(BUILD)/$(GOOS)-$(GOARCH)
 BUILD_SCRIPT=$(BUILD_ARCH)/$(APP).sh
 
-DP_CONFIGS?=../../../dp-configs
-
-SECRETS_APP?=dis-search-upstream-stub
-
-MESSAGE_COUNT_LEGACY ?= 6000
-MESSAGE_COUNT_NEW ?= 100
+# Default message counts
+NUM_CONTENT_UPDATED ?= 100
+NUM_SEARCH_CONTENT_UPDATED ?= 100
+NUM_SEARCH_CONTENT_DELETED ?= 10
 
 .PHONY: all
-all: clean ## Runs clean, build, deploy, and clean steps in sequence
-	make GOOS=linux GOARCH=amd64 build deploy clean
+all: clean build deploy clean ## Clean, build, deploy, and clean again
 
 .PHONY: pre-build
-pre-build: ## Creates the build directory if it doesn't exist
+pre-build: ## Create the build directory if it doesn't exist
 	mkdir -p $(BUILD_ARCH)
 
 .PHONY: build
-build: pre-build ## Builds the application for the specified GOOS/GOARCH and outputs to the build directory
-	GOOS=linux GOARCH=amd64 go build -o $(BUILD_ARCH)/$(APP) load.go
+build: pre-build ## Build the producer binary for the specified GOOS/GOARCH
+	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -o $(BUILD_ARCH)/$(APP) main.go
 
 .PHONY: script
-script: pre-build ## Generates environment-specific scripts for deployment
+script: pre-build ## Generate environment-specific script for deployment
 	make env-vars > $(BUILD_SCRIPT)
 
 .PHONY: env-vars
-env-vars: ## Exports necessary environment variables and secrets for deployment
+env-vars: ## Export necessary environment variables and secrets for deployment
 	@$(DP_CONFIGS)/scripts/secrets-admin $(ENV) $(SUBNET) $(SECRETS_APP) --export '*'
 	@echo export TIMEOUT="$(TIMEOUT)"
-	@echo export MESSAGE_COUNT_LEGACY="$(MESSAGE_COUNT_LEGACY)"
-	@echo export MESSAGE_COUNT_NEW="$(MESSAGE_COUNT_NEW)"
+	@echo export NUM_CONTENT_UPDATED="$(NUM_CONTENT_UPDATED)"
+	@echo export NUM_SEARCH_CONTENT_UPDATED="$(NUM_SEARCH_CONTENT_UPDATED)"
+	@echo export NUM_SEARCH_CONTENT_DELETED="$(NUM_SEARCH_CONTENT_DELETED)"
 
 .PHONY: deploy
-deploy: script build ## Runs the script, builds the app, and deploys to the specified environment
+deploy: script build ## Deploy the binary and run remotely via dp ssh
 	dp scp $(ENV) $(host_num) -r -- $(BUILD_ARCH) $(host_bin)
-	dp ssh $(ENV) $(host_num) -- 'bash -c "cd $(host_bin) && source ./$(APP).sh && ./$(APP)"'
+	dp ssh $(ENV) $(host_num) -- 'bash -c "cd $(host_bin) && source ./$(APP).sh && \
+		./$(APP) \
+			-num-content-updated=$$NUM_CONTENT_UPDATED \
+			-num-search-content-updated=$$NUM_SEARCH_CONTENT_UPDATED \
+			-num-search-content-deleted=$$NUM_SEARCH_CONTENT_DELETED"'
+
+.PHONY: run
+run: ## Run locally using current Go environment and flag defaults
+	go run load.go \
+		-num-content-updated=$(NUM_CONTENT_UPDATED) \
+		-num-search-content-updated=$(NUM_SEARCH_CONTENT_UPDATED) \
+		-num-search-content-deleted=$(NUM_SEARCH_CONTENT_DELETED)
+
+.PHONY: run-fast
+run-fast: ## Run locally with smaller test counts
+	go run load.go -num-content-updated=1 -num-search-content-updated=1 -num-search-content-deleted=1
+
 
 .PHONY: clean
 clean: clean-deploy clean-build ## Cleans the build and deploy directories

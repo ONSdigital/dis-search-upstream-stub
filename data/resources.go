@@ -13,19 +13,26 @@ import (
 	"github.com/pkg/errors"
 )
 
-//go:embed json_files/search_content_updated/*.json json_files/content_updated/*.json
+//go:embed json_files/search_content_updated/*.json json_files/search_content_deleted/*.json json_files/content_updated/*.json
 var jsonFiles embed.FS
 
 var searchContentUpdatedResourceType = "SearchContentUpdatedResource"
+var searchContentDeletedResourceType = "SearchContentDeletedResource"
 var contentUpdatedResourceType = "ContentUpdatedResource"
 
 // GetResources is the method that satisfies the DataStorer interface
 // It calls the existing GetResourcesWithType with a default resourceType
 func (r *ResourceStore) GetResources(ctx context.Context, typeParam string, options Options) (*models.Resources, error) {
 	// Use a default resourceType (or it could be dynamic based on your use case)
-	resourceType := searchContentUpdatedResourceType
-	if typeParam == "content-updated" {
+	var resourceType string
+
+	switch typeParam {
+	case "content-updated":
 		resourceType = contentUpdatedResourceType
+	case "search-content-deleted":
+		resourceType = searchContentDeletedResourceType
+	default:
+		resourceType = searchContentUpdatedResourceType
 	}
 
 	// Call the existing method with resourceType
@@ -71,6 +78,8 @@ func populateItems(resourceType string) ([]models.Resource, error) {
 		dir = "json_files/content_updated"
 	case searchContentUpdatedResourceType:
 		dir = "json_files/search_content_updated"
+	case searchContentDeletedResourceType:
+		dir = "json_files/search_content_deleted"
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", resourceType)
 	}
@@ -113,6 +122,13 @@ func populateItems(resourceType string) ([]models.Resource, error) {
 				return nil, errors.Wrap(err, "failed to unmarshal SearchContentUpdatedResource JSON")
 			}
 			resource = searchContentUpdated
+		case searchContentDeletedResourceType:
+			var searchContentDeleted models.SearchContentDeletedResource
+			err = json.Unmarshal(fileBytes, &searchContentDeleted)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to unmarshal SearchContentDeletedResource JSON")
+			}
+			resource = searchContentDeleted
 		}
 
 		items = append(items, resource)

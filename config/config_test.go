@@ -33,6 +33,7 @@ func TestConfig(t *testing.T) {
 				So(cfg.Kafka.ContentUpdatedGroup, ShouldEqual, "dis-search-upstream-stub")
 				So(cfg.Kafka.ContentUpdatedTopic, ShouldEqual, "content-updated")
 				So(cfg.Kafka.SearchContentUpdatedTopic, ShouldEqual, "search-content-updated")
+				So(cfg.Kafka.SearchContentDeletedTopic, ShouldEqual, "search-content-deleted")
 				So(cfg.Kafka.Addr, ShouldResemble, []string{"localhost:9092", "localhost:9093", "localhost:9094"})
 				So(cfg.Kafka.Version, ShouldEqual, "1.0.2")
 				So(cfg.Kafka.OffsetOldest, ShouldBeTrue)
