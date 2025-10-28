@@ -97,3 +97,27 @@ help: ## Show help page for list of make targets
 		if (/^[a-zA-Z_-]+:.*?##.*$$/) {printf "    ${YELLOW}%-20s${GREEN}%s${RESET}\n", $$1, $$2} \
 		else if (/^## .*$$/) {printf "  ${CYAN}%s${RESET}\n", substr($$1,4)} \
 		}' $(MAKEFILE_LIST)
+
+
+# Quick perf sweeps for Avro vs JSON
+.PHONY: perf-avro perf-json-updated perf-json-deleted perf-all
+
+perf-avro:
+	go run load.go -num-content-updated=1   -num-search-content-updated=0 -num-search-content-deleted=0
+	go run load.go -num-content-updated=100 -num-search-content-updated=0 -num-search-content-deleted=0
+	go run load.go -num-content-updated=1000 -num-search-content-updated=0 -num-search-content-deleted=0
+	go run load.go -num-content-updated=10000 -num-search-content-updated=0 -num-search-content-deleted=0
+
+perf-json-updated:
+	go run load.go -num-content-updated=0 -num-search-content-updated=1    -num-search-content-deleted=0
+	go run load.go -num-content-updated=0 -num-search-content-updated=100  -num-search-content-deleted=0
+	go run load.go -num-content-updated=0 -num-search-content-updated=1000 -num-search-content-deleted=0
+	go run load.go -num-content-updated=0 -num-search-content-updated=10000 -num-search-content-deleted=0
+
+perf-json-deleted:
+	go run load.go -num-content-updated=0 -num-search-content-updated=0 -num-search-content-deleted=1
+	go run load.go -num-content-updated=0 -num-search-content-updated=0 -num-search-content-deleted=100
+	go run load.go -num-content-updated=0 -num-search-content-updated=0 -num-search-content-deleted=1000
+	go run load.go -num-content-updated=0 -num-search-content-updated=0 -num-search-content-deleted=10000
+
+perf-all: perf-avro perf-json-updated perf-json-deleted

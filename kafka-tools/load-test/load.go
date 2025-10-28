@@ -5,7 +5,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"math"
 	"os"
+	"sort"
 	"sync"
 	"time"
 
@@ -48,7 +50,7 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopInde
 		messageBytes []byte
 		err          error
 		eventType    string
-		traceID      string
+		//traceID      string
 	)
 
 	// Marshal the resource to Kafka message format based on the topic type
@@ -58,15 +60,15 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopInde
 		if r.TraceID == "" {
 			r.TraceID = makeStubTraceID(loopIndex)
 		}
-		traceID = r.TraceID
+		//traceID = r.TraceID
 		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
 		eventType = "ContentPublishedEvent(AVRO)"
 	case models.SearchContentUpdatedResource:
 		// Marshal for the new topic (SearchContentUpdatedEvent)
 		if r.TraceID == "" {
-			r.TraceID = makeStubTraceID(loopIndex)
+			//			r.TraceID = makeStubTraceID(loopIndex)
 		}
-		traceID = r.TraceID
+		//traceID = r.TraceID
 		messageBytes, err = json.Marshal(r)
 		eventType = "SearchContentUpdatedEvent(JSON)"
 	case models.SearchContentDeletedResource:
@@ -74,7 +76,7 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopInde
 		if r.TraceID == "" {
 			r.TraceID = makeStubTraceID(loopIndex)
 		}
-		traceID = r.TraceID
+		//traceID = r.TraceID
 		messageBytes, err = json.Marshal(r)
 		eventType = "SearchContentDeleteEvent(JSON)"
 	default:
@@ -89,11 +91,65 @@ func sendMessageToKafka(producer *kafka.Producer, item models.Resource, loopInde
 
 	// Send message to Kafka
 	producer.Channels().Output <- kafka.BytesMessage{Value: messageBytes}
-	log.Info(context.Background(), "resource sent to Kafka", log.Data{
-		"event_type": eventType,
-		"trace_id":   traceID,
-		"item":       item,
-	})
+	//log.Info(context.Background(), "resource sent to Kafka", log.Data{
+	//	"event_type": eventType,
+	//	"trace_id":   traceID,
+	//	"item":       item,
+	//})
+}
+
+func sendMessageToKafkaTimed(producer *kafka.Producer, item models.Resource, loopIndex int, wg *sync.WaitGroup, rec *latencyRec) {
+	defer wg.Done()
+	t0 := time.Now()
+
+	var (
+		messageBytes []byte
+		err          error
+		eventType    string
+		//traceID      string
+	)
+
+	switch r := item.(type) {
+	case models.ContentUpdatedResource: // Avro
+		if r.TraceID == "" {
+			r.TraceID = makeStubTraceID(loopIndex)
+		}
+		//traceID = r.TraceID
+		messageBytes, err = schema.ContentPublishedEvent.Marshal(r)
+		eventType = "ContentPublishedEvent(Avro)"
+
+	case models.SearchContentUpdatedResource: // JSON
+		if r.TraceID == "" {
+			r.TraceID = makeStubTraceID(loopIndex)
+		}
+		//traceID = r.TraceID
+		messageBytes, err = json.Marshal(r)
+		eventType = "SearchContentUpdatedEvent(JSON)"
+
+	case models.SearchContentDeletedResource: // JSON
+		if r.TraceID == "" {
+			r.TraceID = makeStubTraceID(loopIndex)
+		}
+		//traceID = r.TraceID
+		messageBytes, err = json.Marshal(r)
+		eventType = "SearchContentDeletedEvent(JSON)"
+
+	default:
+		log.Error(context.Background(), "unsupported resource type", fmt.Errorf("resource type: %T", item))
+		return
+	}
+	if err != nil {
+		log.Error(context.Background(), "event marshal error", err, log.Data{"event_type": eventType})
+		return
+	}
+
+	producer.Channels().Output <- kafka.BytesMessage{Value: messageBytes}
+	rec.Add(time.Since(t0))
+
+	//log.Info(context.Background(), "resource sent to Kafka", log.Data{
+	//	"event_type": eventType,
+	//	"trace_id":   traceID,
+	//})
 }
 
 func createKafkaProducer(ctx context.Context, cfg *config.Config, topic string) (*kafka.Producer, error) {
@@ -202,14 +258,14 @@ func main() {
 		os.Exit(1)
 	}
 
-	log.Info(ctx, "Script config", log.Data{"cfg": cfg})
+	// log.Info(ctx, "Script config", log.Data{"cfg": cfg})
 
 	prods, err := buildAndInitProducers(ctx, cfg)
 	if err != nil {
 		log.Error(ctx, "failed to create/initialise producers", err)
 		os.Exit(1)
 	}
-	log.Info(ctx, "kafka producers initialised", log.Data{})
+	// log.Info(ctx, "kafka producers initialised", log.Data{})
 
 	res, err := fetchAllResources(ctx)
 	if err != nil {
@@ -239,30 +295,68 @@ func main() {
 
 	// Create a WaitGroup to wait for all goroutines to finish
 	var wg sync.WaitGroup
+	var recAvro, recUpd, recDel latencyRec
 
-	// Send messages to legacy topic concurrently
-	for i := 0; i < numContentUpdated; i++ {
-		item := &res.contentUpdatedResources.Items[i%len(res.contentUpdatedResources.Items)]
-		wg.Add(1)
-		go sendMessageToKafka(prods.ContentUpdatedProducer, *item, i, &wg)
+	// JSON: search-content-updated
+	wg = sync.WaitGroup{}
+	if numSearchContentUpdated > 0 && len(res.searchContentUpdatedResources.Items) > 0 {
+		recUpd.Start()
+		for i := 0; i < numSearchContentUpdated; i++ {
+			item := &res.searchContentUpdatedResources.Items[i%len(res.searchContentUpdatedResources.Items)]
+			wg.Add(1)
+			go sendMessageToKafkaTimed(prods.SearchContentUpdatedProducer, *item, i, &wg, &recUpd)
+		}
+		wg.Wait()
+		recUpd.End()
 	}
 
-	// Send messages to search-content-updated concurrently
-	for i := 0; i < numSearchContentUpdated; i++ {
-		item := &res.searchContentUpdatedResources.Items[i%len(res.searchContentUpdatedResources.Items)]
-		wg.Add(1)
-		go sendMessageToKafka(prods.SearchContentUpdatedProducer, *item, i, &wg)
+	// JSON: search-content-deleted
+	wg = sync.WaitGroup{}
+	if numSearchContentDeleted > 0 && len(res.searchContentDeletedResources.Items) > 0 {
+		recDel.Start()
+		for i := 0; i < numSearchContentDeleted; i++ {
+			item := &res.searchContentDeletedResources.Items[i%len(res.searchContentDeletedResources.Items)]
+			wg.Add(1)
+			go sendMessageToKafkaTimed(prods.SearchContentDeletedProducer, *item, i, &wg, &recDel)
+		}
+		wg.Wait()
+		recDel.End()
 	}
 
-	// Send messages to search-content-deleted concurrently
-	for i := 0; i < numSearchContentDeleted; i++ {
-		item := &res.searchContentDeletedResources.Items[i%len(res.searchContentDeletedResources.Items)]
-		wg.Add(1)
-		go sendMessageToKafka(prods.SearchContentDeletedProducer, *item, i, &wg)
+	// Avro: content-updated
+	if numContentUpdated > 0 && len(res.contentUpdatedResources.Items) > 0 {
+		recAvro.Start()
+		for i := 0; i < numContentUpdated; i++ {
+			item := &res.contentUpdatedResources.Items[i%len(res.contentUpdatedResources.Items)]
+			wg.Add(1)
+			go sendMessageToKafkaTimed(prods.ContentUpdatedProducer, *item, i, &wg, &recAvro)
+		}
+		wg.Wait()
+		recAvro.End()
 	}
 
-	// Wait for all messages to be processed
-	wg.Wait()
+	// Summaries (only log when we actually ran the loop)
+	if recAvro.start != (time.Time{}) {
+		s := recAvro.summarize(cfg.Kafka.ContentUpdatedTopic, "avro")
+		log.Info(ctx, "perf summary (content-updated / Avro)", log.Data{
+			"count": s.Count, "total_ms": s.TotalMs, "throughput": s.Throughput,
+			"avg_ms": s.AvgMs, "p95_ms": s.P95Ms,
+		})
+	}
+	if recUpd.start != (time.Time{}) {
+		s := recUpd.summarize(cfg.Kafka.SearchContentUpdatedTopic, "json")
+		log.Info(ctx, "perf summary (search-content-updated / JSON)", log.Data{
+			"count": s.Count, "total_ms": s.TotalMs, "throughput": s.Throughput,
+			"avg_ms": s.AvgMs, "p95_ms": s.P95Ms,
+		})
+	}
+	if recDel.start != (time.Time{}) {
+		s := recDel.summarize(cfg.Kafka.SearchContentDeletedTopic, "json")
+		log.Info(ctx, "perf summary (search-content-deleted / JSON)", log.Data{
+			"count": s.Count, "total_ms": s.TotalMs, "throughput": s.Throughput,
+			"avg_ms": s.AvgMs, "p95_ms": s.P95Ms,
+		})
+	}
 
 	// Close producers to flush and release resources
 	if err := prods.ContentUpdatedProducer.Close(ctx); err != nil {
@@ -275,5 +369,80 @@ func main() {
 		log.Error(ctx, "error closing deleted kafka producer", err)
 	}
 
-	log.Info(ctx, "done sending messages", log.Data{})
+	//log.Info(ctx, "done sending messages", log.Data{})
+}
+
+// --- metrics ---
+type latencyRec struct {
+	mu    sync.Mutex
+	s     []time.Duration
+	start time.Time
+	end   time.Time
+}
+
+func (r *latencyRec) Start() { r.start = time.Now() }
+func (r *latencyRec) End()   { r.end = time.Now() }
+func (r *latencyRec) Add(d time.Duration) {
+	r.mu.Lock()
+	r.s = append(r.s, d)
+	r.mu.Unlock()
+}
+
+type perfSummary struct {
+	Topic      string
+	Encoding   string
+	Count      int
+	TotalMs    int64
+	Throughput float64 // msgs/sec
+	AvgMs      float64
+	P95Ms      float64
+}
+
+func (r *latencyRec) summarize(topic, encoding string) perfSummary {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+
+	n := len(r.s)
+	total := r.end.Sub(r.start)
+	if total <= 0 {
+		total = time.Since(r.start)
+	}
+
+	thr := 0.0
+	if total > 0 {
+		thr = float64(n) / total.Seconds()
+	}
+
+	var sum time.Duration
+	for _, d := range r.s {
+		sum += d
+	}
+	avg := 0.0
+	if n > 0 {
+		avg = (sum / time.Duration(n)).Seconds() * 1000.0
+	}
+
+	p95 := 0.0
+	if n > 0 {
+		tmp := append([]time.Duration(nil), r.s...)
+		sort.Slice(tmp, func(i, j int) bool { return tmp[i] < tmp[j] })
+		idx := int(math.Ceil(0.95*float64(n))) - 1
+		if idx < 0 {
+			idx = 0
+		}
+		if idx >= n {
+			idx = n - 1
+		}
+		p95 = tmp[idx].Seconds() * 1000.0
+	}
+
+	return perfSummary{
+		Topic:      topic,
+		Encoding:   encoding,
+		Count:      n,
+		TotalMs:    total.Milliseconds(),
+		Throughput: thr,
+		AvgMs:      avg,
+		P95Ms:      p95,
+	}
 }
