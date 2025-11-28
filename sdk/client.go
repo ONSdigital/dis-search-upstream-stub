@@ -80,8 +80,6 @@ func (cli *Client) GetResources(ctx context.Context, options Options) (*models.R
 		}
 	}
 
-	fmt.Println(&resourcesResponse)
-
 	return &resourcesResponse, nil
 }
 
