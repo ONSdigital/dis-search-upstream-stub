@@ -1,6 +1,6 @@
 package schema
 
-import "github.com/ONSdigital/dp-kafka/v4/avro"
+import "github.com/ONSdigital/dp-kafka/v5/avro"
 
 var searchContentUpdate = `{
   "type": "record",
