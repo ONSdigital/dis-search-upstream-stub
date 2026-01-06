@@ -13,7 +13,7 @@ import (
 	"github.com/ONSdigital/dis-search-upstream-stub/data"
 	"github.com/ONSdigital/dis-search-upstream-stub/models"
 	"github.com/ONSdigital/dis-search-upstream-stub/schema"
-	kafka "github.com/ONSdigital/dp-kafka/v4"
+	kafka "github.com/ONSdigital/dp-kafka/v5"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
