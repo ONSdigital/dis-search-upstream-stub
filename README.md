@@ -29,11 +29,6 @@ To run `make validate-specification` you require Node v20.x and to install @redo
 | GRACEFUL_SHUTDOWN_TIMEOUT    | 5s                       | The graceful shutdown timeout in seconds (`time.Duration` format)                                                  |
 | HEALTHCHECK_INTERVAL         | 30s                      | Time between self-healthchecks (`time.Duration` format)                                                            |
 | HEALTHCHECK_CRITICAL_TIMEOUT | 90s                      | Time to wait until an unhealthy dependent propagates its state to make this app unhealthy (`time.Duration` format) |
-| OTEL_EXPORTER_OTLP_ENDPOINT  | localhost:4317           | Endpoint for OpenTelemetry service                                                                                 |
-| OTEL_SERVICE_NAME            | dis-search-upstream-stub | Label of service for OpenTelemetry service                                                                         |
-| OTEL_BATCH_TIMEOUT           | 5s                       | Timeout for OpenTelemetry                                                                                          |
-| OTEL_ENABLED                 | false                    | Feature flag to enable OpenTelemetry                                                                               |
-
 
 ### Note:
 The `type` parameter in the resource API is optional for the upstream service and is intended for internal team use. It allows specifying the resource type as either "old" - `content-updated` or "new" - `search-content-updated` By default, it returns "new" if not specified.

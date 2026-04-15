@@ -8,7 +8,6 @@ import (
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
 
 	"github.com/ONSdigital/dis-search-upstream-stub/api"
 	"github.com/ONSdigital/dis-search-upstream-stub/config"
@@ -32,12 +31,6 @@ func Run(ctx context.Context, cfg *config.Config, serviceList *ExternalServiceLi
 
 	// Get HTTP Server and ... // TODO: Add any middleware that your service requires
 	r := mux.NewRouter()
-
-	if cfg.OtelEnabled {
-		r.Use(otelmux.Middleware(cfg.OTServiceName))
-
-		// TODO: Any middleware will require 'otelhttp.NewMiddleware(cfg.OTServiceName),' included for Open Telemetry
-	}
 
 	s := serviceList.GetHTTPServer(cfg.BindAddr, r)
 
