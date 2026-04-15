@@ -108,6 +108,9 @@ components:
                 type: string
               previous_date:
                 type: string
+                format: date-time
+                description: Previous release date in an RFC3339 format
+                example: "2026-02-12T07:00:00.000Z"
         provisional_date:
           type: string
           description: A provisional date string, only used with release data_type
