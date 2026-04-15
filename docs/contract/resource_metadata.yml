@@ -58,7 +58,7 @@ components:
         release_date:
           type: string
           format: date-time
-          description: Release date in an ISO 8601 format
+          description: Release date in an RFC3339 format
           example: "2026-02-12T07:00:00.000Z"
         summary:
           type: string
