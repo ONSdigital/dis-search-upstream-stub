@@ -24,9 +24,6 @@ var (
 )
 
 func getMockResponse() *models.Resources {
-	// Initialize items as an empty slice of pointers to SearchContentUpdatedResource
-	items := make([]models.SearchContentUpdatedResource, 0)
-
 	// Create the mock item
 	mockItem := models.SearchContentUpdatedResource{
 		URI:             "http://www.ons.gov.uk/economy",
@@ -45,17 +42,8 @@ func getMockResponse() *models.Resources {
 		CanonicalTopic:  "2213",
 	}
 
-	// Append the pointer to the items slice
-	items = append(items, mockItem)
-
-	// Pre-allocate resourceItems slice with the same length as items
-	resourceItems := make([]models.Resource, 0, len(items))
-
-	// Convert the items slice of pointers to []models.Resource
-	for _, item := range items {
-		// Directly append the pointer to the resourceItems slice
-		resourceItems = append(resourceItems, item)
-	}
+	resourceItems := make([]models.Resource, 1)
+	resourceItems[0] = mockItem
 
 	// Return the mock resources response
 	mockResourcesResponse := &models.Resources{
