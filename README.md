@@ -4,15 +4,15 @@ Fake upstream search stub to mimic upstream services using a generic search cont
 
 ## Getting started
 
-* Run `make debug` to run application on http://localhost:29600
+* Run `make debug` to run application on <http://localhost:29600>
 * Run `make help` to see full list of make targets
 
 ### Dependencies
 
-* golang 1.23.x
+* golang 1.26.x
 * No further dependencies other than those defined in `go.mod`
 
-To run `make validate-specification` you require Node v20.x and to install @redocly/cli:
+To run `make validate-specification` you require Node v24.x and to install @redocly/cli:
 
 ```sh
    npm install -g @redocly/cli
@@ -30,7 +30,8 @@ To run `make validate-specification` you require Node v20.x and to install @redo
 | HEALTHCHECK_INTERVAL         | 30s                      | Time between self-healthchecks (`time.Duration` format)                                                            |
 | HEALTHCHECK_CRITICAL_TIMEOUT | 90s                      | Time to wait until an unhealthy dependent propagates its state to make this app unhealthy (`time.Duration` format) |
 
-### Note:
+#### Note
+
 The `type` parameter in the resource API is optional for the upstream service and is intended for internal team use. It allows specifying the resource type as either "old" - `content-updated` or "new" - `search-content-updated` By default, it returns "new" if not specified.
 
 ## Contributing
